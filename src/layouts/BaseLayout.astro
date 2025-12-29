@@ -1,0 +1,47 @@
+---
+const {
+  title = "Diego Barrio H.",
+  description = "Backend Engineer. Java, Spring Boot, Microservices, Observability. Proyectos y CV.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <link rel="icon" type="image/svg+xml" href="/img/dbh2-black.svg" media="(prefers-color-scheme: light)" />
+    <link rel="icon" type="image/svg+xml" href="/img/dbh2-white.svg" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/img/dbh2-white.svg" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+
+  <body>
+    <slot />
+    <script>
+      const storageKey = "theme";
+      const root = document.documentElement;
+      const toggle = document.getElementById("theme-toggle");
+
+      const getPreferred = () =>
+        window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+
+      const applyTheme = (theme) => {
+        root.setAttribute("data-theme", theme);
+      };
+
+      const stored = localStorage.getItem(storageKey);
+      applyTheme(stored || getPreferred());
+
+      toggle?.addEventListener("click", () => {
+        const current = root.getAttribute("data-theme") || getPreferred();
+        const next = current === "light" ? "dark" : "light";
+        applyTheme(next);
+        localStorage.setItem(storageKey, next);
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+---
+
+<BaseLayout title="About — Diego Barrio H.">
+  <Nav current="about" />
+  <main class="container">
+    <h1>Sobre mí</h1>
+    <p>
+      Soy Ingeniero Backend senior con más de 15 años construyendo plataformas de alto rendimiento
+      en banca, fintech y movilidad. Mi base es Java y el ecosistema Spring, con especial foco en
+      microservicios, diseño limpio, DDD y prácticas de calidad como TDD y CI/CD.
+    </p>
+
+    <section class="section">
+      <h2>En qué estoy enfocado</h2>
+      <div class="card">
+        <ul class="list">
+          <li>Arquitectura de software y diseño evolutivo de sistemas.</li>
+          <li>DevOps, observabilidad y principios SRE para operar con confianza.</li>
+          <li>Integración de eventos y automatización con pipelines confiables.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Cómo trabajo</h2>
+      <div class="grid">
+        <article class="card">
+          <h3 style="margin:0 0 6px;">Calidad primero</h3>
+          <p>Promuevo TDD, código limpio y revisiones honestas para mantener la base técnica sana.</p>
+        </article>
+        <article class="card">
+          <h3 style="margin:0 0 6px;">Entrega continua</h3>
+          <p>CI/CD, automatización y despliegues confiables para mover rápido sin romper.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Extras</h2>
+      <div class="card">
+        <ul class="list">
+          <li>Mentor voluntario para estudiantes de Ingeniería (Fundación Banco Sabadell).</li>
+          <li>Experiencia en equipos internacionales, inglés C1.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

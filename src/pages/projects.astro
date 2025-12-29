@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+
+const projects = [
+  {
+    title: "Billing & Payments APIs",
+    period: "2024 – Actualidad",
+    context: "Europcar Mobility Group (Mindden)",
+    stack: ["Java", "Spring Boot", "AWS", "Kubernetes", "Kafka"],
+    impact:
+      "APIs críticas para facturación y pagos, con arquitectura basada en eventos y despliegues cloud-native.",
+  },
+  {
+    title: "Core Banking Modernization",
+    period: "2022 – 2024",
+    context: "Accenture",
+    stack: ["Spring Boot", "Hibernate", "Oracle", "SQL Server"],
+    impact:
+      "Microservicios para modularidad y mejoras de rendimiento en procesos bancarios.",
+  },
+  {
+    title: "Enterprise Platform Suite",
+    period: "2014 – 2022",
+    context: "SABIS",
+    stack: ["Spring MVC", "JPA", "Oracle", "SharePoint"],
+    impact:
+      "Plataformas transversales e integraciones que mejoraron flujos interdepartamentales.",
+  },
+  {
+    title: "Issue Tracking Platform",
+    period: "2012 – 2014",
+    context: "Banco Sabadell",
+    stack: ["Spring Boot", "Thymeleaf", "Oracle"],
+    impact:
+      "Sistema interno para gestión de incidencias con foco en usabilidad y trazabilidad.",
+  },
+  {
+    title: "Online Banking & ATM Services",
+    period: "2007 – 2012",
+    context: "Caja Mediterráneo",
+    stack: ["J2EE", "ALNOVA", "Oracle"],
+    impact:
+      "Servicios transaccionales y migración de core bancario con alta criticidad operativa.",
+  },
+];
+---
+
+<BaseLayout title="Projects — Diego Barrio H.">
+  <Nav current="projects" />
+  <main class="container">
+    <h1>Proyectos</h1>
+    <p>
+      Selección de proyectos y líneas de trabajo relevantes en backend, arquitectura y sistemas críticos.
+      Si quieres detalles específicos o demos públicas, escríbeme.
+    </p>
+
+    <section class="section">
+      <div class="grid">
+        {projects.map((p) => (
+          <article class="card">
+            <p class="eyebrow">{p.period}</p>
+            <h3 style="margin:0 0 4px;">{p.title}</h3>
+            <p class="small" style="margin:0 0 8px;">{p.context}</p>
+            <p>{p.impact}</p>
+            <p class="taglist">{p.stack.map((s) => <span class="pill">{s}</span>)}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

@@ -1,16 +1,96 @@
 ---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
 
+const skills = [
+  "Java", "Spring Boot", "Microservices", "Kafka",
+  "Kubernetes", "Docker", "Observability (Grafana, Splunk, Sentry)",
+  "DDD + Hexagonal", "TDD", "CI/CD", "AWS", "Oracle"
+];
+
+const highlights = [
+  {
+    title: "Billing & Payments APIs",
+    text: "Diseño de APIs de facturación y pagos para movilidad. Microservicios, eventos y cloud.",
+    href: "/projects",
+    cta: "Ver caso",
+  },
+  {
+    title: "Core Banking Modernization",
+    text: "Microservicios y optimización de datos en banca para mejorar rendimiento y uptime.",
+    href: "/projects",
+    cta: "Ver caso",
+  },
+];
+
+const facts = [
+  { label: "Experiencia", value: "15+ años" },
+  { label: "Especialidad", value: "Backend & arquitectura" },
+  { label: "Industria", value: "Fintech, banca, movilidad" },
+  { label: "Idiomas", value: "ES nativo · EN C1" },
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Diego Barrio H. — Backend Engineer">
+  <Nav current="home" />
+  <main class="container">
+    <section class="hero">
+      <h1>Senior Backend Engineer</h1>
+      <p>
+        Diseño y construyo plataformas backend escalables con Java y Spring.
+        Enfocado en microservicios, arquitectura limpia, observabilidad y prácticas de ingeniería rigurosas.
+      </p>
+
+      <div class="btns">
+        <a class="btn primary" href="/cv">Ver CV</a>
+        <a class="btn" href="/projects">Ver proyectos</a>
+        <a class="btn" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">Descargar PDF</a>
+        <a class="btn" href="mailto:diegobarrioh@gmail.com">Contactar</a>
+      </div>
+
+      <div class="badges">
+        {skills.map((s) => <span class="badge">{s}</span>)}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Perfil rápido</h2>
+      <div class="grid">
+        {facts.map((f) => (
+          <article class="card stat">
+            <p class="eyebrow">{f.label}</p>
+            <h3 style="margin:0 0 2px;">{f.value}</h3>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Casos destacados</h2>
+      <div class="grid">
+      {highlights.map((h) => (
+        <article class="card">
+          <h3 style="margin:0 0 6px;">{h.title}</h3>
+          <p>{h.text}</p>
+          <a class="btn" href={h.href}>{h.cta} →</a>
+        </article>
+      ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Contacto</h2>
+      <div class="card">
+        <p>
+          Alicante, Spain ·
+          <a href="mailto:diegobarrioh@gmail.com"> diegobarrioh@gmail.com</a> ·
+          <a href="https://linkedin.com/in/diegobarrioh" target="_blank" rel="noreferrer"> LinkedIn</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer small">
+      © {new Date().getFullYear()} Diego Barrio H. · Hecho con Astro · Servido desde una Raspberry Pi (sí, en serio).
+    </footer>
+  </main>
+</BaseLayout>

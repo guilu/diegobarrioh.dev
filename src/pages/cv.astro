@@ -1,0 +1,166 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+
+const summary =
+  "Senior Backend Engineer con más de 15 años de experiencia diseñando sistemas escalables. Especialista en Java y Spring, microservicios, DDD y arquitectura limpia. Experiencia en banca, fintech y movilidad, con foco en calidad, TDD y CI/CD.";
+
+const experience = [
+  {
+    role: "Senior Backend Engineer",
+    company: "Mindden (Europcar Mobility Group)",
+    period: "Mar 2024 – Actualidad",
+    bullets: [
+      "APIs de facturación y pagos con Spring Boot, microservicios, AWS y Kubernetes.",
+      "Integración de Apache Kafka para eventos y procesamiento asíncrono.",
+      "Promoción de arquitectura hexagonal, DDD y prácticas TDD.",
+      "Mejora de pipelines CI/CD con GitLab para despliegues más rápidos.",
+    ],
+  },
+  {
+    role: "Senior Analyst",
+    company: "Accenture",
+    period: "Jul 2022 – Mar 2024",
+    bullets: [
+      "Desarrollo y mantenimiento de core banking con Spring Boot e Hibernate.",
+      "Microservicios para mejorar modularidad y uptime.",
+      "Orquestación batch con IBM Tivoli Workload Scheduler.",
+      "Optimización de queries y procedimientos en Oracle y SQL Server.",
+    ],
+  },
+  {
+    role: "Senior Specialist",
+    company: "SABIS",
+    period: "Jun 2014 – Jun 2022",
+    bullets: [
+      "Plataformas enterprise con Spring MVC, WebFlow, JPA, Hibernate y Oracle.",
+      "Integraciones .NET y SharePoint para flujos interdepartamentales.",
+    ],
+  },
+  {
+    role: "Analyst",
+    company: "Banco Sabadell",
+    period: "Nov 2012 – Jun 2014",
+    bullets: [
+      "Plataforma interna de issues con Spring Boot, Thymeleaf y Oracle.",
+      "Diseño e implementación full-stack con el ecosistema Spring.",
+    ],
+  },
+  {
+    role: "Analyst & Developer",
+    company: "Caja Mediterráneo",
+    period: "Mar 2007 – Nov 2012",
+    bullets: [
+      "Aplicaciones de banca online en J2EE.",
+      "Servicios de transacciones ATM y migración a ALNOVA.",
+    ],
+  },
+  {
+    role: "Web Developer",
+    company: "HDV",
+    period: "Dec 2005 – Mar 2007",
+    bullets: [
+      "Aplicaciones web con PHP, MySQL y JavaScript.",
+      "AJAX para interfaces dinámicas y responsivas.",
+    ],
+  },
+];
+
+const skills = {
+  expert: ["Java", "Spring Boot", "Spring MVC", "Spring Security", "JPA", "Hibernate", "TDD", "Git"],
+  advanced: ["Microservicios", "Docker", "Jenkins", "DDD", "Oracle", "Arquitectura limpia"],
+  proficient: ["Kubernetes", "AWS", "Apache Kafka", "CI/CD", "SonarQube", "Observabilidad"],
+  learning: ["Principios SRE", "IA generativa (Prompt Engineering, RAG)"],
+};
+
+const education = [
+  {
+    title: "Máster en Desarrollo de Aplicaciones y Servicios Web (60 ECTS)",
+    org: "Universidad de Alicante",
+    period: "2010 – 2011",
+  },
+  {
+    title: "Certificado en Java Enterprise Development",
+    org: "Universidad de Alicante",
+    period: "2009 – 2010",
+  },
+  {
+    title: "Ingeniería Informática (5 años)",
+    org: "Universidad de Alicante",
+    period: "1998 – 2005",
+  },
+];
+---
+
+<BaseLayout title="CV — Diego Barrio H.">
+  <Nav current="cv" />
+  <main class="container">
+    <h1>CV</h1>
+    <p>{summary}</p>
+
+    <div class="btns">
+      <a class="btn primary" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">Abrir CV en PDF</a>
+      <a class="btn" href="/">Volver</a>
+    </div>
+
+    <section class="section">
+      <h2>Experiencia</h2>
+      <div class="timeline">
+        {experience.map((e) => (
+          <article class="card">
+            <p class="eyebrow">{e.period}</p>
+            <h3 style="margin:0 0 4px;">{e.role}</h3>
+            <p class="small" style="margin:0 0 8px;">{e.company}</p>
+            <ul class="list">
+              {e.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Skills</h2>
+      <div class="grid">
+        <article class="card">
+          <p class="eyebrow">Expert</p>
+          <p class="taglist">{skills.expert.map((s) => <span class="pill">{s}</span>)}</p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Advanced</p>
+          <p class="taglist">{skills.advanced.map((s) => <span class="pill">{s}</span>)}</p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Proficient</p>
+          <p class="taglist">{skills.proficient.map((s) => <span class="pill">{s}</span>)}</p>
+        </article>
+        <article class="card">
+          <p class="eyebrow">Learning focus</p>
+          <p class="taglist">{skills.learning.map((s) => <span class="pill">{s}</span>)}</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Educación</h2>
+      <div class="grid">
+        {education.map((e) => (
+          <article class="card">
+            <h3 style="margin:0 0 6px;">{e.title}</h3>
+            <p class="small" style="margin:0;">{e.org} · {e.period}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Idiomas</h2>
+      <div class="card">
+        <ul class="list">
+          <li>Español: nativo</li>
+          <li>Inglés: C1 (full professional proficiency)</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

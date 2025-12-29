@@ -1,0 +1,243 @@
+:root {
+  --bg: #0a0f0c;
+  --fg: #d7f7d2;
+  --muted: #8abf8a;
+  --card: #0f1712;
+  --border: rgba(10, 12, 11, 0.9);
+  --accent: #34d399;
+  --accent2: #22c55e;
+  --radius: 18px;
+}
+[data-theme="light"] {
+  --bg: #f2f7f2;
+  --fg: #0f1a13;
+  --muted: #47634f;
+  --card: #ffffff;
+  --border: rgba(120, 130, 135, 0.6);
+  --accent: #1d9a6c;
+  --accent2: #16a34a;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  width: min(1100px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 28px 0 60px;
+}
+.section {
+  margin-top: 28px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  background: color-mix(in oklab, var(--bg) 84%, transparent);
+  border-bottom: 1px solid var(--border);
+  z-index: 10;
+}
+.nav-inner {
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--fg);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  padding: 10px 0;
+}
+.brand-logo {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+.logo-light {
+  display: none;
+}
+[data-theme="light"] .logo-dark {
+  display: none;
+}
+[data-theme="light"] .logo-light {
+  display: block;
+}
+
+.nav a {
+  padding: 10px 12px;
+  border-radius: 12px;
+  color: var(--muted);
+}
+.nav a.active,
+.nav a:hover {
+  color: var(--fg);
+  background: color-mix(in oklab, var(--card) 70%, transparent);
+  text-decoration: none;
+}
+
+.hero {
+  margin-top: 22px;
+  padding: 26px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: radial-gradient(900px 300px at 10% 0%, rgba(110, 166, 162, 0.25), transparent 55%), radial-gradient(900px 300px at 70% 0%, rgba(183, 123, 113, 0.22), transparent 55%), var(--card);
+}
+
+h1 {
+  font-size: clamp(30px, 5vw, 44px);
+  margin: 0 0 8px;
+}
+h2 {
+  font-size: 22px;
+  margin: 28px 0 12px;
+}
+p {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+.card {
+  grid-column: span 6;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: color-mix(in oklab, var(--card) 92%, black);
+}
+.card.stat h3 {
+  font-size: 22px;
+}
+.card.stat .eyebrow {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 820px) {
+  .card {
+    grid-column: span 12;
+  }
+}
+.timeline {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+.timeline .card {
+  grid-column: span 12;
+}
+
+.list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+.list li {
+  margin: 6px 0;
+}
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0 0 4px;
+}
+.taglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 0;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.badge {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 13px;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--fg);
+}
+.btn.ghost {
+  background: transparent;
+}
+.btn.primary {
+  background: color-mix(in oklab, var(--accent) 25%, rgba(255, 255, 255, 0.04));
+  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+}
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+.footer {
+  margin-top: 36px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}

@@ -1,0 +1,28 @@
+---
+const { current } = Astro.props;
+
+const links = [
+  { href: "/", label: "Home", key: "home" },
+  { href: "/projects", label: "Projects", key: "projects" },
+  { href: "/cv", label: "CV", key: "cv" },
+  { href: "/about", label: "About", key: "about" },
+];
+---
+
+<nav class="nav">
+  <div class="container nav-inner">
+    <a href="/" class="brand">
+      <img src="/img/dbh2-white.svg" alt="Diego Barrio H. logo" class="brand-logo logo-dark" />
+      <img src="/img/dbh2-black.svg" alt="Diego Barrio H. logo" class="brand-logo logo-light" />
+      <span>Diego Barrio H.</span>
+    </a>
+    <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; align-items:center;">
+      {links.map((l) => (
+        <a href={l.href} class={current === l.key ? "active" : ""}>{l.label}</a>
+      ))}
+      <button class="btn ghost" type="button" id="theme-toggle" aria-label="Cambiar tema">
+        ☀︎/☾
+      </button>
+    </div>
+  </div>
+</nav>
