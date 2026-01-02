@@ -2,66 +2,128 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 
-const summary =
-  "Senior Backend Engineer con más de 15 años de experiencia diseñando sistemas escalables. Especialista en Java y Spring, microservicios, DDD y arquitectura limpia. Experiencia en banca, fintech y movilidad, con foco en calidad, TDD y CI/CD.";
+const summary = {
+  es: "Senior Backend Engineer con más de 15 años de experiencia diseñando sistemas escalables. Especialista en Java y Spring, microservicios, DDD y arquitectura limpia. Experiencia en banca, fintech y movilidad, con foco en calidad, TDD y CI/CD.",
+  en: "Senior Backend Engineer with 15+ years of experience designing scalable systems. Specialized in Java and Spring, microservices, DDD, and clean architecture. Background in banking, fintech, and mobility, with a focus on quality, TDD, and CI/CD.",
+};
 
 const experience = [
   {
-    role: "Senior Backend Engineer",
+    roleEs: "Ingeniero Backend Senior",
+    roleEn: "Senior Backend Engineer",
     company: "Mindden (Europcar Mobility Group)",
-    period: "Mar 2024 – Actualidad",
+    periodEs: "Mar 2024 – Actualidad",
+    periodEn: "Mar 2024 – Present",
     bullets: [
-      "APIs de facturación y pagos con Spring Boot, microservicios, AWS y Kubernetes.",
-      "Integración de Apache Kafka para eventos y procesamiento asíncrono.",
-      "Promoción de arquitectura hexagonal, DDD y prácticas TDD.",
-      "Mejora de pipelines CI/CD con GitLab para despliegues más rápidos.",
+      {
+        es: "APIs de facturación y pagos con Spring Boot, microservicios, AWS y Kubernetes.",
+        en: "Billing and payment APIs with Spring Boot, microservices, AWS, and Kubernetes.",
+      },
+      {
+        es: "Integración de Apache Kafka para eventos y procesamiento asíncrono.",
+        en: "Apache Kafka integration for event-driven and asynchronous processing.",
+      },
+      {
+        es: "Promoción de arquitectura hexagonal, DDD y prácticas TDD.",
+        en: "Advocated for hexagonal architecture, DDD, and TDD practices.",
+      },
+      {
+        es: "Mejora de pipelines CI/CD con GitLab para despliegues más rápidos.",
+        en: "Improved CI/CD pipelines with GitLab for faster deployments.",
+      },
     ],
   },
   {
-    role: "Senior Analyst",
+    roleEs: "Analista Senior",
+    roleEn: "Senior Analyst",
     company: "Accenture",
-    period: "Jul 2022 – Mar 2024",
+    periodEs: "Jul 2022 – Mar 2024",
+    periodEn: "Jul 2022 – Mar 2024",
     bullets: [
-      "Desarrollo y mantenimiento de core banking con Spring Boot e Hibernate.",
-      "Microservicios para mejorar modularidad y uptime.",
-      "Orquestación batch con IBM Tivoli Workload Scheduler.",
-      "Optimización de queries y procedimientos en Oracle y SQL Server.",
+      {
+        es: "Desarrollo y mantenimiento de core banking con Spring Boot e Hibernate.",
+        en: "Core banking development and maintenance with Spring Boot and Hibernate.",
+      },
+      {
+        es: "Microservicios para mejorar modularidad y uptime.",
+        en: "Microservices to improve modularity and uptime.",
+      },
+      {
+        es: "Orquestación batch con IBM Tivoli Workload Scheduler.",
+        en: "Batch orchestration with IBM Tivoli Workload Scheduler.",
+      },
+      {
+        es: "Optimización de queries y procedimientos en Oracle y SQL Server.",
+        en: "Query and stored procedure optimization in Oracle and SQL Server.",
+      },
     ],
   },
   {
-    role: "Senior Specialist",
+    roleEs: "Especialista Senior",
+    roleEn: "Senior Specialist",
     company: "SABIS",
-    period: "Jun 2014 – Jun 2022",
+    periodEs: "Jun 2014 – Jun 2022",
+    periodEn: "Jun 2014 – Jun 2022",
     bullets: [
-      "Plataformas enterprise con Spring MVC, WebFlow, JPA, Hibernate y Oracle.",
-      "Integraciones .NET y SharePoint para flujos interdepartamentales.",
+      {
+        es: "Plataformas enterprise con Spring MVC, WebFlow, JPA, Hibernate y Oracle.",
+        en: "Enterprise platforms with Spring MVC, WebFlow, JPA, Hibernate, and Oracle.",
+      },
+      {
+        es: "Integraciones .NET y SharePoint para flujos interdepartamentales.",
+        en: ".NET and SharePoint integrations for cross-department workflows.",
+      },
     ],
   },
   {
-    role: "Analyst",
+    roleEs: "Analista",
+    roleEn: "Analyst",
     company: "Banco Sabadell",
-    period: "Nov 2012 – Jun 2014",
+    periodEs: "Nov 2012 – Jun 2014",
+    periodEn: "Nov 2012 – Jun 2014",
     bullets: [
-      "Plataforma interna de issues con Spring Boot, Thymeleaf y Oracle.",
-      "Diseño e implementación full-stack con el ecosistema Spring.",
+      {
+        es: "Plataforma interna de incidencias con Spring Boot, Thymeleaf y Oracle.",
+        en: "Internal issue tracking platform with Spring Boot, Thymeleaf, and Oracle.",
+      },
+      {
+        es: "Diseño e implementación full-stack con el ecosistema Spring.",
+        en: "Full-stack design and implementation with the Spring ecosystem.",
+      },
     ],
   },
   {
-    role: "Analyst & Developer",
+    roleEs: "Analista y Desarrollador",
+    roleEn: "Analyst & Developer",
     company: "Caja Mediterráneo",
-    period: "Mar 2007 – Nov 2012",
+    periodEs: "Mar 2007 – Nov 2012",
+    periodEn: "Mar 2007 – Nov 2012",
     bullets: [
-      "Aplicaciones de banca online en J2EE.",
-      "Servicios de transacciones ATM y migración a ALNOVA.",
+      {
+        es: "Aplicaciones de banca online en J2EE.",
+        en: "Online banking applications in J2EE.",
+      },
+      {
+        es: "Servicios de transacciones ATM y migración a ALNOVA.",
+        en: "ATM transaction services and ALNOVA migration.",
+      },
     ],
   },
   {
-    role: "Web Developer",
+    roleEs: "Desarrollador Web",
+    roleEn: "Web Developer",
     company: "HDV",
-    period: "Dec 2005 – Mar 2007",
+    periodEs: "Dec 2005 – Mar 2007",
+    periodEn: "Dec 2005 – Mar 2007",
     bullets: [
-      "Aplicaciones web con PHP, MySQL y JavaScript.",
-      "AJAX para interfaces dinámicas y responsivas.",
+      {
+        es: "Aplicaciones web con PHP, MySQL y JavaScript.",
+        en: "Web applications with PHP, MySQL, and JavaScript.",
+      },
+      {
+        es: "AJAX para interfaces dinámicas y responsivas.",
+        en: "AJAX for dynamic and responsive UI.",
+      },
     ],
   },
 ];
@@ -75,19 +137,25 @@ const skills = {
 
 const education = [
   {
-    title: "Máster en Desarrollo de Aplicaciones y Servicios Web (60 ECTS)",
+    titleEs: "Máster en Desarrollo de Aplicaciones y Servicios Web (60 ECTS)",
+    titleEn: "Master's Degree in Web Applications and Services Development (60 ECTS)",
     org: "Universidad de Alicante",
-    period: "2010 – 2011",
+    periodEs: "2010 – 2011",
+    periodEn: "2010 – 2011",
   },
   {
-    title: "Certificado en Java Enterprise Development",
+    titleEs: "Certificado en Java Enterprise Development",
+    titleEn: "Certificate in Java Enterprise Development",
     org: "Universidad de Alicante",
-    period: "2009 – 2010",
+    periodEs: "2009 – 2010",
+    periodEn: "2009 – 2010",
   },
   {
-    title: "Ingeniería Informática (5 años)",
+    titleEs: "Ingeniería Informática (5 años)",
+    titleEn: "Computer Engineering (5-year degree)",
     org: "Universidad de Alicante",
-    period: "1998 – 2005",
+    periodEs: "1998 – 2005",
+    periodEn: "1998 – 2005",
   },
 ];
 ---
@@ -96,23 +164,44 @@ const education = [
   <Nav current="cv" />
   <main class="container">
     <h1>CV</h1>
-    <p>{summary}</p>
+    <p class="i18n" data-lang="es">{summary.es}</p>
+    <p class="i18n" data-lang="en">{summary.en}</p>
 
     <div class="btns">
-      <a class="btn primary" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">Abrir CV en PDF</a>
-      <a class="btn" href="/">Volver</a>
+      <a class="btn primary" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">
+        <span class="i18n inline" data-lang="es">Abrir CV en PDF</span>
+        <span class="i18n inline" data-lang="en">Open CV PDF</span>
+      </a>
+      <a class="btn" href="/">
+        <span class="i18n inline" data-lang="es">Volver</span>
+        <span class="i18n inline" data-lang="en">Back</span>
+      </a>
     </div>
 
     <section class="section">
-      <h2>Experiencia</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Experiencia</span>
+        <span class="i18n inline" data-lang="en">Experience</span>
+      </h2>
       <div class="timeline">
         {experience.map((e) => (
           <article class="card">
-            <p class="eyebrow">{e.period}</p>
-            <h3 style="margin:0 0 4px;">{e.role}</h3>
+            <p class="eyebrow">
+              <span class="i18n inline" data-lang="es">{e.periodEs}</span>
+              <span class="i18n inline" data-lang="en">{e.periodEn}</span>
+            </p>
+            <h3 style="margin:0 0 4px;">
+              <span class="i18n inline" data-lang="es">{e.roleEs}</span>
+              <span class="i18n inline" data-lang="en">{e.roleEn}</span>
+            </h3>
             <p class="small" style="margin:0 0 8px;">{e.company}</p>
             <ul class="list">
-              {e.bullets.map((b) => <li>{b}</li>)}
+              {e.bullets.map((b) => (
+                <li>
+                  <span class="i18n inline" data-lang="es">{b.es}</span>
+                  <span class="i18n inline" data-lang="en">{b.en}</span>
+                </li>
+              ))}
             </ul>
           </article>
         ))}
@@ -120,45 +209,79 @@ const education = [
     </section>
 
     <section class="section">
-      <h2>Skills</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Skills</span>
+        <span class="i18n inline" data-lang="en">Skills</span>
+      </h2>
       <div class="grid">
         <article class="card">
-          <p class="eyebrow">Expert</p>
-          <p class="taglist">{skills.expert.map((s) => <span class="pill">{s}</span>)}</p>
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Experto</span>
+            <span class="i18n inline" data-lang="en">Expert</span>
+          </p>
+          <p class="taglist taglist-expert">{skills.expert.map((s) => <span class="pill">{s}</span>)}</p>
         </article>
         <article class="card">
-          <p class="eyebrow">Advanced</p>
-          <p class="taglist">{skills.advanced.map((s) => <span class="pill">{s}</span>)}</p>
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Avanzado</span>
+            <span class="i18n inline" data-lang="en">Advanced</span>
+          </p>
+          <p class="taglist taglist-advanced">{skills.advanced.map((s) => <span class="pill">{s}</span>)}</p>
         </article>
         <article class="card">
-          <p class="eyebrow">Proficient</p>
-          <p class="taglist">{skills.proficient.map((s) => <span class="pill">{s}</span>)}</p>
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Competente</span>
+            <span class="i18n inline" data-lang="en">Proficient</span>
+          </p>
+          <p class="taglist taglist-proficient">{skills.proficient.map((s) => <span class="pill">{s}</span>)}</p>
         </article>
         <article class="card">
-          <p class="eyebrow">Learning focus</p>
-          <p class="taglist">{skills.learning.map((s) => <span class="pill">{s}</span>)}</p>
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">En aprendizaje</span>
+            <span class="i18n inline" data-lang="en">Learning focus</span>
+          </p>
+          <p class="taglist taglist-learning">{skills.learning.map((s) => <span class="pill">{s}</span>)}</p>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <h2>Educación</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Educación</span>
+        <span class="i18n inline" data-lang="en">Education</span>
+      </h2>
       <div class="grid">
         {education.map((e) => (
           <article class="card">
-            <h3 style="margin:0 0 6px;">{e.title}</h3>
-            <p class="small" style="margin:0;">{e.org} · {e.period}</p>
+            <h3 style="margin:0 0 6px;">
+              <span class="i18n inline" data-lang="es">{e.titleEs}</span>
+              <span class="i18n inline" data-lang="en">{e.titleEn}</span>
+            </h3>
+            <p class="small" style="margin:0;">
+              {e.org} ·
+              <span class="i18n inline" data-lang="es"> {e.periodEs}</span>
+              <span class="i18n inline" data-lang="en"> {e.periodEn}</span>
+            </p>
           </article>
         ))}
       </div>
     </section>
 
     <section class="section">
-      <h2>Idiomas</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Idiomas</span>
+        <span class="i18n inline" data-lang="en">Languages</span>
+      </h2>
       <div class="card">
         <ul class="list">
-          <li>Español: nativo</li>
-          <li>Inglés: C1 (full professional proficiency)</li>
+          <li>
+            <span class="i18n inline" data-lang="es">Español: nativo</span>
+            <span class="i18n inline" data-lang="en">Spanish: native</span>
+          </li>
+          <li>
+            <span class="i18n inline" data-lang="es">Inglés: C1 (full professional proficiency)</span>
+            <span class="i18n inline" data-lang="en">English: C1 (full professional proficiency)</span>
+          </li>
         </ul>
       </div>
     </section>

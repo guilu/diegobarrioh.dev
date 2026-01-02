@@ -2,10 +2,10 @@
 const { current } = Astro.props;
 
 const links = [
-  { href: "/", label: "Home", key: "home" },
-  { href: "/projects", label: "Projects", key: "projects" },
-  { href: "/cv", label: "CV", key: "cv" },
-  { href: "/about", label: "About", key: "about" },
+  { href: "/", labelEs: "Inicio", labelEn: "Home", key: "home" },
+  { href: "/projects", labelEs: "Proyectos", labelEn: "Projects", key: "projects" },
+  { href: "/cv", labelEs: "CV", labelEn: "CV", key: "cv" },
+  { href: "/about", labelEs: "Sobre mí", labelEn: "About", key: "about" },
 ];
 ---
 
@@ -18,8 +18,14 @@ const links = [
     </a>
     <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; align-items:center;">
       {links.map((l) => (
-        <a href={l.href} class={current === l.key ? "active" : ""}>{l.label}</a>
+        <a href={l.href} class={current === l.key ? "active" : ""}>
+          <span class="i18n inline" data-lang="es">{l.labelEs}</span>
+          <span class="i18n inline" data-lang="en">{l.labelEn}</span>
+        </a>
       ))}
+      <button class="btn ghost" type="button" id="lang-toggle" aria-label="Cambiar idioma">
+        🇪🇸/🇬🇧
+      </button>
       <button class="btn ghost" type="button" id="theme-toggle" aria-label="Cambiar tema">
         ☀︎/☾
       </button>

@@ -13,9 +13,7 @@ const {
     <meta name="description" content={description} />
     <title>{title}</title>
 
-    <link rel="icon" type="image/svg+xml" href="/img/dbh2-black.svg" media="(prefers-color-scheme: light)" />
-    <link rel="icon" type="image/svg+xml" href="/img/dbh2-white.svg" media="(prefers-color-scheme: dark)" />
-    <link rel="icon" type="image/svg+xml" href="/img/dbh2-white.svg" />
+    <link rel="icon" type="image/svg+xml" href="/img/dbh2-black.svg" />
     <link rel="stylesheet" href="/styles.css" />
   </head>
 
@@ -25,12 +23,29 @@ const {
       const storageKey = "theme";
       const root = document.documentElement;
       const toggle = document.getElementById("theme-toggle");
+      const langKey = "lang";
+      const langToggle = document.getElementById("lang-toggle");
 
       const getPreferred = () =>
         window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      const getPreferredLang = () => {
+        const lang = (navigator.language || "en").toLowerCase();
+        return lang.startsWith("es") ? "es" : "en";
+      };
 
       const applyTheme = (theme) => {
         root.setAttribute("data-theme", theme);
+      };
+      const applyLang = (lang) => {
+        root.setAttribute("data-lang", lang);
+        root.setAttribute("lang", lang);
+        if (langToggle) {
+          langToggle.textContent = "🇪🇸/🇬🇧";
+          langToggle.setAttribute(
+            "aria-label",
+            lang === "es" ? "Switch to English" : "Cambiar a español"
+          );
+        }
       };
 
       const stored = localStorage.getItem(storageKey);
@@ -41,6 +56,16 @@ const {
         const next = current === "light" ? "dark" : "light";
         applyTheme(next);
         localStorage.setItem(storageKey, next);
+      });
+
+      const storedLang = localStorage.getItem(langKey);
+      applyLang(storedLang || getPreferredLang());
+
+      langToggle?.addEventListener("click", () => {
+        const current = root.getAttribute("data-lang") || getPreferredLang();
+        const next = current === "es" ? "en" : "es";
+        applyLang(next);
+        localStorage.setItem(langKey, next);
       });
     </script>
   </body>

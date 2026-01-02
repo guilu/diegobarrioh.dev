@@ -1,11 +1,11 @@
 :root {
-  --bg: #0a0f0c;
-  --fg: #d7f7d2;
-  --muted: #8abf8a;
-  --card: #0f1712;
-  --border: rgba(10, 12, 11, 0.9);
-  --accent: #34d399;
-  --accent2: #22c55e;
+  --bg: #0b0f14;
+  --fg: #e7eef2;
+  --muted: #97a6b3;
+  --card: #111823;
+  --border: rgba(36, 26, 50, 0.6);
+  --accent: #26b3a3;
+  --accent2: #6ea6a2;
   --radius: 18px;
 }
 [data-theme="light"] {
@@ -13,7 +13,7 @@
   --fg: #0f1a13;
   --muted: #47634f;
   --card: #ffffff;
-  --border: rgba(120, 130, 135, 0.6);
+  --border: rgba(200, 200, 200, 0.6);
   --accent: #1d9a6c;
   --accent2: #16a34a;
 }
@@ -27,10 +27,33 @@ body {
   padding: 0;
 }
 body {
-  background: var(--bg);
+  background: linear-gradient(rgba(11, 15, 20, 0.88), rgba(11, 15, 20, 0.88)), url("/img/dbh-wall.jpg") center / cover fixed;
   color: var(--fg);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   line-height: 1.55;
+}
+.i18n {
+  display: none;
+}
+[data-lang="en"] .i18n[data-lang="en"] {
+  display: block;
+}
+[data-lang="es"] .i18n[data-lang="es"] {
+  display: block;
+}
+[data-lang="en"] li.i18n[data-lang="en"],
+[data-lang="es"] li.i18n[data-lang="es"] {
+  display: list-item;
+}
+.i18n.inline {
+  display: none;
+}
+[data-lang="en"] .i18n.inline[data-lang="en"],
+[data-lang="es"] .i18n.inline[data-lang="es"] {
+  display: inline;
+}
+[data-theme="light"] body {
+  background: linear-gradient(rgba(247, 247, 249, 0.92), rgba(247, 247, 249, 0.92)), url("/img/dbh-wall.jpg") center / cover fixed;
 }
 
 a {
@@ -111,7 +134,7 @@ a:hover {
   padding: 26px;
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  background: radial-gradient(900px 300px at 10% 0%, rgba(110, 166, 162, 0.25), transparent 55%), radial-gradient(900px 300px at 70% 0%, rgba(183, 123, 113, 0.22), transparent 55%), var(--card);
+  background: radial-gradient(700px 260px at 0% 0%, rgba(38, 179, 163, 0.28), transparent 60%), radial-gradient(600px 240px at 80% 0%, rgba(112, 0, 255, 0.22), transparent 62%), var(--card);
 }
 
 h1 {
@@ -192,6 +215,26 @@ p {
   color: var(--fg);
   background: rgba(255, 255, 255, 0.04);
 }
+.taglist-expert .pill {
+  border-color: color-mix(in oklab, #7000ff 60%, var(--border));
+  background: color-mix(in oklab, #7000ff 20%, rgba(255, 255, 255, 0.04));
+}
+.taglist-advanced .pill {
+  border-color: color-mix(in oklab, #26b3a3 60%, var(--border));
+  background: color-mix(in oklab, #26b3a3 18%, rgba(255, 255, 255, 0.04));
+}
+.taglist-proficient .pill {
+  border-color: color-mix(in oklab, #5aa7ff 60%, var(--border));
+  background: color-mix(in oklab, #5aa7ff 16%, rgba(255, 255, 255, 0.04));
+}
+.taglist-learning .pill {
+  border-color: color-mix(in oklab, #f0c06b 60%, var(--border));
+  background: color-mix(in oklab, #f0c06b 18%, rgba(255, 255, 255, 0.04));
+}
+.taglist-projects .pill {
+  border-color: color-mix(in oklab, #26b3a3 60%, var(--border));
+  background: color-mix(in oklab, #26b3a3 18%, rgba(255, 255, 255, 0.04));
+}
 
 .badges {
   display: flex;
@@ -202,10 +245,10 @@ p {
 
 .badge {
   padding: 6px 10px;
-  border: 1px solid var(--border);
+  border: 1px solid color-mix(in oklab, var(--accent) 55%, var(--border));
   border-radius: 999px;
   color: var(--fg);
-  background: rgba(255, 255, 255, 0.04);
+  background: color-mix(in oklab, var(--accent) 18%, rgba(255, 255, 255, 0.04));
   font-size: 13px;
 }
 
@@ -229,8 +272,9 @@ p {
   background: transparent;
 }
 .btn.primary {
-  background: color-mix(in oklab, var(--accent) 25%, rgba(255, 255, 255, 0.04));
-  border-color: color-mix(in oklab, var(--accent) 40%, var(--border));
+  background: #7000ff;
+  border-color: #7000ff;
+  color: #ffffff;
 }
 .small {
   font-size: 13px;

@@ -10,24 +10,50 @@ const skills = [
 
 const highlights = [
   {
-    title: "Billing & Payments APIs",
-    text: "Diseño de APIs de facturación y pagos para movilidad. Microservicios, eventos y cloud.",
+    titleEs: "APIs de facturación y pagos",
+    titleEn: "Billing & Payments APIs",
+    textEs: "Diseño de APIs de facturación y pagos para movilidad. Microservicios, eventos y cloud.",
+    textEn: "Billing and payment APIs for mobility. Microservices, event-driven and cloud-native.",
     href: "/projects",
-    cta: "Ver caso",
+    ctaEs: "Ver caso",
+    ctaEn: "View case",
   },
   {
-    title: "Core Banking Modernization",
-    text: "Microservicios y optimización de datos en banca para mejorar rendimiento y uptime.",
+    titleEs: "Modernización de core bancario",
+    titleEn: "Core Banking Modernization",
+    textEs: "Microservicios y optimización de datos en banca para mejorar rendimiento y uptime.",
+    textEn: "Microservices and data optimization to improve performance and uptime in banking.",
     href: "/projects",
-    cta: "Ver caso",
+    ctaEs: "Ver caso",
+    ctaEn: "View case",
   },
 ];
 
 const facts = [
-  { label: "Experiencia", value: "15+ años" },
-  { label: "Especialidad", value: "Backend & arquitectura" },
-  { label: "Industria", value: "Fintech, banca, movilidad" },
-  { label: "Idiomas", value: "ES nativo · EN C1" },
+  {
+    labelEs: "Experiencia",
+    labelEn: "Experience",
+    valueEs: "15+ años",
+    valueEn: "15+ years",
+  },
+  {
+    labelEs: "Especialidad",
+    labelEn: "Focus",
+    valueEs: "Backend & arquitectura",
+    valueEn: "Backend & architecture",
+  },
+  {
+    labelEs: "Industria",
+    labelEn: "Industry",
+    valueEs: "Fintech, banca, movilidad",
+    valueEn: "Fintech, banking, mobility",
+  },
+  {
+    labelEs: "Idiomas",
+    labelEn: "Languages",
+    valueEs: "ES nativo · EN C1",
+    valueEn: "ES native · EN C1",
+  },
 ];
 ---
 
@@ -35,17 +61,36 @@ const facts = [
   <Nav current="home" />
   <main class="container">
     <section class="hero">
-      <h1>Senior Backend Engineer</h1>
-      <p>
+      <h1>
+        <span class="i18n inline" data-lang="es">diegobarrioh - Ingeniero Backend Senior</span>
+        <span class="i18n inline" data-lang="en">diegobarrioh - Senior Backend Engineer</span>
+      </h1>
+      <p class="i18n" data-lang="es">
         Diseño y construyo plataformas backend escalables con Java y Spring.
         Enfocado en microservicios, arquitectura limpia, observabilidad y prácticas de ingeniería rigurosas.
       </p>
+      <p class="i18n" data-lang="en">
+        I design and build scalable backend platforms with Java and Spring.
+        Focused on microservices, clean architecture, observability, and rigorous engineering practices.
+      </p>
 
       <div class="btns">
-        <a class="btn primary" href="/cv">Ver CV</a>
-        <a class="btn" href="/projects">Ver proyectos</a>
-        <a class="btn" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">Descargar PDF</a>
-        <a class="btn" href="mailto:diegobarrioh@gmail.com">Contactar</a>
+        <a class="btn primary" href="/cv">
+          <span class="i18n inline" data-lang="es">Ver CV</span>
+          <span class="i18n inline" data-lang="en">View CV</span>
+        </a>
+        <a class="btn" href="/projects">
+          <span class="i18n inline" data-lang="es">Ver proyectos</span>
+          <span class="i18n inline" data-lang="en">View projects</span>
+        </a>
+        <a class="btn" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">
+          <span class="i18n inline" data-lang="es">Descargar PDF</span>
+          <span class="i18n inline" data-lang="en">Download PDF</span>
+        </a>
+        <a class="btn" href="mailto:diegobarrioh@gmail.com">
+          <span class="i18n inline" data-lang="es">Contactar</span>
+          <span class="i18n inline" data-lang="en">Contact</span>
+        </a>
       </div>
 
       <div class="badges">
@@ -54,35 +99,58 @@ const facts = [
     </section>
 
     <section class="section">
-      <h2>Perfil rápido</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Perfil rápido</span>
+        <span class="i18n inline" data-lang="en">Quick profile</span>
+      </h2>
       <div class="grid">
         {facts.map((f) => (
           <article class="card stat">
-            <p class="eyebrow">{f.label}</p>
-            <h3 style="margin:0 0 2px;">{f.value}</h3>
+            <p class="eyebrow">
+              <span class="i18n inline" data-lang="es">{f.labelEs}</span>
+              <span class="i18n inline" data-lang="en">{f.labelEn}</span>
+            </p>
+            <h3 style="margin:0 0 2px;">
+              <span class="i18n inline" data-lang="es">{f.valueEs}</span>
+              <span class="i18n inline" data-lang="en">{f.valueEn}</span>
+            </h3>
           </article>
         ))}
       </div>
     </section>
 
     <section class="section">
-      <h2>Casos destacados</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Casos destacados</span>
+        <span class="i18n inline" data-lang="en">Featured work</span>
+      </h2>
       <div class="grid">
       {highlights.map((h) => (
         <article class="card">
-          <h3 style="margin:0 0 6px;">{h.title}</h3>
-          <p>{h.text}</p>
-          <a class="btn" href={h.href}>{h.cta} →</a>
+          <h3 style="margin:0 0 6px;">
+            <span class="i18n inline" data-lang="es">{h.titleEs}</span>
+            <span class="i18n inline" data-lang="en">{h.titleEn}</span>
+          </h3>
+          <p class="i18n" data-lang="es">{h.textEs}</p>
+          <p class="i18n" data-lang="en">{h.textEn}</p>
+          <a class="btn" href={h.href}>
+            <span class="i18n inline" data-lang="es">{h.ctaEs} →</span>
+            <span class="i18n inline" data-lang="en">{h.ctaEn} →</span>
+          </a>
         </article>
       ))}
       </div>
     </section>
 
     <section class="section">
-      <h2>Contacto</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Contacto</span>
+        <span class="i18n inline" data-lang="en">Contact</span>
+      </h2>
       <div class="card">
         <p>
-          Alicante, Spain ·
+          <span class="i18n inline" data-lang="es">Alicante, España</span>
+          <span class="i18n inline" data-lang="en">Alicante, Spain</span> ·
           <a href="mailto:diegobarrioh@gmail.com"> diegobarrioh@gmail.com</a> ·
           <a href="https://linkedin.com/in/diegobarrioh" target="_blank" rel="noreferrer"> LinkedIn</a>
         </p>
@@ -90,7 +158,12 @@ const facts = [
     </section>
 
     <footer class="footer small">
-      © {new Date().getFullYear()} Diego Barrio H. · Hecho con Astro · Servido desde una Raspberry Pi (sí, en serio).
+      <span class="i18n inline" data-lang="es">
+        © {new Date().getFullYear()} Diego Barrio H. · Hecho con Astro · Servido desde una Raspberry Pi (sí, en serio).
+      </span>
+      <span class="i18n inline" data-lang="en">
+        © {new Date().getFullYear()} Diego Barrio H. · Built with Astro · Served from a Raspberry Pi (yes, really).
+      </span>
     </footer>
   </main>
 </BaseLayout>

@@ -4,44 +4,69 @@ import Nav from "../components/Nav.astro";
 
 const projects = [
   {
-    title: "Billing & Payments APIs",
-    period: "2024 – Actualidad",
-    context: "Europcar Mobility Group (Mindden)",
+    titleEs: "APIs de facturación y pagos",
+    titleEn: "Billing & Payments APIs",
+    periodEs: "2024 – Actualidad",
+    periodEn: "2024 – Present",
+    contextEs: "Europcar Mobility Group (Mindden)",
+    contextEn: "Europcar Mobility Group (Mindden)",
     stack: ["Java", "Spring Boot", "AWS", "Kubernetes", "Kafka"],
-    impact:
+    impactEs:
       "APIs críticas para facturación y pagos, con arquitectura basada en eventos y despliegues cloud-native.",
+    impactEn:
+      "Critical billing and payment APIs with event-driven architecture and cloud-native deployments.",
   },
   {
-    title: "Core Banking Modernization",
-    period: "2022 – 2024",
-    context: "Accenture",
+    titleEs: "Modernización de core bancario",
+    titleEn: "Core Banking Modernization",
+    periodEs: "2022 – 2024",
+    periodEn: "2022 – 2024",
+    contextEs: "Accenture",
+    contextEn: "Accenture",
     stack: ["Spring Boot", "Hibernate", "Oracle", "SQL Server"],
-    impact:
+    impactEs:
       "Microservicios para modularidad y mejoras de rendimiento en procesos bancarios.",
+    impactEn:
+      "Microservices to improve modularity and performance in banking processes.",
   },
   {
-    title: "Enterprise Platform Suite",
-    period: "2014 – 2022",
-    context: "SABIS",
+    titleEs: "Suite de plataformas enterprise",
+    titleEn: "Enterprise Platform Suite",
+    periodEs: "2014 – 2022",
+    periodEn: "2014 – 2022",
+    contextEs: "SABIS",
+    contextEn: "SABIS",
     stack: ["Spring MVC", "JPA", "Oracle", "SharePoint"],
-    impact:
+    impactEs:
       "Plataformas transversales e integraciones que mejoraron flujos interdepartamentales.",
+    impactEn:
+      "Cross-cutting platforms and integrations that improved inter-department workflows.",
   },
   {
-    title: "Issue Tracking Platform",
-    period: "2012 – 2014",
-    context: "Banco Sabadell",
+    titleEs: "Plataforma de seguimiento de incidencias",
+    titleEn: "Issue Tracking Platform",
+    periodEs: "2012 – 2014",
+    periodEn: "2012 – 2014",
+    contextEs: "Banco Sabadell",
+    contextEn: "Banco Sabadell",
     stack: ["Spring Boot", "Thymeleaf", "Oracle"],
-    impact:
+    impactEs:
       "Sistema interno para gestión de incidencias con foco en usabilidad y trazabilidad.",
+    impactEn:
+      "Internal issue management system focused on usability and traceability.",
   },
   {
-    title: "Online Banking & ATM Services",
-    period: "2007 – 2012",
-    context: "Caja Mediterráneo",
+    titleEs: "Banca online y servicios ATM",
+    titleEn: "Online Banking & ATM Services",
+    periodEs: "2007 – 2012",
+    periodEn: "2007 – 2012",
+    contextEs: "Caja Mediterráneo",
+    contextEn: "Caja Mediterráneo",
     stack: ["J2EE", "ALNOVA", "Oracle"],
-    impact:
+    impactEs:
       "Servicios transaccionales y migración de core bancario con alta criticidad operativa.",
+    impactEn:
+      "Transactional services and core banking migration with high operational criticality.",
   },
 ];
 ---
@@ -49,21 +74,38 @@ const projects = [
 <BaseLayout title="Projects — Diego Barrio H.">
   <Nav current="projects" />
   <main class="container">
-    <h1>Proyectos</h1>
-    <p>
+    <h1>
+      <span class="i18n inline" data-lang="es">Proyectos</span>
+      <span class="i18n inline" data-lang="en">Projects</span>
+    </h1>
+    <p class="i18n" data-lang="es">
       Selección de proyectos y líneas de trabajo relevantes en backend, arquitectura y sistemas críticos.
       Si quieres detalles específicos o demos públicas, escríbeme.
+    </p>
+    <p class="i18n" data-lang="en">
+      Selected projects and workstreams in backend, architecture, and critical systems.
+      If you want specific details or public demos, reach out.
     </p>
 
     <section class="section">
       <div class="grid">
         {projects.map((p) => (
           <article class="card">
-            <p class="eyebrow">{p.period}</p>
-            <h3 style="margin:0 0 4px;">{p.title}</h3>
-            <p class="small" style="margin:0 0 8px;">{p.context}</p>
-            <p>{p.impact}</p>
-            <p class="taglist">{p.stack.map((s) => <span class="pill">{s}</span>)}</p>
+            <p class="eyebrow">
+              <span class="i18n inline" data-lang="es">{p.periodEs}</span>
+              <span class="i18n inline" data-lang="en">{p.periodEn}</span>
+            </p>
+            <h3 style="margin:0 0 4px;">
+              <span class="i18n inline" data-lang="es">{p.titleEs}</span>
+              <span class="i18n inline" data-lang="en">{p.titleEn}</span>
+            </h3>
+            <p class="small" style="margin:0 0 8px;">
+              <span class="i18n inline" data-lang="es">{p.contextEs}</span>
+              <span class="i18n inline" data-lang="en">{p.contextEn}</span>
+            </p>
+            <p class="i18n" data-lang="es">{p.impactEs}</p>
+            <p class="i18n" data-lang="en">{p.impactEn}</p>
+            <p class="taglist taglist-projects">{p.stack.map((s) => <span class="pill">{s}</span>)}</p>
           </article>
         ))}
       </div>

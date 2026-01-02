@@ -6,44 +6,86 @@ import Nav from "../components/Nav.astro";
 <BaseLayout title="About — Diego Barrio H.">
   <Nav current="about" />
   <main class="container">
-    <h1>Sobre mí</h1>
-    <p>
+    <h1>
+      <span class="i18n inline" data-lang="es">Sobre mí</span>
+      <span class="i18n inline" data-lang="en">About</span>
+    </h1>
+    <p class="i18n" data-lang="es">
       Soy Ingeniero Backend senior con más de 15 años construyendo plataformas de alto rendimiento
       en banca, fintech y movilidad. Mi base es Java y el ecosistema Spring, con especial foco en
       microservicios, diseño limpio, DDD y prácticas de calidad como TDD y CI/CD.
     </p>
+    <p class="i18n" data-lang="en">
+      I am a senior backend engineer with 15+ years building high-performance platforms
+      in banking, fintech, and mobility. My foundation is Java and the Spring ecosystem,
+      with a strong focus on microservices, clean design, DDD, and quality practices like TDD and CI/CD.
+    </p>
 
     <section class="section">
-      <h2>En qué estoy enfocado</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">En qué estoy enfocado</span>
+        <span class="i18n inline" data-lang="en">Current focus</span>
+      </h2>
       <div class="card">
         <ul class="list">
-          <li>Arquitectura de software y diseño evolutivo de sistemas.</li>
-          <li>DevOps, observabilidad y principios SRE para operar con confianza.</li>
-          <li>Integración de eventos y automatización con pipelines confiables.</li>
+          <li class="i18n" data-lang="es">Arquitectura de software y diseño evolutivo de sistemas.</li>
+          <li class="i18n" data-lang="en">Software architecture and evolutionary system design.</li>
+          <li class="i18n" data-lang="es">DevOps, observabilidad y principios SRE para operar con confianza.</li>
+          <li class="i18n" data-lang="en">DevOps, observability, and SRE principles to operate with confidence.</li>
+          <li class="i18n" data-lang="es">Integración de eventos y automatización con pipelines confiables.</li>
+          <li class="i18n" data-lang="en">Event-driven integrations and automation with reliable pipelines.</li>
         </ul>
       </div>
     </section>
 
     <section class="section">
-      <h2>Cómo trabajo</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Cómo trabajo</span>
+        <span class="i18n inline" data-lang="en">How I work</span>
+      </h2>
       <div class="grid">
         <article class="card">
-          <h3 style="margin:0 0 6px;">Calidad primero</h3>
-          <p>Promuevo TDD, código limpio y revisiones honestas para mantener la base técnica sana.</p>
+          <h3 style="margin:0 0 6px;">
+            <span class="i18n inline" data-lang="es">Calidad primero</span>
+            <span class="i18n inline" data-lang="en">Quality first</span>
+          </h3>
+          <p class="i18n" data-lang="es">
+            Promuevo TDD, código limpio y revisiones honestas para mantener la base técnica sana.
+          </p>
+          <p class="i18n" data-lang="en">
+            I promote TDD, clean code, and honest reviews to keep the technical foundation healthy.
+          </p>
         </article>
         <article class="card">
-          <h3 style="margin:0 0 6px;">Entrega continua</h3>
-          <p>CI/CD, automatización y despliegues confiables para mover rápido sin romper.</p>
+          <h3 style="margin:0 0 6px;">
+            <span class="i18n inline" data-lang="es">Entrega continua</span>
+            <span class="i18n inline" data-lang="en">Continuous delivery</span>
+          </h3>
+          <p class="i18n" data-lang="es">
+            CI/CD, automatización y despliegues confiables para mover rápido sin romper.
+          </p>
+          <p class="i18n" data-lang="en">
+            CI/CD, automation, and reliable deployments to move fast without breaking things.
+          </p>
         </article>
       </div>
     </section>
 
     <section class="section">
-      <h2>Extras</h2>
+      <h2>
+        <span class="i18n inline" data-lang="es">Extras</span>
+        <span class="i18n inline" data-lang="en">Extras</span>
+      </h2>
       <div class="card">
         <ul class="list">
-          <li>Mentor voluntario para estudiantes de Ingeniería (Fundación Banco Sabadell).</li>
-          <li>Experiencia en equipos internacionales, inglés C1.</li>
+          <li class="i18n" data-lang="es">
+            Mentor voluntario para estudiantes de Ingeniería (Fundación Banco Sabadell).
+          </li>
+          <li class="i18n" data-lang="en">
+            Volunteer mentor for Engineering students (Fundación Banco Sabadell).
+          </li>
+          <li class="i18n" data-lang="es">Experiencia en equipos internacionales, inglés C1.</li>
+          <li class="i18n" data-lang="en">Experience in international teams, English C1.</li>
         </ul>
       </div>
     </section>
