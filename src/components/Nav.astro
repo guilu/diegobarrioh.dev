@@ -23,11 +23,13 @@ const links = [
           <span class="i18n inline" data-lang="en">{l.labelEn}</span>
         </a>
       ))}
-      <button class="btn ghost" type="button" id="lang-toggle" aria-label="Cambiar idioma">
-        🇪🇸/🇬🇧
+      <button class="toggle lang-toggle" type="button" id="lang-toggle" aria-label="Cambiar idioma">
+        <span class="opt" data-value="es">🇪🇸</span>
+        <span class="opt" data-value="en">🇬🇧</span>
       </button>
-      <button class="btn ghost" type="button" id="theme-toggle" aria-label="Cambiar tema">
-        ☀︎/☾
+      <button class="toggle theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar tema">
+        <span class="opt" data-value="light">☀︎</span>
+        <span class="opt" data-value="dark">☾</span>
       </button>
     </div>
   </div>
