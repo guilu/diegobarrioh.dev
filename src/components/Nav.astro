@@ -16,13 +16,15 @@ const links = [
       <img src="/img/dbh2-black.svg" alt="Diego Barrio H. logo" class="brand-logo logo-light" />
       <span>Diego Barrio H.</span>
     </a>
-    <div style="display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end; align-items:center;">
+    <div class="nav-links">
       {links.map((l) => (
         <a href={l.href} class={current === l.key ? "active" : ""}>
           <span class="i18n inline" data-lang="es">{l.labelEs}</span>
           <span class="i18n inline" data-lang="en">{l.labelEn}</span>
         </a>
       ))}
+    </div>
+    <div class="nav-actions">
       <button class="toggle lang-toggle" type="button" id="lang-toggle" aria-label="Cambiar idioma">
         <span class="opt" data-value="es">🇪🇸</span>
         <span class="opt" data-value="en">🇬🇧</span>
