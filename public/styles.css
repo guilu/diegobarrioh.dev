@@ -4,8 +4,8 @@
   --muted: #97a6b3;
   --card: #111823;
   --border: rgba(36, 26, 50, 0.6);
-  --accent: #26b3a3;
-  --accent2: #6ea6a2;
+  --accent: #7000ff;
+  --accent2: #b78cf9;
   --radius: 18px;
 }
 [data-theme="light"] {
@@ -14,8 +14,8 @@
   --muted: #47634f;
   --card: #ffffff;
   --border: rgba(200, 200, 200, 0.6);
-  --accent: #1d9a6c;
-  --accent2: #16a34a;
+  --accent: #7000ff;
+  --accent2: #b78cf9;
 }
 
 * {
@@ -296,8 +296,16 @@ p {
   background: rgba(255, 255, 255, 0.04);
   color: var(--fg);
 }
+.btn:hover {
+  text-decoration: none;
+  background: color-mix(in oklab, var(--card) 85%, var(--accent) 15%);
+  border-color: color-mix(in oklab, var(--accent) 35%, var(--border));
+}
 .btn.ghost {
   background: transparent;
+}
+.btn.ghost:hover {
+  background: color-mix(in oklab, var(--card) 90%, transparent);
 }
 .toggle {
   display: inline-flex;
@@ -310,6 +318,10 @@ p {
   color: var(--fg);
   cursor: pointer;
   transition: background 0.5s ease-in, border-color 0.5s ease-in, box-shadow 0.5s ease-in;
+}
+.toggle:hover {
+  background: color-mix(in oklab, var(--card) 80%, var(--accent) 10%);
+  border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
 }
 .toggle .opt {
   display: inline-flex;
@@ -352,6 +364,10 @@ p {
   background: #7000ff;
   border-color: #7000ff;
   color: #ffffff;
+}
+.btn.primary:hover {
+  background: color-mix(in oklab, #7000ff 85%, white 15%);
+  border-color: color-mix(in oklab, #7000ff 85%, white 15%);
 }
 .small {
   font-size: 13px;
