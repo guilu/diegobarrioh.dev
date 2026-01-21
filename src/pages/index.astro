@@ -2,11 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 
-const skills = [
-  "Java", "Spring Boot", "Microservices", "Kafka",
-  "Kubernetes", "Docker", "Observability (Grafana, Splunk, Sentry)",
-  "DDD + Hexagonal", "TDD", "CI/CD", "AWS", "Oracle"
-];
+const skills = ["Java", "Spring Boot", "Microservices", "Kafka", "Kubernetes", "Docker", "Observability (Grafana, Splunk, Sentry)", "DDD + Hexagonal", "TDD", "CI/CD", "Relational Databases (PostgreSQL, Oracle DB, SQL Server)", "NoSQL (MongoDB)", "AWS", "GCP"];
 
 const highlights = [
   {
@@ -65,14 +61,8 @@ const facts = [
         <span class="i18n inline" data-lang="es">diegobarrioh - Ingeniero Backend Senior</span>
         <span class="i18n inline" data-lang="en">diegobarrioh - Senior Backend Engineer</span>
       </h1>
-      <p class="i18n" data-lang="es">
-        Diseño y construyo plataformas backend escalables con Java y Spring.
-        Enfocado en microservicios, arquitectura limpia, observabilidad y prácticas de ingeniería rigurosas.
-      </p>
-      <p class="i18n" data-lang="en">
-        I design and build scalable backend platforms with Java and Spring.
-        Focused on microservices, clean architecture, observability, and rigorous engineering practices.
-      </p>
+      <p class="i18n" data-lang="es">Diseño y construyo plataformas backend escalables con Java y Spring. Enfocado en microservicios, arquitectura limpia, observabilidad y prácticas de ingeniería rigurosas.</p>
+      <p class="i18n" data-lang="en">I design and build scalable backend platforms with Java and Spring. Focused on microservices, clean architecture, observability, and rigorous engineering practices.</p>
 
       <div class="btns">
         <a class="btn primary" href="/cv">
@@ -104,18 +94,28 @@ const facts = [
         <span class="i18n inline" data-lang="en">Quick profile</span>
       </h2>
       <div class="grid">
-        {facts.map((f) => (
-          <article class="card stat">
-            <p class="eyebrow">
-              <span class="i18n inline" data-lang="es">{f.labelEs}</span>
-              <span class="i18n inline" data-lang="en">{f.labelEn}</span>
-            </p>
-            <h3 style="margin:0 0 2px;">
-              <span class="i18n inline" data-lang="es">{f.valueEs}</span>
-              <span class="i18n inline" data-lang="en">{f.valueEn}</span>
-            </h3>
-          </article>
-        ))}
+        {
+          facts.map((f) => (
+            <article class="card stat">
+              <p class="eyebrow">
+                <span class="i18n inline" data-lang="es">
+                  {f.labelEs}
+                </span>
+                <span class="i18n inline" data-lang="en">
+                  {f.labelEn}
+                </span>
+              </p>
+              <h3 style="margin:0 0 2px;">
+                <span class="i18n inline" data-lang="es">
+                  {f.valueEs}
+                </span>
+                <span class="i18n inline" data-lang="en">
+                  {f.valueEn}
+                </span>
+              </h3>
+            </article>
+          ))
+        }
       </div>
     </section>
 
@@ -125,20 +125,34 @@ const facts = [
         <span class="i18n inline" data-lang="en">Featured work</span>
       </h2>
       <div class="grid">
-      {highlights.map((h) => (
-        <article class="card">
-          <h3 style="margin:0 0 6px;">
-            <span class="i18n inline" data-lang="es">{h.titleEs}</span>
-            <span class="i18n inline" data-lang="en">{h.titleEn}</span>
-          </h3>
-          <p class="i18n" data-lang="es">{h.textEs}</p>
-          <p class="i18n" data-lang="en">{h.textEn}</p>
-          <a class="btn" href={h.href}>
-            <span class="i18n inline" data-lang="es">{h.ctaEs} →</span>
-            <span class="i18n inline" data-lang="en">{h.ctaEn} →</span>
-          </a>
-        </article>
-      ))}
+        {
+          highlights.map((h) => (
+            <article class="card">
+              <h3 style="margin:0 0 6px;">
+                <span class="i18n inline" data-lang="es">
+                  {h.titleEs}
+                </span>
+                <span class="i18n inline" data-lang="en">
+                  {h.titleEn}
+                </span>
+              </h3>
+              <p class="i18n" data-lang="es">
+                {h.textEs}
+              </p>
+              <p class="i18n" data-lang="en">
+                {h.textEn}
+              </p>
+              <a class="btn" href={h.href}>
+                <span class="i18n inline" data-lang="es">
+                  {h.ctaEs} →
+                </span>
+                <span class="i18n inline" data-lang="en">
+                  {h.ctaEn} →
+                </span>
+              </a>
+            </article>
+          ))
+        }
       </div>
     </section>
 
@@ -151,8 +165,8 @@ const facts = [
         <p>
           <span class="i18n inline" data-lang="es">Alicante, España</span>
           <span class="i18n inline" data-lang="en">Alicante, Spain</span> ·
-          <a href="mailto:diegobarrioh@gmail.com"> diegobarrioh@gmail.com</a> ·
-          <a href="https://linkedin.com/in/diegobarrioh" target="_blank" rel="noreferrer"> LinkedIn</a>
+          <a href="mailto:diegobarrioh@gmail.com">diegobarrioh@gmail.com</a> ·
+          <a href="https://linkedin.com/in/diegobarrioh" target="_blank" rel="noreferrer">LinkedIn</a>
         </p>
       </div>
     </section>

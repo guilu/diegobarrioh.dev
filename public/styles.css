@@ -9,7 +9,7 @@
   --radius: 18px;
 }
 [data-theme="light"] {
-  --bg: #f2f7f2;
+  --bg: #fff;
   --fg: #0f1a13;
   --muted: #47634f;
   --card: #ffffff;
@@ -28,6 +28,7 @@ body {
 }
 body {
   background: linear-gradient(rgba(11, 15, 20, 0.88), rgba(11, 15, 20, 0.88)), url("/img/dbh-wall.jpg") center / cover fixed;
+  background-position: calc(-52vw) center;
   color: var(--fg);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   line-height: 1.55;
@@ -53,7 +54,8 @@ body {
   display: inline;
 }
 [data-theme="light"] body {
-  background: linear-gradient(rgba(247, 247, 249, 0.92), rgba(247, 247, 249, 0.92)), url("/img/dbh-wall.jpg") center / cover fixed;
+  background: linear-gradient(rgba(243, 234, 255, 0.92), rgba(255, 255, 255, 0.92)), url("/img/dbh-wall.jpg") center / cover fixed;
+  background-position: calc(-52vw) center;
 }
 
 a {
@@ -85,6 +87,9 @@ a:hover {
   background: color-mix(in oklab, var(--bg) 84%, transparent);
   border-bottom: 1px solid var(--border);
   z-index: 10;
+}
+[data-theme="light"] .nav {
+  background: #e6e6e6;
 }
 .nav-inner {
   padding: 0;
@@ -144,7 +149,7 @@ a:hover {
 .hero {
   margin-top: 22px;
   padding: 26px;
-  border: 1px solid var(--border);
+  //border: 1px solid var(--border);
   border-radius: var(--radius);
   background: radial-gradient(700px 260px at 0% 0%, rgba(38, 179, 163, 0.28), transparent 60%), radial-gradient(600px 240px at 80% 0%, rgba(112, 0, 255, 0.22), transparent 62%), var(--card);
 }
@@ -171,9 +176,12 @@ p {
 .card {
   grid-column: span 6;
   padding: 16px;
-  border: 1px solid var(--border);
+  //border: 1px solid var(--border);
   border-radius: var(--radius);
   background: color-mix(in oklab, var(--card) 92%, black);
+}
+[data-theme="light"] .card {
+  background: #ffffff;
 }
 .card.stat h3 {
   font-size: 22px;
