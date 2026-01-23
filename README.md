@@ -2,6 +2,12 @@
 
 Personal CV and portfolio site built with Astro. Includes bilingual (ES/EN) content, light/dark themes, and a deployment pipeline to a Raspberry Pi.
 
+## Screenshots
+
+| Dark | Light |
+| :--- | :---- |
+| ![Dark theme](public/img/screenshot-dark.png) | ![Light theme](public/img/screenshot-light.png) |
+
 ## Sections
 
 - Home: summary, highlights, quick facts, and contact.

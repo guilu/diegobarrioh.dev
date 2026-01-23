@@ -29,6 +29,7 @@ body {
 body {
   background: linear-gradient(rgba(11, 15, 20, 0.88), rgba(11, 15, 20, 0.88)), url("/img/dbh-wall.jpg") center / cover fixed;
   background-position: calc(-52vw) center;
+  background-color: #090e11;
   color: var(--fg);
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
   line-height: 1.55;
@@ -56,6 +57,7 @@ body {
 [data-theme="light"] body {
   background: linear-gradient(rgba(243, 234, 255, 0.92), rgba(255, 255, 255, 0.92)), url("/img/dbh-wall.jpg") center / cover fixed;
   background-position: calc(-52vw) center;
+  background-color: #e4ddeb;
 }
 
 a {
