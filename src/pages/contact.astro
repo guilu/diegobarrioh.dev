@@ -25,7 +25,8 @@ const socials = [
     label: "Email",
     href: "mailto:diegobarrioh@gmail.com",
     emoji: "✉️",
-    img: "/img/dbh2-black.svg",
+    imgLight: "/img/dbh2-black.svg",
+    imgDark: "/img/dbh2-white.svg",
   },
 ];
 ---
@@ -60,7 +61,24 @@ const socials = [
       <div class="grid">
         {socials.map((s) => (
           <article class="card social-card">
-            <img src={s.img} alt={`${s.label} preview`} class="social-thumb" loading="lazy" />
+            {s.imgLight && s.imgDark ? (
+              <>
+                <img
+                  src={s.imgLight}
+                  alt={`${s.label} preview`}
+                  class="social-thumb thumb-light"
+                  loading="lazy"
+                />
+                <img
+                  src={s.imgDark}
+                  alt={`${s.label} preview`}
+                  class="social-thumb thumb-dark"
+                  loading="lazy"
+                />
+              </>
+            ) : (
+              <img src={s.img} alt={`${s.label} preview`} class="social-thumb" loading="lazy" />
+            )}
             <div class="social-info">
               <p class="eyebrow">{s.emoji} {s.label}</p>
               <p class="small">{s.href.replace("mailto:", "")}</p>

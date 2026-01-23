@@ -205,6 +205,13 @@ p {
   flex-direction: column;
   gap: 2px;
 }
+.social-info .eyebrow {
+  font-size: 16px;
+  font-weight: 700;
+}
+.social-info .small {
+  font-size: 14px;
+}
 .social-cta {
   margin-left: auto;
 }
@@ -215,6 +222,16 @@ p {
   border-radius: 12px;
   border: 1px solid var(--border);
   background: transparent;
+}
+.thumb-light,
+.thumb-dark {
+  display: none;
+}
+[data-theme="light"] .thumb-light {
+  display: block;
+}
+[data-theme="dark"] .thumb-dark {
+  display: block;
 }
 @media (max-width: 680px) {
   .social-card {
