@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+
+const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/diegobarrioh",
+    emoji: "💼",
+    img: "/img/linkedin-screenshot.png",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/guilu",
+    emoji: "💻",
+    img: "/img/github-screenshot.png",
+  },
+  {
+    label: "X / Twitter",
+    href: "https://x.com/guilu",
+    emoji: "🛰️",
+    img: "/img/x-screenshot.png",
+  },
+  {
+    label: "Email",
+    href: "mailto:diegobarrioh@gmail.com",
+    emoji: "✉️",
+    img: "/img/dbh2-black.svg",
+  },
+];
+---
+
+<BaseLayout title="Contact — Diego Barrio H.">
+  <Nav current="contact" />
+  <main class="container">
+    <section class="hero">
+      <h1>
+        <span class="i18n inline" data-lang="es">Contacta conmigo</span>
+        <span class="i18n inline" data-lang="en">Get in touch</span>
+      </h1>
+      <p class="i18n" data-lang="es">
+        Elige la vía que prefieras para escribir o agendar una reunión.
+      </p>
+      <p class="i18n" data-lang="en">
+        Choose your preferred channel to reach out or book a meeting.
+      </p>
+      <div class="btns">
+        <a class="btn primary" href="https://calendly.com/diegobarrioh/30min" target="_blank" rel="noreferrer">
+          <span class="i18n inline" data-lang="es">Reservar en Calendly</span>
+          <span class="i18n inline" data-lang="en">Book on Calendly</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>
+        <span class="i18n inline" data-lang="es">Redes y contacto</span>
+        <span class="i18n inline" data-lang="en">Socials</span>
+      </h2>
+      <div class="grid">
+        {socials.map((s) => (
+          <article class="card social-card">
+            <img src={s.img} alt={`${s.label} preview`} class="social-thumb" loading="lazy" />
+            <div class="social-info">
+              <p class="eyebrow">{s.emoji} {s.label}</p>
+              <p class="small">{s.href.replace("mailto:", "")}</p>
+            </div>
+            <a class="btn social-cta" href={s.href} target="_blank" rel="noreferrer">
+              <span class="i18n inline" data-lang="es">Abrir</span>
+              <span class="i18n inline" data-lang="en">Open</span>
+            </a>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

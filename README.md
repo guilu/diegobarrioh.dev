@@ -1,6 +1,7 @@
 # diegobarrioh-dev
 
 Personal CV and portfolio site built with Astro. Includes bilingual (ES/EN) content, light/dark themes, and a deployment pipeline to a Raspberry Pi.
+Built with AI assistance (gpt-5.2-ccdex).
 
 ## Screenshots
 
