@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
+import Card from "../components/Card.astro";
 ---
 
 <BaseLayout title="About — Diego Barrio H.">
@@ -20,7 +21,7 @@ import Nav from "../components/Nav.astro";
         <span class="i18n inline" data-lang="es">En qué estoy enfocado</span>
         <span class="i18n inline" data-lang="en">Current focus</span>
       </h2>
-      <div class="card">
+      <Card>
         <ul class="list">
           <li class="i18n" data-lang="es">Arquitectura de software y diseño evolutivo de sistemas.</li>
           <li class="i18n" data-lang="en">Software architecture and evolutionary system design.</li>
@@ -29,7 +30,7 @@ import Nav from "../components/Nav.astro";
           <li class="i18n" data-lang="es">Integración de eventos y automatización con pipelines confiables.</li>
           <li class="i18n" data-lang="en">Event-driven integrations and automation with reliable pipelines.</li>
         </ul>
-      </div>
+      </Card>
     </section>
 
     <section class="section">
@@ -38,22 +39,22 @@ import Nav from "../components/Nav.astro";
         <span class="i18n inline" data-lang="en">How I work</span>
       </h2>
       <div class="grid">
-        <article class="card">
+        <Card>
           <h3 style="margin:0 0 6px;">
             <span class="i18n inline" data-lang="es">Calidad primero</span>
             <span class="i18n inline" data-lang="en">Quality first</span>
           </h3>
           <p class="i18n" data-lang="es">Promuevo TDD, código limpio y revisiones honestas para mantener la base técnica sana.</p>
           <p class="i18n" data-lang="en">I promote TDD, clean code, and honest reviews to keep the technical foundation healthy.</p>
-        </article>
-        <article class="card">
+        </Card>
+        <Card>
           <h3 style="margin:0 0 6px;">
             <span class="i18n inline" data-lang="es">Entrega continua</span>
             <span class="i18n inline" data-lang="en">Continuous delivery</span>
           </h3>
           <p class="i18n" data-lang="es">CI/CD, automatización y despliegues confiables para mover rápido sin romper.</p>
           <p class="i18n" data-lang="en">CI/CD, automation, and reliable deployments to move fast without breaking things.</p>
-        </article>
+        </Card>
       </div>
     </section>
 
@@ -62,14 +63,14 @@ import Nav from "../components/Nav.astro";
         <span class="i18n inline" data-lang="es">Extras</span>
         <span class="i18n inline" data-lang="en">Extras</span>
       </h2>
-      <div class="card">
+      <Card>
         <ul class="list">
           <li class="i18n" data-lang="es">Mentor voluntario para estudiantes de Ingeniería (Fundación Banco Sabadell).</li>
           <li class="i18n" data-lang="en">Volunteer mentor for Engineering students (Fundación Banco Sabadell).</li>
           <li class="i18n" data-lang="es">Experiencia en equipos internacionales (inglés nivel C1).</li>
           <li class="i18n" data-lang="en">Experience in international teams (English C1 Level).</li>
         </ul>
-      </div>
+      </Card>
     </section>
   </main>
 </BaseLayout>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
+import Card from "../components/Card.astro";
 
 const summary = {
   es: "Senior Backend Engineer con más de 15 años de experiencia diseñando sistemas escalables. Especialista en Java y Spring, microservicios, DDD y arquitectura limpia. Experiencia en banca, fintech y movilidad, con foco en calidad, TDD y CI/CD.",
@@ -185,7 +186,7 @@ const education = [
       </h2>
       <div class="timeline">
         {experience.map((e) => (
-          <article class="card">
+          <Card>
             <p class="eyebrow">
               <span class="i18n inline" data-lang="es">{e.periodEs}</span>
               <span class="i18n inline" data-lang="en">{e.periodEn}</span>
@@ -203,7 +204,7 @@ const education = [
                 </li>
               ))}
             </ul>
-          </article>
+          </Card>
         ))}
       </div>
     </section>
@@ -214,34 +215,34 @@ const education = [
         <span class="i18n inline" data-lang="en">Skills</span>
       </h2>
       <div class="grid">
-        <article class="card">
+        <Card>
           <p class="eyebrow">
             <span class="i18n inline" data-lang="es">Experto</span>
             <span class="i18n inline" data-lang="en">Expert</span>
           </p>
           <p class="taglist taglist-expert">{skills.expert.map((s) => <span class="pill">{s}</span>)}</p>
-        </article>
-        <article class="card">
+        </Card>
+        <Card>
           <p class="eyebrow">
             <span class="i18n inline" data-lang="es">Avanzado</span>
             <span class="i18n inline" data-lang="en">Advanced</span>
           </p>
           <p class="taglist taglist-advanced">{skills.advanced.map((s) => <span class="pill">{s}</span>)}</p>
-        </article>
-        <article class="card">
+        </Card>
+        <Card>
           <p class="eyebrow">
             <span class="i18n inline" data-lang="es">Competente</span>
             <span class="i18n inline" data-lang="en">Proficient</span>
           </p>
           <p class="taglist taglist-proficient">{skills.proficient.map((s) => <span class="pill">{s}</span>)}</p>
-        </article>
-        <article class="card">
+        </Card>
+        <Card>
           <p class="eyebrow">
             <span class="i18n inline" data-lang="es">En aprendizaje</span>
             <span class="i18n inline" data-lang="en">Learning focus</span>
           </p>
           <p class="taglist taglist-learning">{skills.learning.map((s) => <span class="pill">{s}</span>)}</p>
-        </article>
+        </Card>
       </div>
     </section>
 
@@ -252,7 +253,7 @@ const education = [
       </h2>
       <div class="grid">
         {education.map((e) => (
-          <article class="card">
+          <Card>
             <h3 style="margin:0 0 6px;">
               <span class="i18n inline" data-lang="es">{e.titleEs}</span>
               <span class="i18n inline" data-lang="en">{e.titleEn}</span>
@@ -262,7 +263,7 @@ const education = [
               <span class="i18n inline" data-lang="es"> {e.periodEs}</span>
               <span class="i18n inline" data-lang="en"> {e.periodEn}</span>
             </p>
-          </article>
+          </Card>
         ))}
       </div>
     </section>
@@ -272,7 +273,7 @@ const education = [
         <span class="i18n inline" data-lang="es">Idiomas</span>
         <span class="i18n inline" data-lang="en">Languages</span>
       </h2>
-      <div class="card">
+      <Card>
         <ul class="list">
           <li>
             <span class="i18n inline" data-lang="es">Español: nativo</span>
@@ -283,7 +284,7 @@ const education = [
             <span class="i18n inline" data-lang="en">English: C1 (full professional proficiency)</span>
           </li>
         </ul>
-      </div>
+      </Card>
     </section>
   </main>
 </BaseLayout>

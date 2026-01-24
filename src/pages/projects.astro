@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
+import Card from "../components/Card.astro";
 
 const projects = [
   {
@@ -90,7 +91,7 @@ const projects = [
     <section class="section">
       <div class="grid">
         {projects.map((p) => (
-          <article class="card">
+          <Card>
             <p class="eyebrow">
               <span class="i18n inline" data-lang="es">{p.periodEs}</span>
               <span class="i18n inline" data-lang="en">{p.periodEn}</span>
@@ -106,7 +107,7 @@ const projects = [
             <p class="i18n" data-lang="es">{p.impactEs}</p>
             <p class="i18n" data-lang="en">{p.impactEn}</p>
             <p class="taglist taglist-projects">{p.stack.map((s) => <span class="pill">{s}</span>)}</p>
-          </article>
+          </Card>
         ))}
       </div>
     </section>

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
+import Card from "../components/Card.astro";
 
 const socials = [
   {
@@ -60,7 +61,7 @@ const socials = [
       </h2>
       <div class="grid">
         {socials.map((s) => (
-          <article class="card social-card">
+          <Card class="social-card">
             {s.imgLight && s.imgDark ? (
               <>
                 <img
@@ -87,7 +88,7 @@ const socials = [
               <span class="i18n inline" data-lang="es">Abrir</span>
               <span class="i18n inline" data-lang="en">Open</span>
             </a>
-          </article>
+          </Card>
         ))}
       </div>
     </section>

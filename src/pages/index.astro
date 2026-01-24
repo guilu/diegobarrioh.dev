@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
+import Card from "../components/Card.astro";
 
 const skills = ["Java", "Spring Boot", "Microservices", "Kafka", "Kubernetes", "Docker", "Observability (Grafana, Splunk, Sentry)", "DDD + Hexagonal", "TDD", "CI/CD", "Relational Databases (PostgreSQL, Oracle DB, SQL Server)", "NoSQL (MongoDB)", "AWS", "GCP"];
 
@@ -92,7 +93,7 @@ const facts = [
       <div class="grid">
         {
           facts.map((f) => (
-            <article class="card stat">
+            <Card class="stat">
               <p class="eyebrow">
                 <span class="i18n inline" data-lang="es">
                   {f.labelEs}
@@ -109,7 +110,7 @@ const facts = [
                   {f.valueEn}
                 </span>
               </h3>
-            </article>
+            </Card>
           ))
         }
       </div>
@@ -123,7 +124,7 @@ const facts = [
       <div class="grid">
         {
           highlights.map((h) => (
-            <article class="card">
+            <Card>
               <h3 style="margin:0 0 6px;">
                 <span class="i18n inline" data-lang="es">
                   {h.titleEs}
@@ -146,7 +147,7 @@ const facts = [
                   {h.ctaEn} →
                 </span>
               </a>
-            </article>
+            </Card>
           ))
         }
       </div>
@@ -157,14 +158,14 @@ const facts = [
         <span class="i18n inline" data-lang="es">Contacto</span>
         <span class="i18n inline" data-lang="en">Contact</span>
       </h2>
-      <div class="card">
+      <Card>
         <p>
           <span class="i18n inline" data-lang="es">Alicante, España</span>
           <span class="i18n inline" data-lang="en">Alicante, Spain</span> ·
           <a href="mailto:diegobarrioh@gmail.com">diegobarrioh@gmail.com</a> ·
           <a href="https://linkedin.com/in/diegobarrioh" target="_blank" rel="noreferrer">LinkedIn</a>
         </p>
-      </div>
+      </Card>
     </section>
 
     <footer class="footer small">

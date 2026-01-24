@@ -1,0 +1,18 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "SSH: add key",
+      "type": "shell",
+      "command": "ssh-add --apple-use-keychain ~/.ssh/mac_mini_key || ssh-add ~/.ssh/mac_mini_key",
+      "problemMatcher": []
+    },
+    {
+      "label": "Deploy: dist to Raspberry",
+      "type": "shell",
+      "command": "./deploy.sh",
+      "dependsOn": ["SSH: add key"],
+      "problemMatcher": []
+    }
+  ]
+}
