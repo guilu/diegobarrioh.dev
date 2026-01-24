@@ -1,8 +1,7 @@
 ---
-const {
-  title = "Diego Barrio H.",
-  description = "Backend Engineer. Java, Spring Boot, Microservices, Observability. Proyectos y CV.",
-} = Astro.props;
+const { title = "Diego Barrio H.", description = "Backend Engineer. Java, Spring Boot, Microservices, Observability. Proyectos y CV." } = Astro.props;
+
+const GA_ID = "G-7DJQHEPKJK";
 ---
 
 <!doctype html>
@@ -16,8 +15,9 @@ const {
     <link rel="icon" type="image/svg+xml" href="/img/dbh2-black.svg" />
     <link rel="stylesheet" href="/styles.css" />
 
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7DJQHEPKJK"></script>
-    <script>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -36,8 +36,7 @@ const {
       const langKey = "lang";
       const langToggle = document.getElementById("lang-toggle");
 
-      const getPreferred = () =>
-        window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      const getPreferred = () => (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
       const getPreferredLang = () => {
         const lang = (navigator.language || "en").toLowerCase();
         return lang.startsWith("es") ? "es" : "en";
@@ -50,10 +49,7 @@ const {
         root.setAttribute("data-lang", lang);
         root.setAttribute("lang", lang);
         if (langToggle) {
-          langToggle.setAttribute(
-            "aria-label",
-            lang === "es" ? "Switch to English" : "Cambiar a español"
-          );
+          langToggle.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a español");
         }
       };
 
