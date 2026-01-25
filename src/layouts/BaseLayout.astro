@@ -23,7 +23,11 @@ const GA_ID = "G-7DJQHEPKJK";
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-      gtag("config", "G-7DJQHEPKJK");
+      const isInternal = location.hostname === "localhost" || localStorage.getItem("internal_traffic") === "true";
+
+      gtag("config", "G-7DJQHEPKJK", {
+        traffic_type: isInternal ? "internal" : undefined,
+      });
     </script>
   </head>
 
