@@ -3,129 +3,227 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Card from "../components/Card.astro";
 
-const skills = ["Java", "Spring Boot", "Microservices", "Kafka", "Kubernetes", "Docker", "Observability (Grafana, Splunk, Sentry)", "DDD + Hexagonal", "TDD", "CI/CD", "Relational Databases (PostgreSQL, Oracle DB, SQL Server)", "NoSQL (MongoDB)", "AWS", "GCP"];
+const metrics = [
+  {
+    valueEs: "15+",
+    valueEn: "15+",
+    labelEs: "años entregando software en producción",
+    labelEn: "years shipping production software",
+  },
+  {
+    valueEs: "4",
+    valueEn: "4",
+    labelEs: "sectores de alta exigencia técnica",
+    labelEn: "high-demand industries",
+  },
+  {
+    valueEs: "100%",
+    valueEn: "100%",
+    labelEs: "foco en backend, arquitectura y calidad",
+    labelEn: "focus on backend, architecture, and quality",
+  },
+];
+
+const skillsGroups = [
+  {
+    titleEs: "Backend Core",
+    titleEn: "Backend Core",
+    items: ["Java", "Spring Boot", "Spring MVC", "Spring Security", "JPA/Hibernate", "REST APIs"],
+  },
+  {
+    titleEs: "Arquitectura y escalado",
+    titleEn: "Architecture & Scale",
+    items: ["Microservices", "DDD", "Hexagonal Architecture", "Event-driven", "Clean Architecture", "SRE mindset"],
+  },
+  {
+    titleEs: "Cloud y plataforma",
+    titleEn: "Cloud & Platform",
+    items: ["AWS", "Kubernetes", "Docker", "Apache Kafka", "CI/CD", "GitLab/Jenkins"],
+  },
+  {
+    titleEs: "Data y observabilidad",
+    titleEn: "Data & Observability",
+    items: ["PostgreSQL", "Oracle", "SQL Server", "MongoDB", "Grafana", "Splunk/Sentry"],
+  },
+];
 
 const highlights = [
   {
     titleEs: "APIs de facturación y pagos",
     titleEn: "Billing & Payments APIs",
-    textEs: "Diseño de APIs de facturación y pagos para movilidad. Microservicios, eventos y cloud.",
-    textEn: "Billing and payment APIs for mobility. Microservices, event-driven and cloud-native.",
-    href: "/projects",
-    ctaEs: "Ver caso",
-    ctaEn: "View case",
+    textEs: "Diseño de APIs críticas para movilidad, con arquitectura orientada a eventos, observabilidad operativa y despliegues cloud-native.",
+    textEn: "Designed mission-critical mobility billing APIs with event-driven architecture, operational observability, and cloud-native delivery.",
+    stack: ["Java", "Spring Boot", "Kafka", "AWS", "Kubernetes"],
   },
   {
     titleEs: "Modernización de core bancario",
     titleEn: "Core Banking Modernization",
-    textEs: "Microservicios y optimización de datos en banca para mejorar rendimiento y uptime.",
-    textEn: "Microservices and data optimization to improve performance and uptime in banking.",
-    href: "/projects",
-    ctaEs: "Ver caso",
-    ctaEn: "View case",
+    textEs: "Migración de procesos bancarios a servicios modulares, mejorando rendimiento, trazabilidad y time-to-market.",
+    textEn: "Migrated core banking processes to modular services, improving performance, traceability, and time-to-market.",
+    stack: ["Spring", "Hibernate", "Oracle", "SQL Server", "CI/CD"],
+  },
+  {
+    titleEs: "Plataformas enterprise",
+    titleEn: "Enterprise Platforms",
+    textEs: "Construcción de plataformas e integraciones para equipos internos, reduciendo fricción operativa y deuda técnica.",
+    textEn: "Built internal platforms and integrations that reduced operational friction and technical debt.",
+    stack: ["Spring MVC", "JPA", "SharePoint", ".NET", "Oracle"],
   },
 ];
 
-const facts = [
+const experience = [
   {
-    labelEs: "Experiencia",
-    labelEn: "Experience",
-    valueEs: "15+ años",
-    valueEn: "15+ years",
+    periodEs: "2024 - Hoy",
+    periodEn: "2024 - Present",
+    roleEs: "Senior Backend Engineer",
+    roleEn: "Senior Backend Engineer",
+    company: "Mindden / Europcar Mobility Group",
+    impactEs: "Desarrollo de APIs de negocio crítico para pagos y facturación, reforzando robustez operativa y velocidad de entrega.",
+    impactEn: "Built business-critical billing and payments APIs, strengthening operational robustness and delivery velocity.",
   },
   {
-    labelEs: "Especialidad",
-    labelEn: "Focus",
-    valueEs: "Backend & arquitectura",
-    valueEn: "Backend & architecture",
+    periodEs: "2022 - 2024",
+    periodEn: "2022 - 2024",
+    roleEs: "Senior Analyst",
+    roleEn: "Senior Analyst",
+    company: "Accenture",
+    impactEs: "Microservicios y optimización de datos para banca, con foco en rendimiento, uptime y mantenibilidad.",
+    impactEn: "Delivered microservices and data optimization for banking with focus on performance, uptime, and maintainability.",
   },
   {
-    labelEs: "Industria",
-    labelEn: "Industry",
-    valueEs: "Fintech, banca, movilidad",
-    valueEn: "Fintech, banking, mobility",
+    periodEs: "2014 - 2022",
+    periodEn: "2014 - 2022",
+    roleEs: "Senior Specialist",
+    roleEn: "Senior Specialist",
+    company: "SABIS",
+    impactEs: "Diseño de plataformas enterprise e integraciones internas para estandarizar flujos entre equipos.",
+    impactEn: "Designed enterprise platforms and internal integrations to standardize workflows across teams.",
   },
   {
-    labelEs: "Idiomas",
-    labelEn: "Languages",
-    valueEs: "ES nativo · EN C1",
-    valueEn: "ES native · EN C1",
+    periodEs: "2007 - 2014",
+    periodEn: "2007 - 2014",
+    roleEs: "Analyst / Developer",
+    roleEn: "Analyst / Developer",
+    company: "Banco Sabadell y Caja Mediterráneo",
+    impactEs: "Evolución de plataformas transaccionales en banca online y servicios ATM de alta criticidad.",
+    impactEn: "Evolved high-criticality online banking and ATM transactional platforms.",
   },
 ];
+
 ---
 
-<BaseLayout title="Diego Barrio H. — Backend Engineer">
+<BaseLayout title="Diego Barrio H. - Backend Engineer">
   <Nav current="home" />
-  <main class="container">
-    <section class="hero">
+  <main class="container landing">
+    <section class="hero shell" id="home">
+      <p class="eyebrow hero-eyebrow">
+        <span class="i18n inline" data-lang="es">Software Developer</span>
+        <span class="i18n inline" data-lang="en">Software Developer</span>
+      </p>
       <h1>
-        <span class="i18n inline" data-lang="es">diegobarrioh - Ingeniero Backend Senior</span>
-        <span class="i18n inline" data-lang="en">diegobarrioh - Senior Backend Engineer</span>
+        <span class="i18n" data-lang="es">
+          <span class="hero-name">Diego Barrio H.</span>
+          <span class="hero-role">Software Engineer para producto crítico y escalable.</span>
+        </span>
+        <span class="i18n" data-lang="en">
+          <span class="hero-name">Diego Barrio H.</span>
+          <span class="hero-role">Software Engineer for scalable, critical products.</span>
+        </span>
       </h1>
-      <p class="i18n" data-lang="es">Diseño y construyo plataformas backend escalables con Java y Spring. Enfocado en microservicios, arquitectura limpia, observabilidad y prácticas de ingeniería rigurosas.</p>
-      <p class="i18n" data-lang="en">I design and build scalable backend platforms with Java and Spring. Focused on microservices, clean architecture, observability, and rigorous engineering practices.</p>
+      <p class="lead i18n" data-lang="es">
+        Ayudo a equipos a construir plataformas backend escalables, mantenibles y observables. Java, Spring y arquitectura moderna para productos que no pueden fallar.
+      </p>
+      <p class="lead i18n" data-lang="en">
+        I help teams build scalable, maintainable, and observable backend platforms. Java, Spring, and modern architecture for products that cannot fail.
+      </p>
 
-      <div class="btns">
-        <a class="btn primary" href="/cv">
-          <span class="i18n inline" data-lang="es">Ver CV</span>
-          <span class="i18n inline" data-lang="en">View CV</span>
+      <div class="hero-actions">
+        <a class="btn primary" href="#contact">
+          <span class="i18n inline" data-lang="es">Hablemos</span>
+          <span class="i18n inline" data-lang="en">Let's talk</span>
         </a>
-        <a class="btn" href="/projects">
-          <span class="i18n inline" data-lang="es">Ver proyectos</span>
-          <span class="i18n inline" data-lang="en">View projects</span>
+        <a class="btn" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noopener noreferrer">
+          <span class="i18n inline" data-lang="es">Ver CV en PDF</span>
+          <span class="i18n inline" data-lang="en">Open CV PDF</span>
         </a>
-        <a class="btn" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">
-          <span class="i18n inline" data-lang="es">Descargar PDF</span>
-          <span class="i18n inline" data-lang="en">Download PDF</span>
-        </a>
+        <a class="btn ghost" href="https://github.com/guilu" target="_blank" rel="noopener noreferrer">GitHub</a>
       </div>
 
-      <div class="badges">
-        {skills.map((s) => <span class="badge">{s}</span>)}
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>
-        <span class="i18n inline" data-lang="es">Perfil rápido</span>
-        <span class="i18n inline" data-lang="en">Quick profile</span>
-      </h2>
-      <div class="grid">
-        {
-          facts.map((f) => (
-            <Card class="stat">
-              <p class="eyebrow">
-                <span class="i18n inline" data-lang="es">
-                  {f.labelEs}
-                </span>
-                <span class="i18n inline" data-lang="en">
-                  {f.labelEn}
-                </span>
-              </p>
-              <h3 style="margin:0 0 2px;">
-                <span class="i18n inline" data-lang="es">
-                  {f.valueEs}
-                </span>
-                <span class="i18n inline" data-lang="en">
-                  {f.valueEn}
-                </span>
-              </h3>
-            </Card>
-          ))
-        }
+      <div class="hero-metrics">
+        {metrics.map((m) => (
+          <div class="metric">
+            <p class="metric-value">
+              <span class="i18n inline" data-lang="es">{m.valueEs}</span>
+              <span class="i18n inline" data-lang="en">{m.valueEn}</span>
+            </p>
+            <p class="metric-label">
+              <span class="i18n inline" data-lang="es">{m.labelEs}</span>
+              <span class="i18n inline" data-lang="en">{m.labelEn}</span>
+            </p>
+          </div>
+        ))}
       </div>
     </section>
 
-    <section class="section">
-      <h2>
-        <span class="i18n inline" data-lang="es">Casos destacados</span>
-        <span class="i18n inline" data-lang="en">Featured work</span>
-      </h2>
-      <div class="grid">
+    <section class="section shell" id="about">
+      <div class="section-header">
+        <p class="eyebrow">
+          <span class="i18n inline" data-lang="es">Sobre mi</span>
+          <span class="i18n inline" data-lang="en">About me</span>
+        </p>
+        <h2>
+          <span class="i18n inline" data-lang="es">Construyo backend robusto para equipos que necesitan velocidad sin perder calidad.</span>
+          <span class="i18n inline" data-lang="en">I build robust backend systems for teams that need speed without sacrificing quality.</span>
+        </h2>
+      </div>
+      <p class="section-copy i18n" data-lang="es">
+        He trabajado en banca, fintech, movilidad y entornos enterprise. Mi enfoque combina arquitectura evolutiva, calidad de código y observabilidad para que cada despliegue sea una mejora, no una apuesta.
+      </p>
+      <p class="section-copy i18n" data-lang="en">
+        I have worked across banking, fintech, mobility, and enterprise environments. My approach combines evolutionary architecture, code quality, and observability so every deployment is an improvement, not a gamble.
+      </p>
+    </section>
+
+    <section class="section shell" id="skills">
+      <div class="section-header">
+        <p class="eyebrow">
+          <span class="i18n inline" data-lang="es">Stack</span>
+          <span class="i18n inline" data-lang="en">Stack</span>
+        </p>
+        <h2>
+          <span class="i18n inline" data-lang="es">Tecnologías y prácticas para escalar producto y equipo.</span>
+          <span class="i18n inline" data-lang="en">Technologies and practices to scale both product and team.</span>
+        </h2>
+      </div>
+      <div class="grid skill-grid">
+        {skillsGroups.map((group) => (
+          <Card class="feature-card">
+            <h3>
+              <span class="i18n inline" data-lang="es">{group.titleEs}</span>
+              <span class="i18n inline" data-lang="en">{group.titleEn}</span>
+            </h3>
+            <p class="taglist">{group.items.map((item) => <span class="pill">{item}</span>)}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="section shell" id="projects">
+      <div class="section-header">
+        <p class="eyebrow">
+          <span class="i18n inline" data-lang="es">Proyectos</span>
+          <span class="i18n inline" data-lang="en">Projects</span>
+        </p>
+        <h2>
+          <span class="i18n inline" data-lang="es">Trabajo real en dominios complejos.</span>
+          <span class="i18n inline" data-lang="en">Real work in complex domains.</span>
+        </h2>
+      </div>
+      <div class="grid project-grid">
         {
           highlights.map((h) => (
-            <Card>
-              <h3 style="margin:0 0 6px;">
+            <Card class="feature-card">
+              <h3>
                 <span class="i18n inline" data-lang="es">
                   {h.titleEs}
                 </span>
@@ -139,41 +237,104 @@ const facts = [
               <p class="i18n" data-lang="en">
                 {h.textEn}
               </p>
-              <a class="btn" href={h.href}>
-                <span class="i18n inline" data-lang="es">
-                  {h.ctaEs} →
-                </span>
-                <span class="i18n inline" data-lang="en">
-                  {h.ctaEn} →
-                </span>
-              </a>
+              <p class="taglist">{h.stack.map((s) => <span class="pill">{s}</span>)}</p>
             </Card>
           ))
         }
       </div>
     </section>
 
-    <section class="section">
-      <h2>
-        <span class="i18n inline" data-lang="es">Contacto</span>
-        <span class="i18n inline" data-lang="en">Contact</span>
-      </h2>
-      <Card>
-        <p>
-          <span class="i18n inline" data-lang="es">Alicante, España</span>
-          <span class="i18n inline" data-lang="en">Alicante, Spain</span> ·
-          <a href="mailto:diegobarrioh@gmail.com">diegobarrioh@gmail.com</a> ·
-          <a href="https://linkedin.com/in/diegobarrioh" target="_blank" rel="noreferrer">LinkedIn</a>
+    <section class="section shell" id="experience">
+      <div class="section-header">
+        <p class="eyebrow">
+          <span class="i18n inline" data-lang="es">Experiencia</span>
+          <span class="i18n inline" data-lang="en">Experience</span>
         </p>
+        <h2>
+          <span class="i18n inline" data-lang="es">Trayectoria enfocada en sistemas críticos, arquitectura y entrega continua.</span>
+          <span class="i18n inline" data-lang="en">Career focused on critical systems, architecture, and continuous delivery.</span>
+        </h2>
+      </div>
+      <div class="timeline">
+        {experience.map((item) => (
+          <Card class="timeline-item">
+            <p class="eyebrow">
+              <span class="i18n inline" data-lang="es">{item.periodEs}</span>
+              <span class="i18n inline" data-lang="en">{item.periodEn}</span>
+            </p>
+            <h3>
+              <span class="i18n inline" data-lang="es">{item.roleEs}</span>
+              <span class="i18n inline" data-lang="en">{item.roleEn}</span>
+            </h3>
+            <p class="company">{item.company}</p>
+            <p class="i18n" data-lang="es">{item.impactEs}</p>
+            <p class="i18n" data-lang="en">{item.impactEn}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="section shell" id="lab">
+      <div class="section-header">
+        <p class="eyebrow">
+          <span class="i18n inline" data-lang="es">Lab</span>
+          <span class="i18n inline" data-lang="en">Lab</span>
+        </p>
+        <h2>
+          <span class="i18n inline" data-lang="es">Explora mi laboratorio de proyectos, con enfoque práctico y técnico.</span>
+          <span class="i18n inline" data-lang="en">Explore my project lab, focused on practical technical work.</span>
+        </h2>
+      </div>
+      <Card class="lab-card">
+        <p class="lab-subtitle i18n" data-lang="es">
+          Un espacio donde documento proyectos personales, decisiones de arquitectura y experimentos orientados a resolver
+          problemas reales.
+        </p>
+        <p class="lab-subtitle i18n" data-lang="en">
+          A place where I document personal projects, architecture decisions, and experiments aimed at solving real problems.
+        </p>
+        <div class="btns">
+          <a class="btn primary lab-cta" href="https://backendtothefuture.com" target="_blank" rel="noopener noreferrer" aria-label="Open backendtothefuture.com">
+            <span class="lab-icon" aria-hidden="true">🧪</span>
+            <span>backendtothefuture.com</span>
+          </a>
+        </div>
+      </Card>
+    </section>
+
+    <section class="section shell" id="contact">
+      <Card class="contact-card">
+        <div>
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Contacto</span>
+            <span class="i18n inline" data-lang="en">Contact</span>
+          </p>
+          <h2>
+            <span class="i18n inline" data-lang="es">Disponible para nuevos proyectos, consultoria y roles senior de backend.</span>
+            <span class="i18n inline" data-lang="en">Available for new projects, consulting engagements, and senior backend roles.</span>
+          </h2>
+          <p>
+            <span class="i18n inline" data-lang="es">Alicante, España</span>
+            <span class="i18n inline" data-lang="en">Alicante, Spain</span>
+          </p>
+        </div>
+        <div class="contact-actions">
+          <a class="btn primary" href="mailto:diegobarrioh@gmail.com">diegobarrioh@gmail.com</a>
+          <a class="btn" href="https://linkedin.com/in/diegobarrioh" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noopener noreferrer">
+            <span class="i18n inline" data-lang="es">Descargar CV</span>
+            <span class="i18n inline" data-lang="en">Download CV</span>
+          </a>
+        </div>
       </Card>
     </section>
 
     <footer class="footer small">
       <span class="i18n inline" data-lang="es">
-        © {new Date().getFullYear()} Diego Barrio H. · Hecho con Astro · Servido desde una Raspberry Pi (sí, en serio).
+        © {new Date().getFullYear()} Diego Barrio H. · Backend Engineering con foco en calidad, arquitectura y entrega.
       </span>
       <span class="i18n inline" data-lang="en">
-        © {new Date().getFullYear()} Diego Barrio H. · Built with Astro · Served from a Raspberry Pi (yes, really).
+        © {new Date().getFullYear()} Diego Barrio H. · Backend Engineering focused on quality, architecture, and delivery.
       </span>
     </footer>
   </main>
