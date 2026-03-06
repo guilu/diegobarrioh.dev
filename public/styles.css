@@ -204,6 +204,8 @@ p {
   display: flex;
   flex-direction: column;
   gap: 2px;
+  flex: 1;
+  min-width: 0;
 }
 .social-info .eyebrow {
   font-size: 16px;
@@ -211,9 +213,11 @@ p {
 }
 .social-info .small {
   font-size: 14px;
+  word-break: break-all;
 }
 .social-cta {
   margin-left: auto;
+  flex-shrink: 0;
 }
 .social-thumb {
   width: 84px;
