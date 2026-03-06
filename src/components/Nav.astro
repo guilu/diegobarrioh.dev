@@ -2,38 +2,83 @@
 const { current } = Astro.props;
 
 const links = [
-  { href: "/", labelEs: "Inicio", labelEn: "Home", key: "home" },
-  { href: "/projects", labelEs: "Proyectos", labelEn: "Projects", key: "projects" },
-  { href: "/cv", labelEs: "CV", labelEn: "CV", key: "cv" },
-  { href: "/about", labelEs: "Sobre mí", labelEn: "About", key: "about" },
-  { href: "/contact", labelEs: "Contacto", labelEn: "Contact", key: "contact" },
+  { href: "/#home", labelEs: "Inicio", labelEn: "Home", key: "home" },
+  { href: "/#skills", labelEs: "Stack", labelEn: "Stack", key: "skills" },
+  { href: "/#projects", labelEs: "Proyectos", labelEn: "Projects", key: "projects" },
+  { href: "/#experience", labelEs: "Experiencia", labelEn: "Experience", key: "experience" },
+  { href: "/#lab", labelEs: "Lab", labelEn: "Lab", key: "lab" },
+  { href: "/#contact", labelEs: "Contacto", labelEn: "Contact", key: "contact" },
 ];
 ---
 
-<nav class="nav">
+<nav class="nav" data-nav-root>
   <div class="container nav-inner">
-    <a href="/" class="brand">
+    <a href="/#home" class="brand">
       <img src="/img/dbh2-white.svg" alt="Diego Barrio H. logo" class="brand-logo logo-dark" />
       <img src="/img/dbh2-black.svg" alt="Diego Barrio H. logo" class="brand-logo logo-light" />
-      <span>Diego Barrio H.</span>
+      <span class="brand-name">Diego Barrio H.</span>
     </a>
-    <div class="nav-links">
-      {links.map((l) => (
-        <a href={l.href} class={current === l.key ? "active" : ""}>
-          <span class="i18n inline" data-lang="es">{l.labelEs}</span>
-          <span class="i18n inline" data-lang="en">{l.labelEn}</span>
-        </a>
-      ))}
-    </div>
-    <div class="nav-actions">
-      <button class="toggle lang-toggle" type="button" id="lang-toggle" aria-label="Cambiar idioma">
-        <span class="opt" data-value="es">🇪🇸</span>
-        <span class="opt" data-value="en">🇬🇧</span>
-      </button>
-      <button class="toggle theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar tema">
-        <span class="opt" data-value="light">☀︎</span>
-        <span class="opt" data-value="dark">☾</span>
-      </button>
+
+    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir menu de navegacion">
+      <span class="menu-toggle-line"></span>
+      <span class="menu-toggle-line"></span>
+      <span class="menu-toggle-line"></span>
+    </button>
+
+    <div class="nav-panel" id="primary-menu">
+      <div class="nav-panel-inner">
+        <div class="nav-links">
+          {links.map((l) => (
+            <a href={l.href} class={current === l.key ? "active" : ""}>
+              <span class="i18n inline" data-lang="es">{l.labelEs}</span>
+              <span class="i18n inline" data-lang="en">{l.labelEn}</span>
+            </a>
+          ))}
+        </div>
+        <div class="nav-actions">
+          <button class="toggle lang-toggle" type="button" id="lang-toggle" aria-label="Cambiar idioma">
+            <span class="opt" data-value="es">🇪🇸</span>
+            <span class="opt" data-value="en">🇬🇧</span>
+          </button>
+          <button class="toggle theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar tema">
+            <span class="opt" data-value="light">☀︎</span>
+            <span class="opt" data-value="dark">☾</span>
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
+
+<script is:inline>
+  const nav = document.querySelector("[data-nav-root]");
+
+  if (nav) {
+    const toggleButton = nav.querySelector("[data-menu-toggle]");
+    const navLinks = nav.querySelectorAll(".nav-links a");
+
+    const setExpanded = (expanded) => {
+      nav.classList.toggle("is-open", expanded);
+      if (toggleButton) {
+        toggleButton.setAttribute("aria-expanded", expanded ? "true" : "false");
+        toggleButton.setAttribute("aria-label", expanded ? "Cerrar menu de navegacion" : "Abrir menu de navegacion");
+      }
+    };
+
+    toggleButton?.addEventListener("click", () => {
+      setExpanded(!nav.classList.contains("is-open"));
+    });
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        setExpanded(false);
+      });
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 820) {
+        setExpanded(false);
+      }
+    });
+  }
+</script>
