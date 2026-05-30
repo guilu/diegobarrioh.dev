@@ -3,6 +3,34 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Card from "../components/Card.astro";
 
+const socials = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/diegobarrioh",
+    emoji: "💼",
+    img: "/img/linkedin-screenshot.png",
+  },
+  {
+    label: "GitHub",
+    href: "https://github.com/guilu",
+    emoji: "💻",
+    img: "/img/github-screenshot.png",
+  },
+  {
+    label: "X / Twitter",
+    href: "https://x.com/guilu",
+    emoji: "🛰️",
+    img: "/img/x-screenshot.png",
+  },
+  {
+    label: "Email",
+    href: "mailto:diegobarrioh@gmail.com",
+    emoji: "✉️",
+    imgLight: "/img/dbh2-black.svg",
+    imgDark: "/img/dbh2-white.svg",
+  },
+];
+
 const metrics = [
   {
     valueEs: "15+",
@@ -303,30 +331,61 @@ const experience = [
     </section>
 
     <section class="section shell" id="contact">
-      <Card class="contact-card">
-        <div>
-          <p class="eyebrow">
-            <span class="i18n inline" data-lang="es">Contacto</span>
-            <span class="i18n inline" data-lang="en">Contact</span>
-          </p>
-          <h2>
-            <span class="i18n inline" data-lang="es">Disponible para nuevos proyectos, consultoria y roles senior de backend.</span>
-            <span class="i18n inline" data-lang="en">Available for new projects, consulting engagements, and senior backend roles.</span>
-          </h2>
-          <p>
-            <span class="i18n inline" data-lang="es">Alicante, España</span>
-            <span class="i18n inline" data-lang="en">Alicante, Spain</span>
-          </p>
-        </div>
-        <div class="contact-actions">
-          <a class="btn primary" href="mailto:diegobarrioh@gmail.com">diegobarrioh@gmail.com</a>
-          <a class="btn" href="https://linkedin.com/in/diegobarrioh" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="btn" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noopener noreferrer">
-            <span class="i18n inline" data-lang="es">Descargar CV</span>
-            <span class="i18n inline" data-lang="en">Download CV</span>
+      <div class="section-header" style="margin-bottom: 2rem;">
+        <p class="eyebrow">
+          <span class="i18n inline" data-lang="es">Contacto</span>
+          <span class="i18n inline" data-lang="en">Contact</span>
+        </p>
+        <h2>
+          <span class="i18n inline" data-lang="es">Disponible para nuevos proyectos, consultoria y roles senior de backend.</span>
+          <span class="i18n inline" data-lang="en">Available for new projects, consulting engagements, and senior backend roles.</span>
+        </h2>
+        <p class="i18n" data-lang="es">
+          Elige la vía que prefieras para escribir o agendar una reunión.
+        </p>
+        <p class="i18n" data-lang="en">
+          Choose your preferred channel to reach out or book a meeting.
+        </p>
+        <div class="btns" style="margin-top: 10px;">
+          <a class="btn primary" href="https://calendly.com/diegobarrioh/30min" target="_blank" rel="noreferrer">
+            <span class="i18n inline" data-lang="es">Reservar en Calendly</span>
+            <span class="i18n inline" data-lang="en">Book on Calendly</span>
           </a>
         </div>
-      </Card>
+      </div>
+
+      <div class="grid">
+        {socials.map((s) => (
+          <Card class="social-card">
+            {s.imgLight && s.imgDark ? (
+              <>
+                <img
+                  src={s.imgLight}
+                  alt={`${s.label} preview`}
+                  class="social-thumb thumb-light"
+                  loading="lazy"
+                />
+                <img
+                  src={s.imgDark}
+                  alt={`${s.label} preview`}
+                  class="social-thumb thumb-dark"
+                  loading="lazy"
+                />
+              </>
+            ) : (
+              <img src={s.img} alt={`${s.label} preview`} class="social-thumb" loading="lazy" />
+            )}
+            <div class="social-info">
+              <p class="eyebrow">{s.emoji} {s.label}</p>
+              <p class="small">{s.href.replace("mailto:", "")}</p>
+            </div>
+            <a class="btn social-cta" href={s.href} target="_blank" rel="noreferrer">
+              <span class="i18n inline" data-lang="es">Abrir</span>
+              <span class="i18n inline" data-lang="en">Open</span>
+            </a>
+          </Card>
+        ))}
+      </div>
     </section>
 
     <footer class="footer small">
