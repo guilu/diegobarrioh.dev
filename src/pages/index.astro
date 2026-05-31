@@ -1,52 +1,47 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
-import Card from "../components/Card.astro";
 
 const socials = [
   {
+    ico: "in",
     label: "LinkedIn",
+    handle: "in/diegobarrioh",
     href: "https://www.linkedin.com/in/diegobarrioh",
-    emoji: "💼",
-    img: "/img/linkedin-screenshot.png",
   },
   {
+    ico: "gh",
     label: "GitHub",
+    handle: "github.com/guilu",
     href: "https://github.com/guilu",
-    emoji: "💻",
-    img: "/img/github-screenshot.png",
   },
   {
+    ico: "✕",
     label: "X / Twitter",
+    handle: "x.com/guilu",
     href: "https://x.com/guilu",
-    emoji: "🛰️",
-    img: "/img/x-screenshot.png",
   },
   {
+    ico: "@",
     label: "Email",
+    handle: "diegobarrioh@gmail.com",
     href: "mailto:diegobarrioh@gmail.com",
-    emoji: "✉️",
-    imgLight: "/img/dbh2-black.svg",
-    imgDark: "/img/dbh2-white.svg",
   },
 ];
 
 const metrics = [
   {
-    valueEs: "15+",
-    valueEn: "15+",
+    value: "15+",
     labelEs: "años entregando software en producción",
     labelEn: "years shipping production software",
   },
   {
-    valueEs: "4",
-    valueEn: "4",
+    value: "4",
     labelEs: "sectores de alta exigencia técnica",
     labelEn: "high-demand industries",
   },
   {
-    valueEs: "100%",
-    valueEn: "100%",
+    value: "100%",
     labelEs: "foco en backend, arquitectura y calidad",
     labelEn: "focus on backend, architecture, and quality",
   },
@@ -61,7 +56,7 @@ const skillsGroups = [
   {
     titleEs: "Arquitectura y escalado",
     titleEn: "Architecture & Scale",
-    items: ["Microservices", "DDD", "Hexagonal Architecture", "Event-driven", "Clean Architecture", "SRE mindset"],
+    items: ["Microservices", "DDD", "Hexagonal", "Event-driven", "Clean Architecture", "SRE mindset"],
   },
   {
     titleEs: "Cloud y plataforma",
@@ -101,8 +96,8 @@ const highlights = [
 
 const experience = [
   {
-    periodEs: "2024 - Hoy",
-    periodEn: "2024 - Present",
+    periodEs: "2024 — Hoy",
+    periodEn: "2024 — Present",
     roleEs: "Senior Backend Engineer",
     roleEn: "Senior Backend Engineer",
     company: "Mindden / Europcar Mobility Group",
@@ -110,8 +105,8 @@ const experience = [
     impactEn: "Built business-critical billing and payments APIs, strengthening operational robustness and delivery velocity.",
   },
   {
-    periodEs: "2022 - 2024",
-    periodEn: "2022 - 2024",
+    periodEs: "2022 — 2024",
+    periodEn: "2022 — 2024",
     roleEs: "Senior Analyst",
     roleEn: "Senior Analyst",
     company: "Accenture",
@@ -119,8 +114,8 @@ const experience = [
     impactEn: "Delivered microservices and data optimization for banking with focus on performance, uptime, and maintainability.",
   },
   {
-    periodEs: "2014 - 2022",
-    periodEn: "2014 - 2022",
+    periodEs: "2014 — 2022",
+    periodEn: "2014 — 2022",
     roleEs: "Senior Specialist",
     roleEn: "Senior Specialist",
     company: "SABIS",
@@ -128,273 +123,247 @@ const experience = [
     impactEn: "Designed enterprise platforms and internal integrations to standardize workflows across teams.",
   },
   {
-    periodEs: "2007 - 2014",
-    periodEn: "2007 - 2014",
+    periodEs: "2007 — 2014",
+    periodEn: "2007 — 2014",
     roleEs: "Analyst / Developer",
     roleEn: "Analyst / Developer",
-    company: "Banco Sabadell y Caja Mediterráneo",
+    company: "Banco Sabadell · Caja Mediterráneo",
     impactEs: "Evolución de plataformas transaccionales en banca online y servicios ATM de alta criticidad.",
     impactEn: "Evolved high-criticality online banking and ATM transactional platforms.",
   },
 ];
-
 ---
 
 <BaseLayout title="Diego Barrio H. - Backend Engineer">
   <Nav current="home" />
-  <main class="container landing">
-    <section class="hero shell" id="home">
-      <p class="eyebrow hero-eyebrow">
-        <span class="i18n inline" data-lang="es">Software Developer</span>
-        <span class="i18n inline" data-lang="en">Software Developer</span>
-      </p>
-      <h1>
-        <span class="i18n" data-lang="es">
+  <main>
+    <header class="hero" id="home">
+      <div class="container">
+        <p class="eyebrow hero-eyebrow">Software Engineer</p>
+        <h1>
           <span class="hero-name">Diego Barrio H.</span>
-          <span class="hero-role">Software Engineer para producto crítico y escalable.</span>
-        </span>
-        <span class="i18n" data-lang="en">
-          <span class="hero-name">Diego Barrio H.</span>
-          <span class="hero-role">Software Engineer for scalable, critical products.</span>
-        </span>
-      </h1>
-      <p class="lead i18n" data-lang="es">
-        Ayudo a equipos a construir plataformas backend escalables, mantenibles y observables. Java, Spring y arquitectura moderna para productos que no pueden fallar.
-      </p>
-      <p class="lead i18n" data-lang="en">
-        I help teams build scalable, maintainable, and observable backend platforms. Java, Spring, and modern architecture for products that cannot fail.
-      </p>
+          <span class="hero-role">
+            <span class="i18n inline" data-lang="es">Software Engineer para producto crítico y escalable.</span>
+            <span class="i18n inline" data-lang="en">Software Engineer for scalable, critical products.</span>
+          </span>
+        </h1>
+        <p class="hero-lead i18n" data-lang="es">
+          Ayudo a equipos a construir plataformas backend escalables, mantenibles y observables. Java, Spring y arquitectura moderna para productos que no pueden fallar.
+        </p>
+        <p class="hero-lead i18n" data-lang="en">
+          I help teams build scalable, maintainable, and observable backend platforms. Java, Spring, and modern architecture for products that cannot fail.
+        </p>
 
-      <div class="hero-actions">
-        <a class="btn primary" href="#contact">
-          <span class="i18n inline" data-lang="es">Hablemos</span>
-          <span class="i18n inline" data-lang="en">Let's talk</span>
-        </a>
-        <a class="btn" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noopener noreferrer">
-          <span class="i18n inline" data-lang="es">Ver CV en PDF</span>
-          <span class="i18n inline" data-lang="en">Open CV PDF</span>
-        </a>
-        <a class="btn ghost" href="https://github.com/guilu" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div class="hero-actions">
+          <a class="btn primary" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noopener noreferrer">
+            <span class="i18n inline" data-lang="es">Ver CV en PDF</span>
+            <span class="i18n inline" data-lang="en">Open CV PDF</span>
+          </a>
+          <a class="btn" href="#contact">
+            <span class="i18n inline" data-lang="es">Hablemos</span>
+            <span class="i18n inline" data-lang="en">Let's talk</span>
+          </a>
+          <a class="btn ghost" href="https://github.com/guilu" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+
+        <div class="hero-metrics">
+          {metrics.map((m) => (
+            <div class="metric">
+              <p class="metric-value">{m.value}</p>
+              <p class="metric-label">
+                <span class="i18n inline" data-lang="es">{m.labelEs}</span>
+                <span class="i18n inline" data-lang="en">{m.labelEn}</span>
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
+    </header>
 
-      <div class="hero-metrics">
-        {metrics.map((m) => (
-          <div class="metric">
-            <p class="metric-value">
-              <span class="i18n inline" data-lang="es">{m.valueEs}</span>
-              <span class="i18n inline" data-lang="en">{m.valueEn}</span>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Sobre mí</span>
+            <span class="i18n inline" data-lang="en">About me</span>
+          </p>
+          <h2>
+            <span class="i18n inline" data-lang="es">Construyo backend robusto para equipos que necesitan velocidad sin perder calidad.</span>
+            <span class="i18n inline" data-lang="en">I build robust backend systems for teams that need speed without sacrificing quality.</span>
+          </h2>
+        </div>
+        <p class="section-copy i18n" data-lang="es">
+          He trabajado en banca, fintech, movilidad y entornos enterprise. Mi enfoque combina arquitectura evolutiva, calidad de código y observabilidad para que cada despliegue sea una mejora, no una apuesta.
+        </p>
+        <p class="section-copy i18n" data-lang="en">
+          I have worked across banking, fintech, mobility, and enterprise environments. My approach combines evolutionary architecture, code quality, and observability so every deployment is an improvement, not a gamble.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Stack</p>
+          <h2>
+            <span class="i18n inline" data-lang="es">Tecnologías y prácticas para escalar producto y equipo.</span>
+            <span class="i18n inline" data-lang="en">Technologies and practices to scale both product and team.</span>
+          </h2>
+        </div>
+        <div class="stack-grid">
+          {skillsGroups.map((group) => (
+            <div class="stack-group">
+              <h3>
+                <span class="i18n inline" data-lang="es">{group.titleEs}</span>
+                <span class="i18n inline" data-lang="en">{group.titleEn}</span>
+              </h3>
+              <div class="taglist">{group.items.map((item) => <span class="pill">{item}</span>)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Proyectos</span>
+            <span class="i18n inline" data-lang="en">Projects</span>
+          </p>
+          <h2>
+            <span class="i18n inline" data-lang="es">Trabajo real en dominios complejos.</span>
+            <span class="i18n inline" data-lang="en">Real work in complex domains.</span>
+          </h2>
+        </div>
+        <div class="proj-list">
+          {highlights.map((h, i) => (
+            <article class="proj">
+              <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
+              <h3>
+                <span class="i18n inline" data-lang="es">{h.titleEs}</span>
+                <span class="i18n inline" data-lang="en">{h.titleEn}</span>
+              </h3>
+              <p>
+                <span class="i18n inline" data-lang="es">{h.textEs}</span>
+                <span class="i18n inline" data-lang="en">{h.textEn}</span>
+              </p>
+              <div class="taglist">{h.stack.map((s) => <span class="pill">{s}</span>)}</div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Experiencia</span>
+            <span class="i18n inline" data-lang="en">Experience</span>
+          </p>
+          <h2>
+            <span class="i18n inline" data-lang="es">Trayectoria enfocada en sistemas críticos, arquitectura y entrega continua.</span>
+            <span class="i18n inline" data-lang="en">Career focused on critical systems, architecture, and continuous delivery.</span>
+          </h2>
+        </div>
+        <div class="timeline">
+          {experience.map((item) => (
+            <div class="tl-item">
+              <div class="tl-period">
+                <span class="i18n inline" data-lang="es">{item.periodEs}</span>
+                <span class="i18n inline" data-lang="en">{item.periodEn}</span>
+              </div>
+              <div>
+                <div class="tl-role">
+                  <span class="i18n inline" data-lang="es">{item.roleEs}</span>
+                  <span class="i18n inline" data-lang="en">{item.roleEn}</span>
+                </div>
+                <div class="tl-company">{item.company}</div>
+                <div class="tl-impact">
+                  <span class="i18n inline" data-lang="es">{item.impactEs}</span>
+                  <span class="i18n inline" data-lang="en">{item.impactEn}</span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lab">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Lab</p>
+          <h2>
+            <span class="i18n inline" data-lang="es">Explora mi laboratorio de proyectos, con enfoque práctico y técnico.</span>
+            <span class="i18n inline" data-lang="en">Explore my project lab, focused on practical technical work.</span>
+          </h2>
+        </div>
+        <div class="lab">
+          <div>
+            <p class="i18n" data-lang="es">
+              Un espacio donde documento proyectos personales, decisiones de arquitectura y experimentos orientados a resolver problemas reales.
             </p>
-            <p class="metric-label">
-              <span class="i18n inline" data-lang="es">{m.labelEs}</span>
-              <span class="i18n inline" data-lang="en">{m.labelEn}</span>
+            <p class="i18n" data-lang="en">
+              A place where I document personal projects, architecture decisions, and experiments aimed at solving real problems.
             </p>
           </div>
-        ))}
-      </div>
-    </section>
-
-    <section class="section shell" id="about">
-      <div class="section-header">
-        <p class="eyebrow">
-          <span class="i18n inline" data-lang="es">Sobre mi</span>
-          <span class="i18n inline" data-lang="en">About me</span>
-        </p>
-        <h2>
-          <span class="i18n inline" data-lang="es">Construyo backend robusto para equipos que necesitan velocidad sin perder calidad.</span>
-          <span class="i18n inline" data-lang="en">I build robust backend systems for teams that need speed without sacrificing quality.</span>
-        </h2>
-      </div>
-      <p class="section-copy i18n" data-lang="es">
-        He trabajado en banca, fintech, movilidad y entornos enterprise. Mi enfoque combina arquitectura evolutiva, calidad de código y observabilidad para que cada despliegue sea una mejora, no una apuesta.
-      </p>
-      <p class="section-copy i18n" data-lang="en">
-        I have worked across banking, fintech, mobility, and enterprise environments. My approach combines evolutionary architecture, code quality, and observability so every deployment is an improvement, not a gamble.
-      </p>
-    </section>
-
-    <section class="section shell" id="skills">
-      <div class="section-header">
-        <p class="eyebrow">
-          <span class="i18n inline" data-lang="es">Stack</span>
-          <span class="i18n inline" data-lang="en">Stack</span>
-        </p>
-        <h2>
-          <span class="i18n inline" data-lang="es">Tecnologías y prácticas para escalar producto y equipo.</span>
-          <span class="i18n inline" data-lang="en">Technologies and practices to scale both product and team.</span>
-        </h2>
-      </div>
-      <div class="grid skill-grid">
-        {skillsGroups.map((group) => (
-          <Card class="feature-card">
-            <h3>
-              <span class="i18n inline" data-lang="es">{group.titleEs}</span>
-              <span class="i18n inline" data-lang="en">{group.titleEn}</span>
-            </h3>
-            <p class="taglist">{group.items.map((item) => <span class="pill">{item}</span>)}</p>
-          </Card>
-        ))}
-      </div>
-    </section>
-
-    <section class="section shell" id="projects">
-      <div class="section-header">
-        <p class="eyebrow">
-          <span class="i18n inline" data-lang="es">Proyectos</span>
-          <span class="i18n inline" data-lang="en">Projects</span>
-        </p>
-        <h2>
-          <span class="i18n inline" data-lang="es">Trabajo real en dominios complejos.</span>
-          <span class="i18n inline" data-lang="en">Real work in complex domains.</span>
-        </h2>
-      </div>
-      <div class="grid project-grid">
-        {
-          highlights.map((h) => (
-            <Card class="feature-card">
-              <h3>
-                <span class="i18n inline" data-lang="es">
-                  {h.titleEs}
-                </span>
-                <span class="i18n inline" data-lang="en">
-                  {h.titleEn}
-                </span>
-              </h3>
-              <p class="i18n" data-lang="es">
-                {h.textEs}
-              </p>
-              <p class="i18n" data-lang="en">
-                {h.textEn}
-              </p>
-              <p class="taglist">{h.stack.map((s) => <span class="pill">{s}</span>)}</p>
-            </Card>
-          ))
-        }
-      </div>
-    </section>
-
-    <section class="section shell" id="experience">
-      <div class="section-header">
-        <p class="eyebrow">
-          <span class="i18n inline" data-lang="es">Experiencia</span>
-          <span class="i18n inline" data-lang="en">Experience</span>
-        </p>
-        <h2>
-          <span class="i18n inline" data-lang="es">Trayectoria enfocada en sistemas críticos, arquitectura y entrega continua.</span>
-          <span class="i18n inline" data-lang="en">Career focused on critical systems, architecture, and continuous delivery.</span>
-        </h2>
-      </div>
-      <div class="timeline">
-        {experience.map((item) => (
-          <Card class="timeline-item">
-            <p class="eyebrow">
-              <span class="i18n inline" data-lang="es">{item.periodEs}</span>
-              <span class="i18n inline" data-lang="en">{item.periodEn}</span>
-            </p>
-            <h3>
-              <span class="i18n inline" data-lang="es">{item.roleEs}</span>
-              <span class="i18n inline" data-lang="en">{item.roleEn}</span>
-            </h3>
-            <p class="company">{item.company}</p>
-            <p class="i18n" data-lang="es">{item.impactEs}</p>
-            <p class="i18n" data-lang="en">{item.impactEn}</p>
-          </Card>
-        ))}
-      </div>
-    </section>
-
-    <section class="section shell" id="lab">
-      <div class="section-header">
-        <p class="eyebrow">
-          <span class="i18n inline" data-lang="es">Lab</span>
-          <span class="i18n inline" data-lang="en">Lab</span>
-        </p>
-        <h2>
-          <span class="i18n inline" data-lang="es">Explora mi laboratorio de proyectos, con enfoque práctico y técnico.</span>
-          <span class="i18n inline" data-lang="en">Explore my project lab, focused on practical technical work.</span>
-        </h2>
-      </div>
-      <Card class="lab-card">
-        <p class="lab-subtitle i18n" data-lang="es">
-          Un espacio donde documento proyectos personales, decisiones de arquitectura y experimentos orientados a resolver
-          problemas reales.
-        </p>
-        <p class="lab-subtitle i18n" data-lang="en">
-          A place where I document personal projects, architecture decisions, and experiments aimed at solving real problems.
-        </p>
-        <div class="btns">
-          <a class="btn primary lab-cta" href="https://backendtothefuture.com" target="_blank" rel="noopener noreferrer" aria-label="Open backendtothefuture.com">
-            <span class="lab-icon" aria-hidden="true">🧪</span>
-            <span>backendtothefuture.com</span>
-          </a>
+          <a class="btn primary" href="https://backendtothefuture.com" target="_blank" rel="noopener noreferrer">backendtothefuture.com</a>
         </div>
-      </Card>
+      </div>
     </section>
 
-    <section class="section shell" id="contact">
-      <div class="section-header" style="margin-bottom: 2rem;">
-        <p class="eyebrow">
-          <span class="i18n inline" data-lang="es">Contacto</span>
-          <span class="i18n inline" data-lang="en">Contact</span>
-        </p>
-        <h2>
-          <span class="i18n inline" data-lang="es">Disponible para nuevos proyectos, consultoria y roles senior de backend.</span>
-          <span class="i18n inline" data-lang="en">Available for new projects, consulting engagements, and senior backend roles.</span>
-        </h2>
-        <p class="i18n" data-lang="es">
-          Elige la vía que prefieras para escribir o agendar una reunión.
-        </p>
-        <p class="i18n" data-lang="en">
-          Choose your preferred channel to reach out or book a meeting.
-        </p>
-        <div class="btns" style="margin-top: 10px;">
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Contacto</span>
+            <span class="i18n inline" data-lang="en">Contact</span>
+          </p>
+          <h2>
+            <span class="i18n inline" data-lang="es">Disponible para nuevos proyectos, consultoría y roles senior de backend.</span>
+            <span class="i18n inline" data-lang="en">Available for new projects, consulting engagements, and senior backend roles.</span>
+          </h2>
+          <p class="section-copy i18n" data-lang="es">Elige la vía que prefieras para escribir o agendar una reunión.</p>
+          <p class="section-copy i18n" data-lang="en">Choose your preferred channel to reach out or book a meeting.</p>
+        </div>
+
+        <div class="contact-cta">
           <a class="btn primary" href="https://calendly.com/diegobarrioh/30min" target="_blank" rel="noreferrer">
             <span class="i18n inline" data-lang="es">Reservar en Calendly</span>
             <span class="i18n inline" data-lang="en">Book on Calendly</span>
           </a>
         </div>
-      </div>
 
-      <div class="grid">
-        {socials.map((s) => (
-          <Card class="social-card">
-            {s.imgLight && s.imgDark ? (
-              <>
-                <img
-                  src={s.imgLight}
-                  alt={`${s.label} preview`}
-                  class="social-thumb thumb-light"
-                  loading="lazy"
-                />
-                <img
-                  src={s.imgDark}
-                  alt={`${s.label} preview`}
-                  class="social-thumb thumb-dark"
-                  loading="lazy"
-                />
-              </>
-            ) : (
-              <img src={s.img} alt={`${s.label} preview`} class="social-thumb" loading="lazy" />
-            )}
-            <div class="social-info">
-              <p class="eyebrow">{s.emoji} {s.label}</p>
-              <p class="small">{s.href.replace("mailto:", "")}</p>
-            </div>
-            <a class="btn social-cta" href={s.href} target="_blank" rel="noreferrer">
-              <span class="i18n inline" data-lang="es">Abrir</span>
-              <span class="i18n inline" data-lang="en">Open</span>
+        <div class="contact-rows">
+          {socials.map((s) => (
+            <a class="crow" href={s.href} target="_blank" rel="noreferrer">
+              <span class="crow-ico">{s.ico}</span>
+              <span class="crow-info">
+                <b>{s.label}</b>
+                <span>{s.handle}</span>
+              </span>
+              <span class="crow-cta">
+                <span class="i18n inline" data-lang="es">Abrir</span>
+                <span class="i18n inline" data-lang="en">Open</span>
+                {" "}→
+              </span>
             </a>
-          </Card>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
 
-    <footer class="footer small">
-      <span class="i18n inline" data-lang="es">
-        © {new Date().getFullYear()} Diego Barrio H. · Backend Engineering con foco en calidad, arquitectura y entrega.
-      </span>
-      <span class="i18n inline" data-lang="en">
-        © {new Date().getFullYear()} Diego Barrio H. · Backend Engineering focused on quality, architecture, and delivery.
-      </span>
+    <footer class="footer">
+      <div class="container">
+        <span class="i18n inline" data-lang="es">
+          © {new Date().getFullYear()} Diego Barrio H. · Backend Engineering con foco en calidad, arquitectura y entrega.
+        </span>
+        <span class="i18n inline" data-lang="en">
+          © {new Date().getFullYear()} Diego Barrio H. · Backend Engineering focused on quality, architecture, and delivery.
+        </span>
+      </div>
     </footer>
   </main>
 </BaseLayout>

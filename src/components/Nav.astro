@@ -19,34 +19,33 @@ const links = [
       <span class="brand-name">Diego Barrio H.</span>
     </a>
 
+    <div class="nav-panel" id="primary-menu">
+      <div class="nav-links">
+        {links.map((l) => (
+          <a href={l.href} class={current === l.key ? "active" : ""}>
+            <span class="i18n inline" data-lang="es">{l.labelEs}</span>
+            <span class="i18n inline" data-lang="en">{l.labelEn}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <div class="nav-actions">
+      <button class="toggle lang-toggle" type="button" id="lang-toggle" aria-label="Cambiar idioma">
+        <span class="opt" data-value="es">ES</span>
+        <span class="opt" data-value="en">EN</span>
+      </button>
+      <button class="toggle theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar tema">
+        <span class="opt" data-value="light">☀</span>
+        <span class="opt" data-value="dark">☾</span>
+      </button>
+    </div>
+
     <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir menu de navegacion">
       <span class="menu-toggle-line"></span>
       <span class="menu-toggle-line"></span>
       <span class="menu-toggle-line"></span>
     </button>
-
-    <div class="nav-panel" id="primary-menu">
-      <div class="nav-panel-inner">
-        <div class="nav-links">
-          {links.map((l) => (
-            <a href={l.href} class={current === l.key ? "active" : ""}>
-              <span class="i18n inline" data-lang="es">{l.labelEs}</span>
-              <span class="i18n inline" data-lang="en">{l.labelEn}</span>
-            </a>
-          ))}
-        </div>
-        <div class="nav-actions">
-          <button class="toggle lang-toggle" type="button" id="lang-toggle" aria-label="Cambiar idioma">
-            <span class="opt" data-value="es">🇪🇸</span>
-            <span class="opt" data-value="en">🇬🇧</span>
-          </button>
-          <button class="toggle theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar tema">
-            <span class="opt" data-value="light">☀︎</span>
-            <span class="opt" data-value="dark">☾</span>
-          </button>
-        </div>
-      </div>
-    </div>
   </div>
 </nav>
 
