@@ -731,20 +731,25 @@ main {
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
-  padding: 28px;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--line);
-  background: linear-gradient(
-    150deg,
-    color-mix(in oklab, var(--brand) 12%, var(--surface)),
-    color-mix(in oklab, var(--surface-soft) 80%, transparent)
-  );
 }
 
 .lab p {
   margin: 0;
   color: var(--text-soft);
   max-width: 56ch;
+}
+
+/* backendtothefuture.com CTA — amber → intense-orange brand gradient */
+.lab-cta {
+  border-color: transparent;
+  background: linear-gradient(135deg, #ffc400, #ff5e00);
+  color: #2a1400;
+  box-shadow: 0 12px 40px rgba(255, 122, 0, 0.28);
+}
+
+.lab-cta:hover {
+  border-color: transparent;
+  background: linear-gradient(135deg, #ffce1f, #ff6a14);
 }
 
 /* ============================================================
