@@ -172,6 +172,30 @@ a {
   outline-offset: 3px;
 }
 
+/* ---------- Scrollbar — brand-tinted ---------- */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklab, var(--brand) 30%, transparent) var(--bg);
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--brand) 30%, transparent);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--brand) 50%, transparent);
+}
+
 h1,
 h2,
 h3,
