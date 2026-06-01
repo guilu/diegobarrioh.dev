@@ -548,13 +548,13 @@ main {
 }
 
 .metric {
-  padding: 22px 22px 4px 0;
+  padding: 22px 16px 4px;
   border-right: 1px solid var(--line-soft);
+  text-align: center;
 }
 
 .metric:last-child {
   border-right: none;
-  padding-right: 0;
 }
 
 .metric-value {
