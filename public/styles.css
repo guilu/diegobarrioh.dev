@@ -849,20 +849,46 @@ main {
   .nav-inner {
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     min-height: auto;
     padding: 12px 0;
+  }
+
+  /* let the brand shrink (ellipsis) before anything wraps to a 2nd line */
+  .brand {
+    min-width: 0;
+    flex: 0 1 auto;
+    overflow: hidden;
+  }
+
+  .brand-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   /* keep toggles + hamburger on the top bar; links collapse below */
   .nav-actions {
     order: 2;
+    flex: none;
+    gap: 6px;
+  }
+
+  .nav-actions .toggle {
+    padding: 2px;
+  }
+
+  .nav-actions .toggle .opt {
+    min-width: 26px;
   }
 
   .menu-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    flex: none;
+    width: 38px;
+    height: 38px;
     order: 3;
   }
 
