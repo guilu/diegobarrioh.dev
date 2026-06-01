@@ -224,37 +224,6 @@ const experience = [
       </div>
     </section>
 
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-header">
-          <p class="eyebrow">
-            <span class="i18n inline" data-lang="es">Proyectos</span>
-            <span class="i18n inline" data-lang="en">Projects</span>
-          </p>
-          <h2>
-            <span class="i18n inline" data-lang="es">Trabajo real en dominios complejos.</span>
-            <span class="i18n inline" data-lang="en">Real work in complex domains.</span>
-          </h2>
-        </div>
-        <div class="proj-list">
-          {highlights.map((h, i) => (
-            <article class="proj">
-              <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
-              <h3>
-                <span class="i18n inline" data-lang="es">{h.titleEs}</span>
-                <span class="i18n inline" data-lang="en">{h.titleEn}</span>
-              </h3>
-              <p>
-                <span class="i18n inline" data-lang="es">{h.textEs}</span>
-                <span class="i18n inline" data-lang="en">{h.textEn}</span>
-              </p>
-              <div class="taglist">{h.stack.map((s) => <span class="pill">{s}</span>)}</div>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-
     <section class="section" id="experience">
       <div class="container">
         <div class="section-header">
@@ -286,6 +255,37 @@ const experience = [
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">
+            <span class="i18n inline" data-lang="es">Proyectos</span>
+            <span class="i18n inline" data-lang="en">Projects</span>
+          </p>
+          <h2>
+            <span class="i18n inline" data-lang="es">Trabajo real en dominios complejos.</span>
+            <span class="i18n inline" data-lang="en">Real work in complex domains.</span>
+          </h2>
+        </div>
+        <div class="proj-list">
+          {highlights.map((h, i) => (
+            <article class="proj">
+              <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
+              <h3>
+                <span class="i18n inline" data-lang="es">{h.titleEs}</span>
+                <span class="i18n inline" data-lang="en">{h.titleEn}</span>
+              </h3>
+              <p>
+                <span class="i18n inline" data-lang="es">{h.textEs}</span>
+                <span class="i18n inline" data-lang="en">{h.textEn}</span>
+              </p>
+              <div class="taglist">{h.stack.map((s) => <span class="pill">{s}</span>)}</div>
+            </article>
           ))}
         </div>
       </div>
