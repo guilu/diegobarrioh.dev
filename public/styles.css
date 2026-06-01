@@ -892,6 +892,13 @@ main {
     order: 3;
   }
 
+  /* desktop offsets the portrait far left of the centered column;
+     on mobile that pushes it off-screen, so re-center it */
+  body,
+  [data-theme="light"] body {
+    background-position: center center;
+  }
+
   .nav-panel {
     order: 4;
     flex-basis: 100%;
