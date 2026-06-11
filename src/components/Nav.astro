@@ -3,9 +3,9 @@ const { current } = Astro.props;
 
 const links = [
   { href: "/#home", labelEs: "Inicio", labelEn: "Home", key: "home" },
-  { href: "/#skills", labelEs: "Stack", labelEn: "Stack", key: "skills" },
   { href: "/#experience", labelEs: "Experiencia", labelEn: "Experience", key: "experience" },
   { href: "/#projects", labelEs: "Proyectos", labelEn: "Projects", key: "projects" },
+  { href: "/#skills", labelEs: "Stack", labelEn: "Stack", key: "skills" },
   { href: "/#lab", labelEs: "Lab", labelEn: "Lab", key: "lab" },
   { href: "/#contact", labelEs: "Contacto", labelEn: "Contact", key: "contact" },
 ];
@@ -31,6 +31,7 @@ const links = [
     </div>
 
     <div class="nav-actions">
+      <a class="btn primary nav-cv" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noopener noreferrer">CV</a>
       <button class="toggle lang-toggle" type="button" id="lang-toggle" aria-label="Cambiar idioma">
         <span class="opt" data-value="es">ES</span>
         <span class="opt" data-value="en">EN</span>

@@ -1,8 +1,8 @@
 /* ============================================================
    Diego Barrio H. — diegobarrioh.dev
-   Redesign: cleaner, more typographic. Hairline rules over
-   nested boxes. Geist (display + body) · IBM Plex Mono (technical).
-   Tokens carried from the design system (colors_and_type.css).
+   Redesign "Editorial Engineering": recruiter-first single page.
+   Big type, hairline rules, numbered sections, real portrait in
+   the hero. Geist (display + body) · IBM Plex Mono (technical).
    ============================================================ */
 
 /* ---------- Web fonts (local, offline-ready) ---------- */
@@ -29,34 +29,34 @@
 }
 
 /* ============================================================
-   1. TOKENS — dark "Nocturne" (default)
+   1. TOKENS — dark "Ink" (default)
    ============================================================ */
 :root {
   /* Brand */
   --brand: #7000ff;
   --brand-strong: #5600c7;
-  --brand-soft: #9a52ff;
-  --brand-glow: rgba(112, 0, 255, 0.26);
+  --brand-soft: #a98bff;
+  --brand-glow: rgba(112, 0, 255, 0.22);
 
   /* Surfaces */
-  --bg: #06101a;
-  --bg-elevated: rgba(12, 24, 37, 0.78);
-  --surface: #101f2e;
-  --surface-soft: #14283d;
-  --surface-strong: #0c1a29;
+  --bg: #070b12;
+  --bg-elevated: rgba(11, 17, 27, 0.82);
+  --surface: #0e1622;
+  --surface-soft: #131e2e;
+  --surface-strong: #0a121d;
 
   /* Text */
-  --text: #e8f2ff;
-  --text-soft: #a7bdcf;
-  --text-faint: #6f8499;
+  --text: #e9eef7;
+  --text-soft: #9fadc2;
+  --text-faint: #66758c;
 
-  /* Lines & dividers — the workhorse of the redesign */
-  --line: rgba(141, 168, 193, 0.26);
-  --line-soft: rgba(141, 168, 193, 0.14);
-  --line-strong: rgba(141, 168, 193, 0.4);
+  /* Lines & dividers — the workhorse of the layout */
+  --line: rgba(148, 168, 196, 0.24);
+  --line-soft: rgba(148, 168, 196, 0.13);
+  --line-strong: rgba(148, 168, 196, 0.38);
 
   /* Status */
-  --ok: #38d39f;
+  --ok: #2fd996;
   --warn: #f5b942;
   --err: #ff5c7a;
 
@@ -68,9 +68,8 @@
   --radius-pill: 999px;
 
   /* Elevation */
-  --shadow-soft: 0 18px 48px rgba(4, 12, 20, 0.34);
-  --shadow-hard: 0 26px 60px rgba(2, 8, 14, 0.46);
-  --shadow-glow: 0 12px 40px var(--brand-glow);
+  --shadow-soft: 0 18px 48px rgba(3, 7, 14, 0.4);
+  --shadow-glow: 0 12px 44px var(--brand-glow);
 
   /* Spacing (4px base) */
   --space-1: 4px;
@@ -87,39 +86,38 @@
   --font-sans: "Geist", "Inter", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
 
-  --fs-display: clamp(2rem, 3.8vw, 4.1rem);
-  --fs-h1: clamp(1.8rem, 3vw, 2.8rem);
-  --fs-h2: clamp(1.4rem, 2.2vw, 2.2rem);
-  --fs-lead: clamp(1rem, 1.25vw, 1.18rem);
+  --fs-display: clamp(2.5rem, 5.4vw, 4.6rem);
+  --fs-h2: clamp(1.5rem, 2.4vw, 2.3rem);
+  --fs-lead: clamp(1rem, 1.3vw, 1.2rem);
 
   /* Motion */
   --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
   --dur-fast: 0.18s;
   --dur: 0.25s;
+  --dur-slow: 0.6s;
 }
 
 [data-theme="light"] {
-  --brand: #7000ff;
-  --brand-strong: #5e00d6;
+  --brand: #6500e6;
+  --brand-strong: #5600c7;
   --brand-soft: #6516e0;
-  --brand-glow: rgba(112, 0, 255, 0.18);
+  --brand-glow: rgba(101, 0, 230, 0.14);
 
-  --bg: #f4f9ff;
-  --bg-elevated: rgba(248, 252, 255, 0.8);
+  --bg: #f7f9fc;
+  --bg-elevated: rgba(250, 252, 255, 0.85);
   --surface: #ffffff;
-  --surface-soft: #eef5ff;
-  --surface-strong: #f7fbff;
+  --surface-soft: #eef3fa;
+  --surface-strong: #f2f6fb;
 
-  --text: #102335;
-  --text-soft: #4c6378;
-  --text-faint: #7a90a4;
+  --text: #131a26;
+  --text-soft: #4b5c72;
+  --text-faint: #7d8da1;
 
-  --line: rgba(110, 140, 170, 0.3);
-  --line-soft: rgba(110, 140, 170, 0.16);
-  --line-strong: rgba(110, 140, 170, 0.46);
+  --line: rgba(99, 125, 158, 0.3);
+  --line-soft: rgba(99, 125, 158, 0.16);
+  --line-strong: rgba(99, 125, 158, 0.46);
 
-  --shadow-soft: 0 12px 30px rgba(70, 107, 142, 0.12);
-  --shadow-hard: 0 24px 48px rgba(70, 107, 142, 0.16);
+  --shadow-soft: 0 14px 34px rgba(70, 100, 140, 0.12);
   --shadow-glow: 0 12px 36px var(--brand-glow);
 }
 
@@ -142,10 +140,6 @@ html {
 
 body {
   color: var(--text);
-  /* Dimmed B&W portrait as a fixed, heavily-washed ambient texture */
-  background: linear-gradient(color-mix(in oklab, var(--bg) 88%, transparent), color-mix(in oklab, var(--bg) 88%, transparent)),
-    url("/img/dbh-wall.jpg") center / cover fixed;
-  background-position: calc(-52vw) center;
   background-color: var(--bg);
   font-family: var(--font-sans);
   line-height: 1.6;
@@ -153,13 +147,6 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   transition: background-color var(--dur) var(--ease), color var(--dur) var(--ease);
-}
-
-[data-theme="light"] body {
-  background: linear-gradient(color-mix(in oklab, var(--bg) 94%, transparent), color-mix(in oklab, var(--bg) 94%, transparent)),
-    url("/img/dbh-wall.jpg") center / cover fixed;
-  background-position: calc(-52vw) center;
-  background-color: var(--bg);
 }
 
 a {
@@ -170,6 +157,11 @@ a {
 :focus-visible {
   outline: 2px solid color-mix(in oklab, var(--brand) 74%, white 26%);
   outline-offset: 3px;
+}
+
+img {
+  max-width: 100%;
+  display: block;
 }
 
 /* ---------- Scrollbar — brand-tinted ---------- */
@@ -196,6 +188,10 @@ html {
   background: color-mix(in oklab, var(--brand) 50%, transparent);
 }
 
+::selection {
+  background: color-mix(in oklab, var(--brand) 30%, transparent);
+}
+
 h1,
 h2,
 h3,
@@ -220,7 +216,7 @@ p {
 }
 
 .container {
-  width: min(1080px, calc(100% - 48px));
+  width: min(1120px, calc(100% - 48px));
   margin: 0 auto;
 }
 
@@ -235,6 +231,18 @@ p {
   border: 0;
 }
 
+/* ---------- Scroll reveal (JS adds .in; no-JS stays visible) ---------- */
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity var(--dur-slow) var(--ease), transform var(--dur-slow) var(--ease);
+}
+
+html.js .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
 /* ============================================================
    3. NAV — sticky, blurred, hairline
    ============================================================ */
@@ -245,13 +253,14 @@ p {
   border-bottom: 1px solid var(--line-soft);
   background: color-mix(in oklab, var(--bg-elevated) 88%, transparent);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .nav-inner {
   display: flex;
   align-items: center;
   gap: 16px;
-  min-height: 72px;
+  min-height: 68px;
 }
 
 .brand {
@@ -297,7 +306,7 @@ p {
 .nav-links a {
   color: var(--text-soft);
   border-radius: 999px;
-  padding: 8px 14px;
+  padding: 8px 13px;
   font-size: 14px;
   font-weight: 500;
   transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
@@ -313,6 +322,11 @@ p {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.nav-cv {
+  padding: 9px 15px;
+  font-size: 13px;
 }
 
 /* Toggles */
@@ -408,8 +422,8 @@ p {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 11px 18px;
-  border-radius: 10px;
+  padding: 12px 20px;
+  border-radius: 11px;
   border: 1px solid var(--line);
   background: color-mix(in oklab, var(--surface-strong) 90%, transparent);
   color: var(--text);
@@ -419,7 +433,7 @@ p {
   cursor: pointer;
   white-space: nowrap;
   transition: background-color var(--dur) var(--ease), border-color var(--dur) var(--ease),
-    transform var(--dur-fast) var(--ease);
+    transform var(--dur-fast) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
 .btn:hover {
@@ -437,8 +451,12 @@ p {
     color-mix(in oklab, var(--brand) 84%, #fff 16%),
     color-mix(in oklab, var(--brand-strong) 90%, #000 10%)
   );
-  color: #f8fffd;
+  color: #f8f6ff;
   box-shadow: var(--shadow-glow);
+}
+
+.btn.primary:hover {
+  box-shadow: 0 16px 52px var(--brand-glow);
 }
 
 .btn.ghost {
@@ -453,103 +471,154 @@ p {
   font-weight: 500;
   font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
-  color: color-mix(in oklab, var(--brand) 78%, var(--text-soft));
+  letter-spacing: 0.16em;
+  color: color-mix(in oklab, var(--brand-soft) 80%, var(--text-soft));
 }
 
 /* ============================================================
-   6. SECTIONS — hairline-separated rhythm
+   6. SECTIONS — numbered editorial headers, hairline rhythm
    ============================================================ */
 main {
   display: block;
 }
 
 .section {
-  padding: clamp(28px, 3.5vw, 48px) 0 clamp(36px, 5vw, 64px);
-  scroll-margin-top: 90px;
-}
-
-.section + .section,
-.section {
+  padding: clamp(48px, 6vw, 88px) 0;
   border-top: 1px solid var(--line-soft);
+  scroll-margin-top: 86px;
 }
 
-.section-header {
-  margin-bottom: var(--space-6);
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+  margin-bottom: clamp(28px, 3.4vw, 44px);
 }
 
-.section-header h2 {
-  margin: 12px 0 0;
+.sec-num {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  flex: none;
+}
+
+.section-head h2 {
   font-size: var(--fs-h2);
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.2;
-  max-width: 30ch;
+  line-height: 1.15;
+  max-width: 26ch;
   text-wrap: balance;
 }
 
+.section-kicker {
+  margin-left: auto;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
 .section-copy {
-  margin: 16px 0 0;
-  max-width: 70ch;
+  max-width: 64ch;
   color: var(--text-soft);
+  font-size: var(--fs-lead);
   text-wrap: pretty;
 }
 
+.section-copy + .section-copy {
+  margin-top: 14px;
+}
+
 /* ============================================================
-   7. HERO
+   7. HERO — split: copy left, portrait right
    ============================================================ */
 .hero {
   position: relative;
-  padding: clamp(48px, 6.5vw, 84px) 0 clamp(80px, 10vw, 128px);
   overflow: clip;
-  scroll-margin-top: 90px;
+  scroll-margin-top: 86px;
 }
 
-.hero .container {
-  position: relative;
-  z-index: 1;
-}
-
-.hero::after {
+.hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
   pointer-events: none;
-  background: radial-gradient(560px 280px at 8% -5%, var(--brand-glow), transparent 70%),
-    radial-gradient(520px 300px at 98% 4%, var(--brand-glow), transparent 76%);
+  background: radial-gradient(640px 320px at 12% -8%, var(--brand-glow), transparent 70%),
+    radial-gradient(560px 380px at 88% 30%, color-mix(in oklab, var(--brand-glow) 70%, transparent), transparent 74%);
 }
 
-.hero-eyebrow {
-  margin-bottom: 16px;
+.hero-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+  gap: clamp(24px, 4vw, 64px);
+  align-items: center;
+  padding: clamp(40px, 5.5vw, 72px) 0 clamp(28px, 3.4vw, 44px);
+}
+
+.hero-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 7px 14px;
+  border: 1px solid color-mix(in oklab, var(--ok) 36%, var(--line));
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: color-mix(in oklab, var(--ok) 72%, var(--text));
+  background: color-mix(in oklab, var(--ok) 7%, transparent);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: var(--ok);
+  box-shadow: 0 0 0 0 color-mix(in oklab, var(--ok) 55%, transparent);
+  animation: pulse 2.4s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--ok) 55%, transparent);
+  }
+  70% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 0 transparent;
+  }
 }
 
 .hero h1 {
+  margin-top: 22px;
   font-size: var(--fs-display);
-  line-height: 1.04;
-  letter-spacing: -0.03em;
-  max-width: 20ch;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   font-weight: 700;
 }
 
 .hero-name {
   display: block;
-  color: var(--brand-soft);
 }
 
 .hero-role {
   display: block;
-  margin-top: 8px;
-  font-size: clamp(1.3rem, 2.1vw, 2.3rem);
-  color: var(--text);
-  font-weight: 600;
+  margin-top: 10px;
+  font-size: clamp(1.25rem, 2.1vw, 1.9rem);
+  font-weight: 500;
   letter-spacing: -0.02em;
+  color: var(--brand-soft);
 }
 
-.lead,
 .hero-lead {
   margin: 22px 0 0;
-  max-width: 56ch;
+  max-width: 52ch;
   font-size: var(--fs-lead);
   color: var(--text-soft);
   text-wrap: pretty;
@@ -559,22 +628,58 @@ main {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  margin-top: 28px;
+  margin-top: 30px;
+}
+
+/* Portrait — B&W photo on pure black, masked into the background */
+.hero-figure {
+  position: relative;
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+}
+
+.hero-portrait {
+  width: min(340px, 100%);
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  /* source image is 16:9 with the face centered — crop to the middle */
+  object-position: center 42%;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--line);
+  background: #000;
+  box-shadow: var(--shadow-soft);
+  filter: grayscale(1) contrast(1.04);
+  -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+  mask-image: linear-gradient(180deg, #000 78%, transparent 100%);
+}
+
+.hero-figure::before {
+  content: "";
+  position: absolute;
+  inset: 8% 12%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--brand-glow), transparent 78%);
+  pointer-events: none;
 }
 
 /* Metrics — hairline grid, no boxes */
 .hero-metrics {
+  position: relative;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  margin-top: var(--space-7);
   border-top: 1px solid var(--line-soft);
 }
 
 .metric {
-  padding: 22px 16px 4px;
+  padding: 24px 18px 0;
   border-right: 1px solid var(--line-soft);
-  text-align: center;
+}
+
+.metric:first-child {
+  padding-left: 0;
 }
 
 .metric:last-child {
@@ -582,9 +687,8 @@ main {
 }
 
 .metric-value {
-  color: var(--text);
   font-weight: 700;
-  font-size: 2rem;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
   line-height: 1;
   letter-spacing: -0.02em;
 }
@@ -593,16 +697,189 @@ main {
   margin-top: 10px;
   font-size: 0.86rem;
   color: var(--text-soft);
-  line-height: 1.4;
+  line-height: 1.45;
+  max-width: 24ch;
+}
+
+/* Companies — social proof strip */
+.hero-companies {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 12px 28px;
+  padding: clamp(22px, 3vw, 34px) 0 clamp(40px, 5vw, 64px);
+}
+
+.companies-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--text-faint);
+}
+
+.company {
+  font-family: var(--font-mono);
+  font-size: 0.84rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-soft);
+  white-space: nowrap;
 }
 
 /* ============================================================
-   8. STACK — grouped skill tags
+   8. EXPERIENCE — spine timeline
+   ============================================================ */
+.timeline {
+  position: relative;
+  display: grid;
+}
+
+.tl-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 28px;
+  padding: 26px 0 26px 26px;
+  border-top: 1px solid var(--line-soft);
+}
+
+/* vertical spine + node */
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--line-soft);
+}
+
+.tl-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 34px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+  background: var(--text-faint);
+  transition: background-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.tl-item:hover::after,
+.tl-item:first-of-type::after {
+  background: var(--brand-soft);
+  box-shadow: 0 0 14px var(--brand-glow);
+}
+
+.tl-period {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  padding-top: 4px;
+}
+
+.tl-current {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ok);
+}
+
+.tl-role {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.tl-company {
+  color: var(--brand-soft);
+  font-weight: 500;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.tl-impact {
+  color: var(--text-soft);
+  margin-top: 10px;
+  font-size: 0.95rem;
+  max-width: 62ch;
+}
+
+.tl-item .taglist {
+  margin-top: 14px;
+}
+
+/* ============================================================
+   9. PROJECTS — numbered hairline rows with arrow
+   ============================================================ */
+.proj-list {
+  display: grid;
+}
+
+.proj {
+  display: grid;
+  grid-template-columns: 56px 1fr auto;
+  gap: 8px 24px;
+  align-items: start;
+  padding: 28px 0;
+  border-top: 1px solid var(--line-soft);
+  transition: padding-left var(--dur) var(--ease);
+}
+
+.proj:hover {
+  padding-left: 10px;
+}
+
+.proj-num {
+  grid-row: span 3;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  padding-top: 6px;
+}
+
+.proj h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.proj-arrow {
+  grid-row: span 3;
+  align-self: center;
+  font-size: 1.2rem;
+  color: var(--text-faint);
+  transition: color var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+
+.proj:hover .proj-arrow {
+  color: var(--brand-soft);
+  transform: translateX(6px);
+}
+
+.proj p {
+  color: var(--text-soft);
+  max-width: 60ch;
+  font-size: 0.95rem;
+}
+
+.proj .taglist {
+  margin-top: 10px;
+}
+
+/* ============================================================
+   10. STACK — grouped skill tags
    ============================================================ */
 .stack-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-6) var(--space-7);
+  gap: var(--space-6) var(--space-8);
 }
 
 .stack-group h3 {
@@ -629,101 +906,23 @@ main {
 }
 
 .pill {
-  border: 1px solid color-mix(in oklab, var(--brand) 26%, var(--line));
+  border: 1px solid color-mix(in oklab, var(--brand) 24%, var(--line));
   border-radius: 999px;
   padding: 6px 12px;
-  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
   color: var(--text);
   background: color-mix(in oklab, var(--surface-strong) 90%, transparent);
   white-space: nowrap;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.pill:hover {
+  border-color: color-mix(in oklab, var(--brand) 56%, var(--line));
 }
 
 /* ============================================================
-   9. PROJECTS — numbered hairline rows
-   ============================================================ */
-.proj-list {
-  display: grid;
-  gap: 0;
-}
-
-.proj {
-  padding: 26px 0;
-  border-top: 1px solid var(--line-soft);
-  transition: padding-left var(--dur) var(--ease);
-}
-
-.proj:hover {
-  padding-left: 8px;
-}
-
-.proj-num {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-faint);
-}
-
-.proj h3 {
-  margin: 6px 0 0;
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.proj p {
-  margin: 8px 0 0;
-  color: var(--text-soft);
-  max-width: 60ch;
-  font-size: 0.94rem;
-}
-
-.proj .taglist {
-  margin-top: 14px;
-}
-
-/* ============================================================
-   10. EXPERIENCE — timeline rows
-   ============================================================ */
-.timeline {
-  display: grid;
-  gap: 0;
-}
-
-.tl-item {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 24px;
-  padding: 24px 0;
-  border-top: 1px solid var(--line-soft);
-}
-
-.tl-period {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-faint);
-  padding-top: 3px;
-}
-
-.tl-role {
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.tl-company {
-  color: var(--brand-soft);
-  font-weight: 500;
-  font-size: 0.9rem;
-  margin-top: 4px;
-}
-
-.tl-impact {
-  color: var(--text-soft);
-  margin-top: 10px;
-  font-size: 0.94rem;
-  max-width: 62ch;
-}
-
-/* ============================================================
-   11. LAB — gradient panel (the one allowed "box")
+   11. LAB — gradient panel CTA
    ============================================================ */
 .lab {
   display: flex;
@@ -739,7 +938,7 @@ main {
   max-width: 56ch;
 }
 
-/* backendtothefuture.com CTA — amber → intense-orange brand gradient */
+/* backendtothefuture.com CTA — amber → intense-orange gradient */
 .lab-cta {
   border-color: transparent;
   background: linear-gradient(135deg, #ffc400, #ff5e00);
@@ -753,16 +952,44 @@ main {
 }
 
 /* ============================================================
-   12. CONTACT — glyph hairline rows
+   12. CONTACT — giant mail link + glyph hairline rows
    ============================================================ */
+.contact-lead {
+  max-width: 56ch;
+  color: var(--text-soft);
+  font-size: var(--fs-lead);
+}
+
+.contact-mail {
+  display: inline-block;
+  margin-top: clamp(20px, 3vw, 34px);
+  font-size: clamp(1.4rem, 3.6vw, 2.9rem);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+  background: linear-gradient(100deg, var(--text) 30%, var(--brand-soft));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  border-bottom: 1px solid var(--line);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.contact-mail:hover {
+  border-color: var(--brand-soft);
+}
+
 .contact-cta {
-  margin-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: clamp(24px, 3.2vw, 38px);
 }
 
 .contact-rows {
   display: grid;
-  gap: 0;
-  margin-top: var(--space-6);
+  margin-top: var(--space-7);
 }
 
 .crow {
@@ -791,7 +1018,7 @@ main {
   place-items: center;
   font-family: var(--font-mono);
   font-size: 13px;
-  color: var(--brand);
+  color: var(--brand-soft);
   border: 1px solid var(--line);
   background: color-mix(in oklab, var(--brand) 7%, var(--surface));
 }
@@ -827,8 +1054,32 @@ main {
 .footer {
   padding: var(--space-6) 0 var(--space-7);
   border-top: 1px solid var(--line-soft);
+}
+
+.footer-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
   color: var(--text-faint);
   font-size: 0.84rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 18px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+}
+
+.footer-links a {
+  color: var(--text-soft);
+  transition: color var(--dur) var(--ease);
+}
+
+.footer-links a:hover {
+  color: var(--text);
 }
 
 .small {
@@ -845,11 +1096,36 @@ main {
     animation: none !important;
     scroll-behavior: auto !important;
   }
+
+  html.js .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ============================================================
    15. RESPONSIVE
    ============================================================ */
+@media (max-width: 920px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-figure {
+    order: -1;
+    min-height: 0;
+    justify-content: flex-start;
+  }
+
+  .hero-portrait {
+    width: min(240px, 60%);
+  }
+
+  .section-kicker {
+    display: none;
+  }
+}
+
 @media (max-width: 820px) {
   .nav-inner {
     flex-wrap: wrap;
@@ -879,6 +1155,10 @@ main {
     gap: 6px;
   }
 
+  .nav-cv {
+    display: none;
+  }
+
   .nav-actions .toggle {
     padding: 2px;
   }
@@ -897,13 +1177,6 @@ main {
     order: 3;
   }
 
-  /* desktop offsets the portrait far left of the centered column;
-     on mobile that pushes it off-screen, so re-center it */
-  body,
-  [data-theme="light"] body {
-    background-position: center center;
-  }
-
   .nav-panel {
     order: 4;
     flex-basis: 100%;
@@ -916,7 +1189,7 @@ main {
   }
 
   .nav.is-open .nav-panel {
-    max-height: 320px;
+    max-height: 360px;
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
@@ -954,7 +1227,25 @@ main {
 
   .tl-item {
     grid-template-columns: 1fr;
-    gap: 6px;
+    gap: 8px;
+  }
+
+  .proj {
+    grid-template-columns: 1fr;
+  }
+
+  .proj-num,
+  .proj-arrow {
+    grid-row: auto;
+  }
+
+  .proj-arrow {
+    display: none;
+  }
+
+  .section-head {
+    flex-direction: column;
+    gap: 10px;
   }
 }
 
@@ -971,6 +1262,11 @@ main {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 /* ============================================================
@@ -978,6 +1274,19 @@ main {
    Not part of the single-page redesign and not linked from nav,
    but kept readable. The homepage no longer uses these classes.
    ============================================================ */
+.section-header {
+  margin-bottom: var(--space-6);
+}
+
+.section-header h2 {
+  margin: 12px 0 0;
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  max-width: 30ch;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -1014,10 +1323,23 @@ main {
   margin-top: 18px;
 }
 
+.lead {
+  margin: 22px 0 0;
+  max-width: 56ch;
+  font-size: var(--fs-lead);
+  color: var(--text-soft);
+}
+
 /* cv experience cards: space them (homepage .tl-item rows stay flush) */
 .timeline > .card {
   grid-column: 1 / -1;
   margin-bottom: 12px;
+  padding-left: 20px;
+}
+
+.timeline > .card::before,
+.timeline > .card::after {
+  content: none;
 }
 
 .section > .grid,
