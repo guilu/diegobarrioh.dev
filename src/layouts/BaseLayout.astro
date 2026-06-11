@@ -52,11 +52,14 @@ const personSchema = {
       (() => {
         const root = document.documentElement;
         root.classList.add("js");
+        const params = new URLSearchParams(location.search);
         const theme =
+          params.get("theme") ||
           localStorage.getItem("theme") ||
           (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
         root.setAttribute("data-theme", theme);
         const lang =
+          params.get("lang") ||
           localStorage.getItem("lang") ||
           ((navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en");
         root.setAttribute("data-lang", lang);
