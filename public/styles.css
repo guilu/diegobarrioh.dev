@@ -562,7 +562,7 @@ main {
   grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
   gap: clamp(24px, 4vw, 64px);
   align-items: center;
-  padding: clamp(40px, 5.5vw, 72px) 0 clamp(28px, 3.4vw, 44px);
+  padding: clamp(16px, 2.4vw, 36px) 0 clamp(28px, 3.4vw, 44px);
 }
 
 .hero-status {
@@ -1193,7 +1193,7 @@ main {
     min-height: 0;
     justify-content: center;
     /* the masked photo carries invisible black headroom — pull it up */
-    margin-top: -28px;
+    margin-top: -44px;
   }
 
   /* light theme shows a framed card — keep a gap below the nav */
