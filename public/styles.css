@@ -1165,7 +1165,7 @@ main {
   .hero-figure {
     order: -1;
     min-height: 0;
-    justify-content: flex-start;
+    justify-content: center;
   }
 
   .hero-portrait {
