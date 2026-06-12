@@ -1356,8 +1356,8 @@ main {
     letter-spacing: -0.02em;
   }
 
-  .hero-actions .btn {
-    width: 100%;
+  .hero-actions {
+    justify-content: center;
   }
 
   .lab {
