@@ -1160,6 +1160,7 @@ main {
 @media (max-width: 920px) {
   .hero-grid {
     grid-template-columns: 1fr;
+    padding-top: 10px;
   }
 
   .hero-figure {
