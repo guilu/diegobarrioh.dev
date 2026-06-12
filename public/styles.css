@@ -678,6 +678,10 @@ main {
 [data-theme="light"] .portrait-light {
   display: block;
   mix-blend-mode: multiply;
+  /* multiply already hides the white bg — only the sweater's crop
+     line needs fading, and earlier than the dark radial mask */
+  -webkit-mask-image: linear-gradient(180deg, #000 62%, transparent 88%);
+  mask-image: linear-gradient(180deg, #000 62%, transparent 88%);
 }
 
 .hero-figure::before {
@@ -1209,13 +1213,6 @@ main {
   .hero-portrait {
     pointer-events: none;
   }
-
-  /* light source has no headroom — smaller scale so the sweater
-     doesn't run over the badge */
-  [data-theme="light"] .hero-portrait {
-    transform: scale(1.12);
-  }
-
   .hero-status {
     display: flex;
     width: max-content;
