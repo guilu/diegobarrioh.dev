@@ -1160,13 +1160,20 @@ main {
 @media (max-width: 920px) {
   .hero-grid {
     grid-template-columns: 1fr;
-    padding-top: 10px;
+    padding-top: 0;
   }
 
   .hero-figure {
     order: -1;
     min-height: 0;
     justify-content: center;
+    /* the masked photo carries invisible black headroom — pull it up */
+    margin-top: -28px;
+  }
+
+  /* light theme shows a framed card — keep a gap below the nav */
+  [data-theme="light"] .hero-figure {
+    margin-top: 16px;
   }
 
   .hero-portrait {
