@@ -306,8 +306,8 @@ html.js .reveal.in {
 .nav-links a {
   color: var(--text-soft);
   border-radius: 999px;
-  padding: 8px 13px;
-  font-size: 14px;
+  padding: 8px 14px;
+  font-size: 15px;
   font-weight: 500;
   transition: color var(--dur) var(--ease), background-color var(--dur) var(--ease);
 }
@@ -324,35 +324,49 @@ html.js .reveal.in {
   gap: 8px;
 }
 
+/* CV pill — same height as the toggles, sits in line with them */
 .nav-cv {
-  padding: 9px 15px;
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 999px;
   font-size: 13px;
+  gap: 6px;
 }
 
-/* Toggles */
+.nav-cv svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Toggles — pill switches with a solid brand chip on the active side */
 .toggle {
   display: inline-flex;
   align-items: center;
   gap: 2px;
   padding: 3px;
+  height: 36px;
   border-radius: 999px;
   border: 1px solid var(--line);
   background: color-mix(in oklab, var(--surface-strong) 92%, transparent);
   color: var(--text);
   cursor: pointer;
+  transition: border-color var(--dur) var(--ease);
+}
+
+.toggle:hover {
+  border-color: color-mix(in oklab, var(--brand) 44%, var(--line));
 }
 
 .toggle .opt {
-  min-width: 32px;
+  min-width: 34px;
   height: 28px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   border-radius: 999px;
   font-size: 13px;
-  font-weight: 500;
-  color: var(--text-soft);
-  border: 1px solid transparent;
+  font-weight: 600;
+  color: var(--text-faint);
   transition: all var(--dur) var(--ease);
 }
 
@@ -361,13 +375,21 @@ html.js .reveal.in {
   font-size: 12px;
 }
 
+.theme-toggle .opt {
+  font-size: 14px;
+}
+
 [data-theme="light"] .theme-toggle .opt[data-value="light"],
 [data-theme="dark"] .theme-toggle .opt[data-value="dark"],
 [data-lang="es"] .lang-toggle .opt[data-value="es"],
 [data-lang="en"] .lang-toggle .opt[data-value="en"] {
-  color: var(--text);
-  background: color-mix(in oklab, var(--brand) 20%, transparent);
-  border-color: color-mix(in oklab, var(--brand) 56%, var(--line));
+  color: #f8f6ff;
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--brand) 84%, #fff 16%),
+    color-mix(in oklab, var(--brand-strong) 90%, #000 10%)
+  );
+  box-shadow: 0 4px 14px var(--brand-glow);
 }
 
 /* Mobile menu button */
@@ -1232,10 +1254,11 @@ main {
     padding: 12px 0;
   }
 
-  /* let the brand shrink (ellipsis) before anything wraps to a 2nd line */
+  /* flex-basis 0: the brand fills leftover space and ellipsizes —
+     it can never force the controls to wrap to a 2nd line */
   .brand {
     min-width: 0;
-    flex: 0 1 auto;
+    flex: 1 1 0;
     overflow: hidden;
   }
 
@@ -1245,23 +1268,28 @@ main {
     text-overflow: ellipsis;
   }
 
-  /* keep toggles + hamburger on the top bar; links collapse below */
+  /* keep CV + toggles + hamburger on the top bar; links collapse below */
   .nav-actions {
     order: 2;
     flex: none;
-    gap: 6px;
+    gap: 5px;
   }
 
   .nav-cv {
-    display: none;
+    height: 32px;
+    padding: 0 10px;
+    font-size: 12px;
   }
 
   .nav-actions .toggle {
     padding: 2px;
+    height: 32px;
   }
 
   .nav-actions .toggle .opt {
     min-width: 26px;
+    height: 26px;
+    font-size: 12px;
   }
 
   .menu-toggle {
