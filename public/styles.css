@@ -272,14 +272,14 @@ html.js .reveal.in {
 }
 
 .brand-name {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
 
 .brand-logo {
-  width: 26px;
-  height: 26px;
+  width: 32px;
+  height: 32px;
 }
 
 .logo-light {
@@ -1361,6 +1361,13 @@ main {
   }
 }
 
+@media (max-width: 560px) {
+  /* not enough room for full-size controls plus the name — logo only */
+  .brand-name {
+    display: none;
+  }
+}
+
 @media (max-width: 620px) {
   .hero h1 {
     letter-spacing: -0.02em;
@@ -1369,6 +1376,10 @@ main {
   .hero-actions {
     flex-direction: column;
     align-items: center;
+  }
+
+  .hero-actions .btn {
+    width: min(280px, 100%);
   }
 
   .lab {
