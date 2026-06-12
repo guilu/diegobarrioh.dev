@@ -463,6 +463,12 @@ html.js .reveal.in {
   background: transparent;
 }
 
+.btn svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
 /* ============================================================
    5. TYPE PRIMITIVES
    ============================================================ */
