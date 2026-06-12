@@ -647,30 +647,15 @@ main {
   min-height: 300px;
 }
 
-/* Unframed: the B&W-on-black photo dissolves into the dark bg via a
-   radial mask, so the face floats over the page */
+/* Unframed: the portrait is a true alpha cutout (Vision subject lift),
+   so it floats over any background; only the sweater's bottom crop
+   line needs a fade */
 .hero-portrait {
   width: min(400px, 100%);
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  /* source image is 16:9 with the face centered — crop to the middle */
-  object-position: center 42%;
+  height: auto;
   filter: grayscale(1) contrast(1.04);
-  /* screen-blend: pure black pixels vanish into the page, face floats */
-  mix-blend-mode: screen;
-  -webkit-mask-image: radial-gradient(85% 80% at 50% 44%, #000 52%, transparent 90%);
-  mask-image: radial-gradient(85% 80% at 50% 44%, #000 52%, transparent 90%);
-}
-
-/* Light theme: same unframed look — only the blend changes, screen
-   would wash the light face tones out on a light bg; the radial mask
-   still fades the edges into the page */
-[data-theme="light"] .hero-portrait {
-  mix-blend-mode: normal;
-  /* tighter vignette: on a light bg the black needs to fade out well
-     before the element edges or it reads as a hard rectangle */
-  -webkit-mask-image: radial-gradient(70% 76% at 50% 42%, #000 36%, transparent 74%);
-  mask-image: radial-gradient(70% 76% at 50% 42%, #000 36%, transparent 74%);
+  -webkit-mask-image: linear-gradient(180deg, #000 72%, transparent 98%);
+  mask-image: linear-gradient(180deg, #000 72%, transparent 98%);
 }
 
 .hero-figure::before {
