@@ -1225,6 +1225,19 @@ main {
     margin-inline: auto;
   }
 
+  /* subtitle: two centered lines */
+  .hero-role {
+    text-align: center;
+  }
+
+  .role-sep {
+    display: none;
+  }
+
+  .role-part {
+    display: block;
+  }
+
   .section-kicker {
     display: none;
   }
