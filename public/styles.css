@@ -684,6 +684,25 @@ main {
   pointer-events: none;
 }
 
+/* Desktop: enlarge the portrait visually without moving the layout —
+   transform doesn't affect flow, and the mask hides the scaled edges */
+@media (min-width: 921px) {
+  .hero-figure {
+    pointer-events: none;
+  }
+
+  .hero-portrait {
+    transform: scale(1.24);
+    transform-origin: 50% 42%;
+  }
+
+  /* light theme shows a framed card — scaling it would overlap the
+     metrics rule, keep it at layout size */
+  [data-theme="light"] .hero-portrait {
+    transform: none;
+  }
+}
+
 /* Metrics — hairline grid, no boxes */
 .hero-metrics {
   position: relative;
