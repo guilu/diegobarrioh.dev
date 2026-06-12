@@ -1203,6 +1203,19 @@ main {
 
   .hero-portrait {
     width: min(240px, 60%);
+    /* enlarge visually without layout shift; mask hides scaled edges */
+    transform: scale(1.35);
+    transform-origin: 50% 32%;
+  }
+
+  .hero-figure,
+  .hero-portrait {
+    pointer-events: none;
+  }
+
+  [data-theme="light"] .hero-portrait {
+    transform: none;
+    pointer-events: auto;
   }
 
   .section-kicker {
