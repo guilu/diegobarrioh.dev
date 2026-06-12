@@ -806,7 +806,7 @@ main {
 }
 
 .tl-item:hover::after,
-.tl-item:first-of-type::after {
+.tl-item:first-child::after {
   background: var(--brand-soft);
   box-shadow: 0 0 14px var(--brand-glow);
 }
