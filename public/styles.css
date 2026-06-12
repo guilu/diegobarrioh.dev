@@ -692,7 +692,7 @@ main {
   }
 
   .hero-portrait {
-    transform: scale(1.24);
+    transform: translateY(-36px) scale(1.24);
     transform-origin: 50% 42%;
   }
 
