@@ -665,22 +665,9 @@ main {
 /* Light theme: same unframed look — only the blend changes, screen
    would wash the light face tones out on a light bg; the radial mask
    still fades the edges into the page */
-/* Light theme: like the production site — no inline portrait, the
-   photo lives heavily washed under the page background instead */
-[data-theme="light"] .hero-figure {
-  display: none;
-}
-
-[data-theme="light"] .hero-grid {
-  grid-template-columns: 1fr;
-}
-
-[data-theme="light"] body {
-  background: linear-gradient(color-mix(in oklab, var(--bg) 94%, transparent), color-mix(in oklab, var(--bg) 94%, transparent)),
-    url("/img/dbh-wall.jpg") center / cover fixed;
-  background-color: var(--bg);
-  background-position: calc(-52vw) center;
-}
+/* Light theme needs no overrides: screen-blending the black-bg photo
+   over a light page washes it into a faint ghost automatically —
+   same position and size as dark, production-style wash for free */
 
 .hero-figure::before {
   content: "";
@@ -1275,12 +1262,6 @@ main {
 
   .nav-actions .toggle .opt {
     min-width: 26px;
-  }
-
-  /* desktop offsets the ghost portrait far left of the centered
-     column; on mobile that pushes it off-screen, so re-center it */
-  [data-theme="light"] body {
-    background-position: center center;
   }
 
   .menu-toggle {
