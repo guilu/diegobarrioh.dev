@@ -1,38 +1,147 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
-import Card from "../components/Card.astro";
+
+const roleEs = "Senior Backend & Platform Engineer";
+const roleEn = "Senior Backend & Platform Engineer";
+const taglineEs = "Sistemas cloud-native · Arquitecturas distribuidas · Flujos de desarrollo asistidos por IA";
+const taglineEn = "Cloud-native systems · Distributed architectures · AI-powered development workflows";
+
+const contact = [
+  { labelEs: "Alicante, España", labelEn: "Alicante, Spain", href: null },
+  { labelEs: "diegobarrioh@gmail.com", labelEn: "diegobarrioh@gmail.com", href: "mailto:diegobarrioh@gmail.com" },
+  { labelEs: "LinkedIn", labelEn: "LinkedIn", href: "https://linkedin.com/in/diegobarrioh" },
+  { labelEs: "diegobarrioh.dev", labelEn: "diegobarrioh.dev", href: "https://diegobarrioh.dev" },
+  { labelEs: "backendtothefuture.com", labelEn: "backendtothefuture.com", href: "https://backendtothefuture.com" },
+];
 
 const summary = {
-  es: "Senior Backend Engineer con más de 15 años de experiencia diseñando sistemas escalables. Especialista en Java y Spring, microservicios, DDD y arquitectura limpia. Experiencia en banca, fintech y movilidad, con foco en calidad, TDD y CI/CD.",
-  en: "Senior Backend Engineer with 15+ years of experience designing scalable systems. Specialized in Java and Spring, microservices, DDD, and clean architecture. Background in banking, fintech, and mobility, with a focus on quality, TDD, and CI/CD.",
+  es: "Senior Backend Engineer con más de 15 años de experiencia diseñando y construyendo sistemas distribuidos, plataformas de pago y aplicaciones cloud-native. Especialista en Java, Spring Boot, arquitecturas event-driven y microservicios, con experiencia operando cargas en contenedores sobre Kubernetes. Experiencia en fintech, banca y movilidad, entregando sistemas backend escalables y resilientes. Actualmente enfocado en Platform Engineering, Observabilidad y flujos de desarrollo asistidos por IA, explorando sistemas agénticos, integraciones con LLMs y prácticas modernas de entrega de software.",
+  en: "Senior Backend Engineer with over 15 years of experience designing and building distributed systems, payment platforms, and cloud-native applications. Specialized in Java, Spring Boot, event-driven architectures, and microservices, with hands-on experience operating containerized workloads on Kubernetes. Experienced in fintech, banking, and mobility domains, delivering scalable and resilient backend systems. Currently focused on Platform Engineering, Observability, and AI-powered development workflows, exploring agentic systems, LLM integrations, and modern software delivery practices.",
 };
+
+const competencies = [
+  {
+    titleEs: "Ingeniería Backend",
+    titleEn: "Backend Engineering",
+    items: ["Java", "Spring Boot", "Spring Security", "Spring Data JPA", "Hibernate", "REST APIs", "TDD"],
+  },
+  {
+    titleEs: "Arquitectura de Software",
+    titleEn: "Software Architecture",
+    items: ["Microservices", "DDD", "Hexagonal Architecture", "Clean Architecture", "Event-Driven", "API Design"],
+  },
+  {
+    titleEs: "Platform Engineering",
+    titleEn: "Platform Engineering",
+    items: ["Docker", "Kubernetes", "GitLab CI/CD", "Jenkins", "AWS", "Azure"],
+  },
+  {
+    titleEs: "Observabilidad",
+    titleEn: "Observability",
+    items: ["Grafana", "Prometheus", "Loki", "OpenTelemetry", "Sentry", "Splunk"],
+  },
+  {
+    titleEs: "Datos y Mensajería",
+    titleEn: "Data & Messaging",
+    items: ["Oracle", "SQL Server", "PostgreSQL", "Apache Kafka"],
+  },
+  {
+    titleEs: "Ingeniería de IA",
+    titleEn: "AI Engineering",
+    items: ["LLM Integration", "Agentic Workflows", "Tool Calling", "MCP", "Ollama", "Claude Code", "OpenAI APIs", "Gemini", "RAG"],
+  },
+];
+
+const projects = [
+  {
+    name: "TokenMeter",
+    url: "https://tokenmeter.backendtothefuture.com",
+    hwEs: null,
+    hwEn: null,
+    subEs: "Plataforma de estimación de costes con IA",
+    subEn: "AI Cost Estimation Platform",
+    descEs: "Plataforma para estimar el coste del desarrollo de software usando modelos de IA.",
+    descEn: "A platform to estimate the cost of software development using AI models.",
+    bullets: [
+      { es: "Motor de análisis de tokens de repositorios.", en: "Repository token analysis engine." },
+      { es: "Comparación de precios entre múltiples proveedores.", en: "Multi-provider pricing comparison." },
+      { es: "Sincronización dinámica de precios.", en: "Dynamic pricing synchronization." },
+      { es: "Estimación de coste para flujos de desarrollo asistido por IA.", en: "Cost estimation for AI-assisted development workflows." },
+      { es: "Despliegue en producción con Cloudflare.", en: "Production deployment with Cloudflare." },
+    ],
+    stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "AI APIs"],
+  },
+  {
+    name: "Backend to the Future",
+    url: "https://backendtothefuture.com",
+    hwEs: null,
+    hwEn: null,
+    subEs: "Blog de ingeniería y plataforma técnica",
+    subEn: "Engineering Blog & Technical Platform",
+    descEs: "Plataforma personal donde publico proyectos, artículos técnicos y experimentos de ingeniería.",
+    descEn: "Personal platform where I publish projects, technical articles, and engineering experiments.",
+    bullets: [
+      { es: "Desarrollo backend.", en: "Backend development." },
+      { es: "Arquitectura de software.", en: "Software architecture." },
+      { es: "Sistemas cloud-native.", en: "Cloud-native systems." },
+      { es: "Kubernetes.", en: "Kubernetes." },
+      { es: "Ingeniería de IA.", en: "AI engineering." },
+      { es: "Productividad del desarrollador.", en: "Developer productivity." },
+    ],
+    stack: [],
+  },
+  {
+    name: "Local AI Lab",
+    url: null,
+    hwEs: "NVIDIA GeForce RTX 3060 (12 GB de VRAM)",
+    hwEn: "NVIDIA GeForce RTX 3060 (12 GB VRAM)",
+    subEs: "Infraestructura de IA autoalojada",
+    subEn: "Self-Hosted AI Infrastructure",
+    descEs: "Entorno personal dedicado a evaluar y operar modelos de lenguaje (LLM) en local.",
+    descEn: "Personal environment dedicated to evaluating and operating local Large Language Models.",
+    bullets: [
+      { es: "Despliegue de LLMs en local.", en: "Local LLM deployment." },
+      { es: "Ollama y LM Studio.", en: "Ollama and LM Studio." },
+      { es: "Modelos probados: Qwen 3.5, Gemma 3, Llama 3.1, DeepSeek R1 y Mistral Nemo.", en: "Models tested: Qwen 3.5, Gemma 3, Llama 3.1, DeepSeek R1, and Mistral Nemo." },
+      { es: "Flujos de desarrollo de software agénticos.", en: "Agentic software development workflows." },
+      { es: "Integraciones MCP.", en: "MCP integrations." },
+      { es: "Asistentes de código autónomos.", en: "Autonomous coding assistants." },
+    ],
+    stack: [],
+  },
+];
 
 const experience = [
   {
     roleEs: "Ingeniero Backend Senior",
     roleEn: "Senior Backend Engineer",
-    company: "Mindden (Europcar Mobility Group)",
+    company: "Mindden (para Europcar Mobility Group)",
     periodEs: "Mar 2024 – Actualidad",
     periodEn: "Mar 2024 – Present",
     bullets: [
       {
-        es: "APIs de facturación y pagos con Spring Boot, microservicios, AWS y Kubernetes.",
-        en: "Billing and payment APIs with Spring Boot, microservices, AWS, and Kubernetes.",
+        es: "Diseño e implementación de APIs de facturación y pagos con Spring Boot, microservicios, AWS y Kubernetes.",
+        en: "Designed and implemented billing and payment APIs using Spring Boot, microservices, AWS, and Kubernetes.",
       },
       {
-        es: "Integración de Apache Kafka para eventos y procesamiento asíncrono.",
-        en: "Apache Kafka integration for event-driven and asynchronous processing.",
+        es: "Integración de Apache Kafka para arquitecturas event-driven y procesamiento asíncrono.",
+        en: "Integrated Apache Kafka to support event-driven architectures and asynchronous processing.",
       },
       {
-        es: "Promoción de arquitectura hexagonal, DDD y prácticas TDD.",
-        en: "Advocated for hexagonal architecture, DDD, and TDD practices.",
+        es: "Promoción de Domain-Driven Design, arquitectura hexagonal y prácticas TDD.",
+        en: "Promoted Domain-Driven Design, Hexagonal Architecture, and TDD practices.",
       },
       {
-        es: "Mejora de pipelines CI/CD con GitLab para despliegues más rápidos.",
-        en: "Improved CI/CD pipelines with GitLab for faster deployments.",
+        es: "Mejora de pipelines CI/CD con GitLab.",
+        en: "Improved CI/CD pipelines using GitLab.",
+      },
+      {
+        es: "Contribución a iniciativas de plataforma cloud-native y prácticas de observabilidad.",
+        en: "Contributed to cloud-native platform initiatives and observability practices.",
       },
     ],
+    stack: ["Java", "Spring Boot", "Kafka", "Kubernetes", "AWS", "GitLab CI/CD", "Oracle"],
   },
   {
     roleEs: "Analista Senior",
@@ -42,22 +151,23 @@ const experience = [
     periodEn: "Jul 2022 – Mar 2024",
     bullets: [
       {
-        es: "Desarrollo y mantenimiento de core banking con Spring Boot e Hibernate.",
-        en: "Core banking development and maintenance with Spring Boot and Hibernate.",
+        es: "Desarrollo y mantenimiento de sistemas bancarios con Spring Boot e Hibernate.",
+        en: "Developed and maintained banking systems using Spring Boot and Hibernate.",
       },
       {
-        es: "Microservicios para mejorar modularidad y uptime.",
-        en: "Microservices to improve modularity and uptime.",
+        es: "Construcción de microservicios enfocados en escalabilidad y fiabilidad.",
+        en: "Built microservices focused on scalability and reliability.",
       },
       {
-        es: "Orquestación batch con IBM Tivoli Workload Scheduler.",
-        en: "Batch orchestration with IBM Tivoli Workload Scheduler.",
+        es: "Gestión de flujos batch con IBM Tivoli Workload Scheduler.",
+        en: "Managed batch processing workflows using IBM Tivoli Workload Scheduler.",
       },
       {
-        es: "Optimización de queries y procedimientos en Oracle y SQL Server.",
-        en: "Query and stored procedure optimization in Oracle and SQL Server.",
+        es: "Optimización de queries complejas en Oracle y SQL Server.",
+        en: "Optimized complex Oracle and SQL Server queries.",
       },
     ],
+    stack: ["Java", "Spring Boot", "Oracle", "SQL Server", "IBM Tivoli"],
   },
   {
     roleEs: "Especialista Senior",
@@ -67,14 +177,19 @@ const experience = [
     periodEn: "Jun 2014 – Jun 2022",
     bullets: [
       {
-        es: "Plataformas enterprise con Spring MVC, WebFlow, JPA, Hibernate y Oracle.",
-        en: "Enterprise platforms with Spring MVC, WebFlow, JPA, Hibernate, and Oracle.",
+        es: "Desarrollo y mantenimiento de plataformas enterprise usadas en múltiples departamentos.",
+        en: "Developed and maintained enterprise platforms used across multiple departments.",
       },
       {
-        es: "Integraciones .NET y SharePoint para flujos interdepartamentales.",
-        en: ".NET and SharePoint integrations for cross-department workflows.",
+        es: "Aplicaciones con Spring MVC, WebFlow, JPA e Hibernate.",
+        en: "Built applications using Spring MVC, WebFlow, JPA, and Hibernate.",
+      },
+      {
+        es: "Participación en integraciones con soluciones .NET y SharePoint.",
+        en: "Participated in integrations involving .NET and SharePoint solutions.",
       },
     ],
+    stack: ["Java", "Spring MVC", "Hibernate", "Oracle", "SharePoint"],
   },
   {
     roleEs: "Analista",
@@ -84,65 +199,59 @@ const experience = [
     periodEn: "Nov 2012 – Jun 2014",
     bullets: [
       {
-        es: "Plataforma interna de incidencias con Spring Boot, Thymeleaf y Oracle.",
-        en: "Internal issue tracking platform with Spring Boot, Thymeleaf, and Oracle.",
+        es: "Desarrollo de aplicaciones de negocio internas con el ecosistema Spring.",
+        en: "Developed internal business applications using the Spring ecosystem.",
       },
       {
-        es: "Diseño e implementación full-stack con el ecosistema Spring.",
-        en: "Full-stack design and implementation with the Spring ecosystem.",
+        es: "Participación en el diseño e implementación de soluciones enterprise web.",
+        en: "Participated in the design and implementation of web-based enterprise solutions.",
       },
     ],
+    stack: ["Java", "Spring", "Thymeleaf", "Oracle"],
   },
   {
     roleEs: "Analista y Desarrollador",
     roleEn: "Analyst & Developer",
-    company: "Caja Mediterráneo",
+    company: "Caja Mediterráneo (CAM)",
     periodEs: "Mar 2007 – Nov 2012",
     periodEn: "Mar 2007 – Nov 2012",
     bullets: [
       {
-        es: "Aplicaciones de banca online en J2EE.",
-        en: "Online banking applications in J2EE.",
+        es: "Desarrollo y mantenimiento de aplicaciones de banca online.",
+        en: "Developed and maintained online banking applications.",
       },
       {
-        es: "Servicios de transacciones ATM y migración a ALNOVA.",
-        en: "ATM transaction services and ALNOVA migration.",
+        es: "Participación en servicios ATM y proyectos de migración de core banking.",
+        en: "Participated in ATM services and core banking migration projects.",
       },
     ],
+    stack: ["Java EE", "Oracle"],
   },
   {
     roleEs: "Desarrollador Web",
     roleEn: "Web Developer",
     company: "HDV",
-    periodEs: "Dec 2005 – Mar 2007",
+    periodEs: "Dic 2005 – Mar 2007",
     periodEn: "Dec 2005 – Mar 2007",
     bullets: [
       {
-        es: "Aplicaciones web con PHP, MySQL y JavaScript.",
-        en: "Web applications with PHP, MySQL, and JavaScript.",
-      },
-      {
-        es: "AJAX para interfaces dinámicas y responsivas.",
-        en: "AJAX for dynamic and responsive UI.",
+        es: "Desarrollo de aplicaciones web dinámicas e interfaces interactivas.",
+        en: "Developed dynamic web applications and interactive user interfaces.",
       },
     ],
+    stack: ["PHP", "MySQL", "JavaScript"],
   },
 ];
 
-const skills = {
-  expert: ["Java", "Spring Boot", "Spring MVC", "Spring Security", "JPA", "Hibernate", "TDD", "Git"],
-  advanced: ["Microservicios", "Docker", "Jenkins", "DDD", "Oracle", "Arquitectura limpia"],
-  proficient: ["Kubernetes", "AWS", "Apache Kafka", "CI/CD", "SonarQube", "Observabilidad"],
-  learning: ["Principios SRE", "IA generativa (Prompt Engineering, RAG)"],
-};
-
 const education = [
   {
-    titleEs: "Máster en Desarrollo de Aplicaciones y Servicios Web (60 ECTS)",
-    titleEn: "Master's Degree in Web Applications and Services Development (60 ECTS)",
+    titleEs: "Máster en Desarrollo de Aplicaciones y Servicios Web",
+    titleEn: "Master's Degree in Web Applications and Services Development",
     org: "Universidad de Alicante",
     periodEs: "2010 – 2011",
     periodEn: "2010 – 2011",
+    noteEs: null,
+    noteEn: null,
   },
   {
     titleEs: "Certificado en Java Enterprise Development",
@@ -150,141 +259,289 @@ const education = [
     org: "Universidad de Alicante",
     periodEs: "2009 – 2010",
     periodEn: "2009 – 2010",
+    noteEs: null,
+    noteEn: null,
   },
   {
     titleEs: "Ingeniería Informática (5 años)",
-    titleEn: "Computer Engineering (5-year degree)",
+    titleEn: "Computer Engineering Degree",
     org: "Universidad de Alicante",
     periodEs: "1998 – 2005",
     periodEn: "1998 – 2005",
+    noteEs: "Equivalente a nivel de Máster según el Plan Bolonia.",
+    noteEn: "Equivalent to MSc level under the Bologna Process.",
   },
 ];
+
+const community = [
+  {
+    es: "Creador de Backend to the Future, plataforma centrada en arquitectura de software e ingeniería backend.",
+    en: "Creator of Backend to the Future, a platform focused on software architecture and backend engineering.",
+  },
+  {
+    es: "Creador de TokenMeter, plataforma de estimación de costes de desarrollo con IA.",
+    en: "Creator of TokenMeter, an AI development cost estimation platform.",
+  },
+  {
+    es: "Experimentación activa con LLMs locales, agentes de IA y flujos de desarrollo autónomos.",
+    en: "Active experimentation with local LLMs, AI agents, and autonomous development workflows.",
+  },
+  {
+    es: "Antiguo mentor de estudiantes de Informática a través de la Fundación Banco Sabadell.",
+    en: "Former mentor for Computer Science students through Fundación Banco Sabadell.",
+  },
+];
+
+const learning = ["Platform Engineering", "Advanced Kubernetes", "Observability", "SRE Principles", "AI Agents & Autonomous Workflows", "Rust"];
 ---
 
 <BaseLayout title="CV — Diego Barrio H.">
   <Nav current="cv" />
   <main class="container">
-    <h1>CV</h1>
-    <p class="i18n" data-lang="es">{summary.es}</p>
-    <p class="i18n" data-lang="en">{summary.en}</p>
+    <article class="cv-doc">
+      <header class="cv-head">
+        <h1>Diego Barrio Hortigüela</h1>
+        <p class="cv-role">
+          <span class="i18n inline" data-lang="es">{roleEs}</span>
+          <span class="i18n inline" data-lang="en">{roleEn}</span>
+        </p>
+        <p class="cv-tagline">
+          <span class="i18n inline" data-lang="es">{taglineEs}</span>
+          <span class="i18n inline" data-lang="en">{taglineEn}</span>
+        </p>
+        <p class="cv-contact">
+          {contact.map((c, i) => (
+            <>
+              {i > 0 && <span class="cv-sep" aria-hidden="true">·</span>}
+              {c.href ? (
+                <a href={c.href} target={c.href.startsWith("http") ? "_blank" : undefined} rel={c.href.startsWith("http") ? "noreferrer" : undefined}>
+                  <span class="i18n inline" data-lang="es">{c.labelEs}</span>
+                  <span class="i18n inline" data-lang="en">{c.labelEn}</span>
+                </a>
+              ) : (
+                <>
+                  <span class="i18n inline" data-lang="es">{c.labelEs}</span>
+                  <span class="i18n inline" data-lang="en">{c.labelEn}</span>
+                </>
+              )}
+            </>
+          ))}
+        </p>
+        <div class="btns cv-actions">
+          <a class="btn primary" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">
+            <span class="i18n inline" data-lang="es">Abrir CV en PDF</span>
+            <span class="i18n inline" data-lang="en">Open CV PDF</span>
+          </a>
+          <a class="btn" href="/">
+            <span class="i18n inline" data-lang="es">Volver</span>
+            <span class="i18n inline" data-lang="en">Back</span>
+          </a>
+        </div>
+      </header>
 
-    <div class="btns">
-      <a class="btn primary" href="/pdf/diegobarrioh_mk4.pdf" target="_blank" rel="noreferrer">
-        <span class="i18n inline" data-lang="es">Abrir CV en PDF</span>
-        <span class="i18n inline" data-lang="en">Open CV PDF</span>
-      </a>
-      <a class="btn" href="/">
-        <span class="i18n inline" data-lang="es">Volver</span>
-        <span class="i18n inline" data-lang="en">Back</span>
-      </a>
-    </div>
-
-    <section class="section">
+      <hr />
       <h2>
-        <span class="i18n inline" data-lang="es">Experiencia</span>
-        <span class="i18n inline" data-lang="en">Experience</span>
+        <span class="cv-emoji" aria-hidden="true">🧑‍💻</span>
+        <span class="i18n inline" data-lang="es">Perfil</span>
+        <span class="i18n inline" data-lang="en">About</span>
       </h2>
-      <div class="timeline">
-        {experience.map((e) => (
-          <Card>
-            <p class="eyebrow">
-              <span class="i18n inline" data-lang="es">{e.periodEs}</span>
-              <span class="i18n inline" data-lang="en">{e.periodEn}</span>
+      <p class="i18n" data-lang="es">{summary.es}</p>
+      <p class="i18n" data-lang="en">{summary.en}</p>
+
+      <hr />
+      <h2>
+        <span class="cv-emoji" aria-hidden="true">🛠️</span>
+        <span class="i18n inline" data-lang="es">Competencias clave</span>
+        <span class="i18n inline" data-lang="en">Core Competencies</span>
+      </h2>
+      {competencies.map((c) => (
+        <>
+          <h3>
+            <span class="i18n inline" data-lang="es">{c.titleEs}</span>
+            <span class="i18n inline" data-lang="en">{c.titleEn}</span>
+          </h3>
+          <ul>{c.items.map((s) => <li>{s}</li>)}</ul>
+        </>
+      ))}
+
+      <hr />
+      <h2>
+        <span class="cv-emoji" aria-hidden="true">🚀</span>
+        <span class="i18n inline" data-lang="es">Proyectos destacados</span>
+        <span class="i18n inline" data-lang="en">Featured Projects</span>
+      </h2>
+      {projects.map((p) => (
+        <>
+          <h3>
+            {p.url ? (
+              <a href={p.url} target="_blank" rel="noreferrer">{p.name}</a>
+            ) : (
+              p.name
+            )}
+          </h3>
+          <p class="cv-sub">
+            <span class="i18n inline" data-lang="es">{p.subEs}</span>
+            <span class="i18n inline" data-lang="en">{p.subEn}</span>
+          </p>
+          <p>
+            <span class="i18n inline" data-lang="es">{p.descEs}</span>
+            <span class="i18n inline" data-lang="en">{p.descEn}</span>
+          </p>
+          <ul>
+            {p.bullets.map((b) => (
+              <li>
+                <span class="i18n inline" data-lang="es">{b.es}</span>
+                <span class="i18n inline" data-lang="en">{b.en}</span>
+              </li>
+            ))}
+          </ul>
+          {p.hwEs && (
+            <p class="cv-tech">
+              <strong>Hardware:</strong>
+              <span class="i18n inline" data-lang="es"> {p.hwEs}</span>
+              <span class="i18n inline" data-lang="en"> {p.hwEn}</span>
             </p>
-            <h3 style="margin:0 0 4px;">
-              <span class="i18n inline" data-lang="es">{e.roleEs}</span>
-              <span class="i18n inline" data-lang="en">{e.roleEn}</span>
-            </h3>
-            <p class="small" style="margin:0 0 8px;">{e.company}</p>
-            <ul class="list">
-              {e.bullets.map((b) => (
-                <li>
-                  <span class="i18n inline" data-lang="es">{b.es}</span>
-                  <span class="i18n inline" data-lang="en">{b.en}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
-        ))}
-      </div>
-    </section>
+          )}
+          {p.stack.length > 0 && (
+            <p class="cv-tech">
+              <strong>
+                <span class="i18n inline" data-lang="es">Tecnologías:</span>
+                <span class="i18n inline" data-lang="en">Technologies:</span>
+              </strong>
+              <span> {p.stack.join(", ")}</span>
+            </p>
+          )}
+        </>
+      ))}
 
-    <section class="section">
+      <hr />
       <h2>
-        <span class="i18n inline" data-lang="es">Skills</span>
-        <span class="i18n inline" data-lang="en">Skills</span>
+        <span class="cv-emoji" aria-hidden="true">💼</span>
+        <span class="i18n inline" data-lang="es">Experiencia profesional</span>
+        <span class="i18n inline" data-lang="en">Professional Experience</span>
       </h2>
-      <div class="grid">
-        <Card>
-          <p class="eyebrow">
-            <span class="i18n inline" data-lang="es">Experto</span>
-            <span class="i18n inline" data-lang="en">Expert</span>
+      {experience.map((e) => (
+        <>
+          <h3>
+            <span class="i18n inline" data-lang="es">{e.roleEs}</span>
+            <span class="i18n inline" data-lang="en">{e.roleEn}</span>
+          </h3>
+          <p class="cv-meta">
+            <span class="cv-company">{e.company}</span>
+            <span class="cv-sep" aria-hidden="true">·</span>
+            <span class="i18n inline" data-lang="es">{e.periodEs}</span>
+            <span class="i18n inline" data-lang="en">{e.periodEn}</span>
           </p>
-          <p class="taglist taglist-expert">{skills.expert.map((s) => <span class="pill">{s}</span>)}</p>
-        </Card>
-        <Card>
-          <p class="eyebrow">
-            <span class="i18n inline" data-lang="es">Avanzado</span>
-            <span class="i18n inline" data-lang="en">Advanced</span>
+          <ul>
+            {e.bullets.map((b) => (
+              <li>
+                <span class="i18n inline" data-lang="es">{b.es}</span>
+                <span class="i18n inline" data-lang="en">{b.en}</span>
+              </li>
+            ))}
+          </ul>
+          <p class="cv-tech">
+            <strong>
+              <span class="i18n inline" data-lang="es">Tecnologías:</span>
+              <span class="i18n inline" data-lang="en">Technologies:</span>
+            </strong>
+            <span> {e.stack.join(", ")}</span>
           </p>
-          <p class="taglist taglist-advanced">{skills.advanced.map((s) => <span class="pill">{s}</span>)}</p>
-        </Card>
-        <Card>
-          <p class="eyebrow">
-            <span class="i18n inline" data-lang="es">Competente</span>
-            <span class="i18n inline" data-lang="en">Proficient</span>
-          </p>
-          <p class="taglist taglist-proficient">{skills.proficient.map((s) => <span class="pill">{s}</span>)}</p>
-        </Card>
-        <Card>
-          <p class="eyebrow">
-            <span class="i18n inline" data-lang="es">En aprendizaje</span>
-            <span class="i18n inline" data-lang="en">Learning focus</span>
-          </p>
-          <p class="taglist taglist-learning">{skills.learning.map((s) => <span class="pill">{s}</span>)}</p>
-        </Card>
-      </div>
-    </section>
+        </>
+      ))}
 
-    <section class="section">
+      <hr />
       <h2>
+        <span class="cv-emoji" aria-hidden="true">🎓</span>
         <span class="i18n inline" data-lang="es">Educación</span>
         <span class="i18n inline" data-lang="en">Education</span>
       </h2>
-      <div class="grid">
-        {education.map((e) => (
-          <Card>
-            <h3 style="margin:0 0 6px;">
-              <span class="i18n inline" data-lang="es">{e.titleEs}</span>
-              <span class="i18n inline" data-lang="en">{e.titleEn}</span>
-            </h3>
-            <p class="small" style="margin:0;">
-              {e.org} ·
-              <span class="i18n inline" data-lang="es"> {e.periodEs}</span>
-              <span class="i18n inline" data-lang="en"> {e.periodEn}</span>
+      {education.map((e) => (
+        <>
+          <h3>
+            <span class="i18n inline" data-lang="es">{e.titleEs}</span>
+            <span class="i18n inline" data-lang="en">{e.titleEn}</span>
+          </h3>
+          <p class="cv-meta">
+            <span class="cv-company">{e.org}</span>
+            <span class="cv-sep" aria-hidden="true">·</span>
+            <span class="i18n inline" data-lang="es">{e.periodEs}</span>
+            <span class="i18n inline" data-lang="en">{e.periodEn}</span>
+          </p>
+          {e.noteEs && (
+            <p>
+              <span class="i18n inline" data-lang="es">{e.noteEs}</span>
+              <span class="i18n inline" data-lang="en">{e.noteEn}</span>
             </p>
-          </Card>
-        ))}
-      </div>
-    </section>
+          )}
+        </>
+      ))}
 
-    <section class="section">
+      <hr />
       <h2>
+        <span class="cv-emoji" aria-hidden="true">🤝</span>
+        <span class="i18n inline" data-lang="es">Comunidad y proyectos personales</span>
+        <span class="i18n inline" data-lang="en">Community & Personal Projects</span>
+      </h2>
+      <ul>
+        {community.map((c) => (
+          <li>
+            <span class="i18n inline" data-lang="es">{c.es}</span>
+            <span class="i18n inline" data-lang="en">{c.en}</span>
+          </li>
+        ))}
+      </ul>
+
+      <hr />
+      <h2>
+        <span class="cv-emoji" aria-hidden="true">📚</span>
+        <span class="i18n inline" data-lang="es">En aprendizaje</span>
+        <span class="i18n inline" data-lang="en">Learning Focus</span>
+      </h2>
+      <ul>{learning.map((s) => <li>{s}</li>)}</ul>
+
+      <hr />
+      <h2>
+        <span class="cv-emoji" aria-hidden="true">🗣️</span>
         <span class="i18n inline" data-lang="es">Idiomas</span>
         <span class="i18n inline" data-lang="en">Languages</span>
       </h2>
-      <Card>
-        <ul class="list">
-          <li>
-            <span class="i18n inline" data-lang="es">Español: nativo</span>
-            <span class="i18n inline" data-lang="en">Spanish: native</span>
-          </li>
-          <li>
-            <span class="i18n inline" data-lang="es">Inglés: C1 (full professional proficiency)</span>
-            <span class="i18n inline" data-lang="en">English: C1 (full professional proficiency)</span>
-          </li>
-        </ul>
-      </Card>
-    </section>
+      <table class="cv-table">
+        <thead>
+          <tr>
+            <th>
+              <span class="i18n inline" data-lang="es">Idioma</span>
+              <span class="i18n inline" data-lang="en">Language</span>
+            </th>
+            <th>
+              <span class="i18n inline" data-lang="es">Nivel</span>
+              <span class="i18n inline" data-lang="en">Level</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <span class="i18n inline" data-lang="es">Español</span>
+              <span class="i18n inline" data-lang="en">Spanish</span>
+            </td>
+            <td>
+              <span class="i18n inline" data-lang="es">Nativo</span>
+              <span class="i18n inline" data-lang="en">Native</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span class="i18n inline" data-lang="es">Inglés</span>
+              <span class="i18n inline" data-lang="en">English</span>
+            </td>
+            <td>
+              <span class="i18n inline" data-lang="es">Competencia profesional plena (C1)</span>
+              <span class="i18n inline" data-lang="en">Full Professional Proficiency (C1)</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
   </main>
 </BaseLayout>
