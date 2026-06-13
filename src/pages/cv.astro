@@ -73,6 +73,24 @@ const projects = [
     stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "AI APIs"],
   },
   {
+    name: "Akademia",
+    url: "https://akademia.diegobarrioh.dev",
+    hwEs: null,
+    hwEn: null,
+    subEs: "Plataforma de aprendizaje con IA",
+    subEn: "AI-Powered Learning Platform",
+    descEs: "Aplicación web para estudiar y preparar exámenes, con generación de contenido asistida por IA y una tienda integrada para comprar temarios.",
+    descEn: "Web app to study and prepare for exams, with AI-assisted content generation and an integrated store to purchase study materials.",
+    bullets: [
+      { es: "Estudio y preparación de exámenes con temarios estructurados.", en: "Exam preparation with structured study materials." },
+      { es: "Generación de preguntas con IA mediante RAG (embeddings OpenAI text-embedding-3-small vía OpenRouter).", en: "AI question generation via RAG (OpenAI text-embedding-3-small embeddings through OpenRouter)." },
+      { es: "Flashcards con repetición espaciada.", en: "Spaced-repetition flashcards." },
+      { es: "Tienda integrada con Stripe para comprar temarios.", en: "Integrated Stripe store to purchase study materials." },
+      { es: "Seguimiento de progreso y autoevaluación.", en: "Progress tracking and self-assessment." },
+    ],
+    stack: ["Java", "Spring Boot", "PostgreSQL", "Stripe", "RAG", "OpenAI", "OpenRouter"],
+  },
+  {
     name: "Backend to the Future",
     url: "https://backendtothefuture.com",
     hwEs: null,
@@ -281,6 +299,10 @@ const community = [
   {
     es: "Creador de TokenMeter, plataforma de estimación de costes de desarrollo con IA.",
     en: "Creator of TokenMeter, an AI development cost estimation platform.",
+  },
+  {
+    es: "Creador de Akademia, plataforma de aprendizaje con IA y tienda de temarios (Stripe).",
+    en: "Creator of Akademia, an AI-powered learning platform with a Stripe-based study-materials store.",
   },
   {
     es: "Experimentación activa con LLMs locales, agentes de IA y flujos de desarrollo autónomos.",
