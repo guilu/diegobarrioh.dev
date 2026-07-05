@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://diegobarrioh.dev/sitemap-index.xml

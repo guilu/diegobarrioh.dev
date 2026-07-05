@@ -7,6 +7,14 @@ const {
 const GA_ID = "G-7DJQHEPKJK";
 const SITE_URL = "https://diegobarrioh.dev";
 
+// Per-page canonical / OG url — derived from the current path, not hardcoded to home.
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? SITE_URL).href;
+
+// Google Search Console "HTML tag" verification token. Paste the `content`
+// value from Search Console → Settings → Ownership verification → HTML tag.
+// Leave empty once ownership is confirmed (or keep it — harmless).
+const GOOGLE_SITE_VERIFICATION = "";
+
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -29,10 +37,12 @@ const personSchema = {
     <meta name="color-scheme" content="dark light" />
     <title>{title}</title>
 
+    {GOOGLE_SITE_VERIFICATION && <meta name="google-site-verification" content={GOOGLE_SITE_VERIFICATION} />}
+
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={SITE_URL} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={`${SITE_URL}/img/screenshot-dark.png`} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -40,7 +50,7 @@ const personSchema = {
     <meta name="twitter:image" content={`${SITE_URL}/img/screenshot-dark.png`} />
 
     <link rel="icon" type="image/svg+xml" href="/img/dbh2-black.svg" />
-    <link rel="canonical" href={SITE_URL} />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="preload" href="/fonts/Geist-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/IBMPlexMono-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
