@@ -4,7 +4,7 @@ const {
   description = "Senior Backend Engineer. Java, Spring Boot, microservicios y observabilidad para banca, fintech y movilidad. 15+ años entregando software en producción.",
 } = Astro.props;
 
-const GA_ID = "G-7DJQHEPKJK";
+const GTM_ID = "GTM-WVNMFKK3";
 const SITE_URL = "https://diegobarrioh.dev";
 
 // Per-page canonical / OG url — derived from the current path, not hardcoded to home.
@@ -33,6 +33,32 @@ const personSchema = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Seed traffic_type before GTM so a GA4 config tag can read it as a Data Layer Variable -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        traffic_type:
+          location.hostname === "localhost" || localStorage.getItem("internal_traffic") === "true"
+            ? "internal"
+            : "external",
+      });
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script is:inline define:vars={{ GTM_ID }}>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", GTM_ID);
+    </script>
+    <!-- End Google Tag Manager -->
     <meta name="description" content={description} />
     <meta name="color-scheme" content="dark light" />
     <title>{title}</title>
@@ -80,24 +106,18 @@ const personSchema = {
         root.setAttribute("lang", lang);
       })();
     </script>
-
-    <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
-
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      const isInternal = location.hostname === "localhost" || localStorage.getItem("internal_traffic") === "true";
-
-      gtag("config", "G-7DJQHEPKJK", {
-        traffic_type: isInternal ? "internal" : undefined,
-      });
-    </script>
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"></iframe></noscript
+    >
+    <!-- End Google Tag Manager (noscript) -->
     <slot />
     <script>
       const root = document.documentElement;
