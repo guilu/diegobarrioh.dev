@@ -2,6 +2,9 @@
 const {
   title = "Diego Barrio H. — Senior Backend Engineer",
   description = "Senior Backend Engineer. Java, Spring Boot, microservicios y observabilidad para banca, fintech y movilidad. 15+ años entregando software en producción.",
+  // Standalone pages duplicate the home sections; keep them reachable but out of
+  // Google's index. Home is the single canonical URL for search.
+  noindex = false,
 } = Astro.props;
 
 const GTM_ID = "GTM-WVNMFKK3";
@@ -60,6 +63,7 @@ const personSchema = {
     </script>
     <!-- End Google Tag Manager -->
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="color-scheme" content="dark light" />
     <title>{title}</title>
 

@@ -6,7 +6,11 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://diegobarrioh.dev',
   integrations: [
-    // /contact is a redirect stub to /#contact — keep it out of the sitemap.
-    sitemap({ filter: (page) => !page.includes('/contact') }),
+    // Home is the single canonical URL. /about /cv /projects duplicate the home
+    // sections and are noindex'd, so keep them out of the sitemap too.
+    sitemap({
+      filter: (page) =>
+        !['/about/', '/cv/', '/projects/', '/contact/'].some((p) => page.endsWith(p)),
+    }),
   ],
 });
