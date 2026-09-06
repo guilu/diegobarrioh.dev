@@ -124,6 +124,26 @@ const personSchema = {
     <!-- End Google Tag Manager (noscript) -->
     <slot />
     <script>
+      import { hasGrantedAnalyticsConsent, initIntentAnalytics } from "../scripts/intent-analytics.js";
+
+      const analyticsWindow = window as typeof window & {
+        dataLayer?: Record<string, unknown>[];
+        google_tag_data?: {
+          ics?: {
+            entries?: Record<string, Record<string, boolean>>;
+          };
+        };
+      };
+
+      analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+      initIntentAnalytics({
+        document,
+        dataLayer: analyticsWindow.dataLayer,
+        hasAnalyticsConsent: () =>
+          hasGrantedAnalyticsConsent(analyticsWindow.google_tag_data?.ics?.entries?.analytics_storage),
+      });
+    </script>
+    <script>
       const root = document.documentElement;
       const toggle = document.getElementById("theme-toggle");
       const langToggle = document.getElementById("lang-toggle");
