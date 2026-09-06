@@ -7,7 +7,6 @@ const {
   noindex = false,
 } = Astro.props;
 
-const GTM_ID = "GTM-WVNMFKK3";
 const SITE_URL = "https://diegobarrioh.dev";
 
 // Per-page canonical / OG url — derived from the current path, not hardcoded to home.
@@ -37,31 +36,7 @@ const personSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Seed traffic_type before GTM so a GA4 config tag can read it as a Data Layer Variable -->
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      window.dataLayer.push({
-        traffic_type:
-          location.hostname === "localhost" || localStorage.getItem("internal_traffic") === "true"
-            ? "internal"
-            : "external",
-      });
-    </script>
 
-    <!-- Google Tag Manager -->
-    <script is:inline define:vars={{ GTM_ID }}>
-      (function (w, d, s, l, i) {
-        w[l] = w[l] || [];
-        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
-        var f = d.getElementsByTagName(s)[0],
-          j = d.createElement(s),
-          dl = l != "dataLayer" ? "&l=" + l : "";
-        j.async = true;
-        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
-        f.parentNode.insertBefore(j, f);
-      })(window, document, "script", "dataLayer", GTM_ID);
-    </script>
-    <!-- End Google Tag Manager -->
     <meta name="description" content={description} />
     {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="color-scheme" content="dark light" />
@@ -113,34 +88,50 @@ const personSchema = {
   </head>
 
   <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
-        src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-        height="0"
-        width="0"
-        style="display:none;visibility:hidden"></iframe></noscript
-    >
-    <!-- End Google Tag Manager (noscript) -->
     <slot />
+    <section class="consent-banner" data-consent-banner hidden aria-labelledby="consent-title" aria-describedby="consent-description">
+      <div class="consent-copy">
+        <h2 id="consent-title">
+          <span class="i18n" data-lang="es">Analítica opcional</span>
+          <span class="i18n" data-lang="en">Optional analytics</span>
+        </h2>
+        <p id="consent-description">
+          <span class="i18n" data-lang="es">¿Permites analítica anónima para mejorar esta web? No se carga Google Tag Manager hasta que aceptes.</span>
+          <span class="i18n" data-lang="en">Allow anonymous analytics to improve this site? Google Tag Manager is not loaded until you accept.</span>
+        </p>
+      </div>
+      <div class="consent-actions">
+        <button class="btn ghost" type="button" data-consent-deny>
+          <span class="i18n inline" data-lang="es">Rechazar</span><span class="i18n inline" data-lang="en">Reject</span>
+        </button>
+        <button class="btn primary" type="button" data-consent-grant>
+          <span class="i18n inline" data-lang="es">Aceptar</span><span class="i18n inline" data-lang="en">Accept</span>
+        </button>
+      </div>
+    </section>
     <script>
-      import { hasGrantedAnalyticsConsent, initIntentAnalytics } from "../scripts/intent-analytics.js";
+      import { createAnalyticsConsent, getAnalyticsConsent } from "../scripts/analytics-consent.js";
+      import { initIntentAnalytics } from "../scripts/intent-analytics.js";
 
       const analyticsWindow = window as typeof window & {
         dataLayer?: Record<string, unknown>[];
-        google_tag_data?: {
-          ics?: {
-            entries?: Record<string, Record<string, boolean>>;
-          };
-        };
       };
 
       analyticsWindow.dataLayer = analyticsWindow.dataLayer || [];
+      const consent = createAnalyticsConsent({ window, document, storage: localStorage, gtmId: "GTM-WVNMFKK3" });
+      const banner = document.querySelector<HTMLElement>("[data-consent-banner]");
+      const showBanner = () => { if (banner) banner.hidden = false; };
+      const hideBanner = () => { if (banner) banner.hidden = true; };
+      consent.start();
+      if (getAnalyticsConsent(localStorage) === null) showBanner();
+      document.querySelector("[data-consent-grant]")?.addEventListener("click", () => { consent.grant(); hideBanner(); });
+      document.querySelector("[data-consent-deny]")?.addEventListener("click", () => { consent.deny(); hideBanner(); });
+      document.querySelectorAll("[data-consent-settings]").forEach((button) => button.addEventListener("click", showBanner));
+
       initIntentAnalytics({
         document,
         dataLayer: analyticsWindow.dataLayer,
-        hasAnalyticsConsent: () =>
-          hasGrantedAnalyticsConsent(analyticsWindow.google_tag_data?.ics?.entries?.analytics_storage),
+        hasAnalyticsConsent: consent.hasGranted,
       });
     </script>
     <script>

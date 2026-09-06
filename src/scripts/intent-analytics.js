@@ -35,14 +35,6 @@ export const eventsForLink = ({ href, dataset = {} }) => {
   return events;
 };
 
-export const hasGrantedAnalyticsConsent = (consentEntry) => {
-  if (!consentEntry) return false;
-  for (const decision of ["update", "default", "declare", "implicit"]) {
-    if (typeof consentEntry[decision] === "boolean") return consentEntry[decision];
-  }
-  return false;
-};
-
 export const initIntentAnalytics = ({ document, dataLayer, hasAnalyticsConsent }) => {
   document.addEventListener("click", (clickEvent) => {
     if (!hasAnalyticsConsent()) return;
