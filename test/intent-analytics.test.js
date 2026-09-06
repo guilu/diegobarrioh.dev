@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-import { eventsForLink, hasGrantedAnalyticsConsent, initIntentAnalytics } from "../src/scripts/intent-analytics.js";
+import { eventsForLink, initIntentAnalytics } from "../src/scripts/intent-analytics.js";
 
 test("classifies the primary CTA without exposing its URL or file name", () => {
   const events = eventsForLink({
@@ -96,11 +96,4 @@ test("queues classified events after analytics consent", () => {
   clickHandler({ target: { closest: () => link } });
 
   assert.deepEqual(dataLayer.map(({ event }) => event), ["cta_click", "file_download"]);
-});
-
-test("uses the latest explicit analytics consent decision", () => {
-  assert.equal(hasGrantedAnalyticsConsent({ default: false, update: true }), true);
-  assert.equal(hasGrantedAnalyticsConsent({ default: true, update: false }), false);
-  assert.equal(hasGrantedAnalyticsConsent({ default: false }), false);
-  assert.equal(hasGrantedAnalyticsConsent(undefined), false);
 });

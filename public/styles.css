@@ -1181,13 +1181,53 @@ main {
   font-size: 0.76rem;
 }
 
-.footer-links a {
+.footer-links a,
+.footer-consent {
   color: var(--text-soft);
   transition: color var(--dur) var(--ease);
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-consent:hover {
   color: var(--text);
+}
+
+.footer-consent {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.consent-banner {
+  position: fixed;
+  z-index: 1000;
+  right: clamp(16px, 3vw, 36px);
+  bottom: clamp(16px, 3vw, 36px);
+  left: clamp(16px, 3vw, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  max-width: 920px;
+  margin-inline: auto;
+  padding: 20px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+}
+
+.consent-banner[hidden] { display: none; }
+.consent-copy h2 { margin-bottom: 6px; font-size: 1.05rem; }
+.consent-copy p { color: var(--text-soft); font-size: 0.9rem; }
+.consent-actions { display: flex; gap: 10px; flex: none; }
+
+@media (max-width: 620px) {
+  .consent-banner { align-items: stretch; flex-direction: column; }
+  .consent-actions { justify-content: flex-end; }
 }
 
 .small {
