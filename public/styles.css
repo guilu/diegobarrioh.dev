@@ -882,6 +882,23 @@ main {
   letter-spacing: -0.01em;
 }
 
+.proj h3 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, var(--brand) 40%, transparent);
+}
+
+.proj h3 a:hover {
+  color: var(--brand);
+  border-bottom-color: currentColor;
+}
+
+/* Secondary half of a Lab entry title: what the build actually does. */
+.proj-sub {
+  font-weight: 400;
+  color: var(--text-faint);
+}
+
 .proj-arrow {
   grid-row: span 3;
   align-self: center;

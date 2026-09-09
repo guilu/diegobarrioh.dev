@@ -59,9 +59,18 @@ export interface SkillGroup {
   items: string[];
 }
 
+export interface LabBuild {
+  name: string;
+  url: string | null;
+  subtitle: string;
+  text: string;
+  stack: string[];
+}
+
 export interface Lab {
   text: string;
   ctaAria: string;
+  builds: LabBuild[];
 }
 
 export interface Contact {

@@ -177,6 +177,25 @@ const PATH = "/";
             </span>
           </a>
         </div>
+
+        <div class="proj-list">
+          {t.lab.builds.map((b, i) => (
+            <article class="proj reveal">
+              <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
+              <h3>
+                {b.url ? (
+                  <a href={b.url} target="_blank" rel="noopener noreferrer">{b.name}</a>
+                ) : (
+                  b.name
+                )}
+                <span class="proj-sub"> — {b.subtitle}</span>
+              </h3>
+              <span class="proj-arrow" aria-hidden="true">→</span>
+              <p>{b.text}</p>
+              <div class="taglist">{b.stack.map((s) => <span class="pill">{s}</span>)}</div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
 

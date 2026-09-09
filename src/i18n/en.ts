@@ -1,12 +1,22 @@
 import type { Content } from "./types";
-import { EMAIL, LAB_URL, LINKEDIN_URL, SITE_URL, companies, socials } from "./shared";
+import {
+  AKADEMIA_URL,
+  EMAIL,
+  FORMA_URL,
+  LAB_URL,
+  LINKEDIN_URL,
+  SITE_URL,
+  TOKENMETER_URL,
+  companies,
+  socials,
+} from "./shared";
 
 const en: Content = {
   meta: {
     home: {
-      title: "Diego Barrio H. — Senior Backend Engineer · Java & Spring",
+      title: "Diego Barrio H. — Senior Backend Engineer · Java, Spring & Applied AI",
       description:
-        "Senior Backend Engineer. Java, Spring Boot, microservices and observability for banking, fintech and mobility. 15+ years shipping production software.",
+        "Senior Backend Engineer. Java, Spring Boot and microservices for banking, fintech and mobility, now applied to RAG pipelines, LLM integration and agentic workflows. 15+ years shipping production software.",
     },
     about: {
       title: "About — Diego Barrio H.",
@@ -43,8 +53,8 @@ const en: Content = {
   home: {
     hero: {
       status: "Open to senior roles",
-      roleParts: ["Senior Backend Engineer", "Java & Spring"],
-      lead: "15+ years building scalable, maintainable, and observable backend platforms for banking, fintech, and mobility. Modern architecture for products that cannot fail.",
+      roleParts: ["Senior Backend Engineer", "Java, Spring & Applied AI"],
+      lead: "15+ years building scalable, maintainable, and observable backend platforms for banking, fintech, and mobility. I now bring that same engineering standard to RAG pipelines, LLM integration, and agentic workflows.",
       cvAction: "Open CV PDF",
       contactAction: "Let's talk",
       portraitAlt: "Portrait of Diego Barrio H.",
@@ -52,7 +62,7 @@ const en: Content = {
     metrics: [
       { value: "15+", label: "years shipping production software" },
       { value: "4", label: "critical industries: banking, fintech, mobility, enterprise" },
-      { value: "100%", label: "backend focus: architecture, quality, observability" },
+      { value: "3", label: "AI products built end to end, from RAG pipeline to deploy" },
     ],
     companiesLabel: "Track record at",
     companies,
@@ -131,15 +141,49 @@ const en: Content = {
         title: "Data & Observability",
         items: ["PostgreSQL", "Oracle", "SQL Server", "MongoDB", "Grafana", "Splunk/Sentry"],
       },
+      {
+        title: "Applied AI",
+        items: ["LLM integration", "RAG", "Embeddings", "Agentic workflows", "Tool calling", "MCP", "OpenRouter", "Ollama"],
+      },
     ],
-    labHead: { title: "Lab: how I think and how I build.", kicker: "Lab" },
+    labHead: { title: "Where I put AI to work.", kicker: "Lab" },
     lab: {
-      text: "A place where I document personal projects, architecture decisions, and experiments aimed at solving real problems.",
+      text: "Personal products I design, build, and run myself. They are pre-production and I am their first user, which is exactly why they are where I test architecture decisions before they reach a client system.",
       ctaAria: "backendtothefuture.com",
+      builds: [
+        {
+          name: "Akademia",
+          url: AKADEMIA_URL,
+          subtitle: "RAG-generated exams from your own material",
+          text: "The hard part is the RAG generation itself: turning the resources a user uploads into tests and questions automatically. Built on the OpenAI embeddings API through OpenRouter, with Gemini Embedding 2 support in progress.",
+          stack: ["Java", "Spring Boot", "PostgreSQL", "RAG", "OpenRouter", "Stripe"],
+        },
+        {
+          name: "TokenMeter",
+          url: TOKENMETER_URL,
+          subtitle: "What code generation actually costs",
+          text: "An open exploration of tokenization and LLM cost in code generation, across both agentic loops and direct single-shot flows. Multi-provider pricing comparison with dynamic price synchronization.",
+          stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "LLM APIs"],
+        },
+        {
+          name: "Forma",
+          url: FORMA_URL,
+          subtitle: "AI-generated nutrition and training plans",
+          text: "Generates a food plan and a training routine to improve health and fitness, turning loosely structured user goals into a plan a person can actually follow.",
+          stack: ["Spring Boot", "LLM APIs", "Prompt design"],
+        },
+        {
+          name: "Local AI Lab",
+          url: null,
+          subtitle: "Self-hosted models on an RTX 3060",
+          text: "Local LLM deployment on 12 GB of VRAM with Ollama and LM Studio. Where I evaluate Qwen, Gemma, Llama, DeepSeek R1 and Mistral Nemo against agentic development workflows and MCP integrations.",
+          stack: ["Ollama", "LM Studio", "MCP", "Claude Code"],
+        },
+      ],
     },
     contactHead: { title: "Let's build something that cannot fail.", kicker: "Contact" },
     contact: {
-      lead: "Available for new projects, consulting engagements, and senior backend roles. I reply within 24 hours.",
+      lead: "Available for senior backend roles, remote across the EU, and for consulting on applied AI in existing systems. I reply within 24 hours.",
       calendly: "Book 30 min on Calendly",
       open: "Open",
       socials,
@@ -220,8 +264,8 @@ const en: Content = {
   },
 
   cv: {
-    role: "Senior Backend & Platform Engineer",
-    tagline: "Cloud-native systems · Distributed architectures · AI-powered development workflows",
+    role: "Senior Backend Engineer · Java, Spring & Applied AI",
+    tagline: "Cloud-native systems · Distributed architectures · RAG and agentic workflows",
     contact: [
       { label: "Alicante, Spain", href: null },
       { label: EMAIL, href: `mailto:${EMAIL}` },
@@ -275,35 +319,49 @@ const en: Content = {
     ],
     projects: [
       {
-        name: "TokenMeter",
-        url: "https://tokenmeter.backendtothefuture.com",
+        name: "Akademia",
+        url: AKADEMIA_URL,
         hardware: null,
-        subtitle: "AI Cost Estimation Platform",
-        description: "A platform to estimate the cost of software development using AI models.",
+        subtitle: "RAG-Powered Learning Platform",
+        description:
+          "Web app to study and prepare for exams. The core of the system is the RAG generation pipeline: it turns the resources a user uploads into tests and questions automatically.",
         bullets: [
-          "Repository token analysis engine.",
-          "Multi-provider pricing comparison.",
-          "Dynamic pricing synchronization.",
-          "Cost estimation for AI-assisted development workflows.",
-          "Production deployment with Cloudflare.",
+          "RAG generation pipeline that produces tests and questions from user-supplied material.",
+          "Embeddings through the OpenAI embeddings API via OpenRouter; Gemini Embedding 2 support in progress.",
+          "Chunking, indexing, and retrieval tuned so generated questions stay grounded in the source.",
+          "Spaced-repetition flashcards and self-assessment.",
+          "Integrated Stripe store to purchase study materials.",
         ],
-        stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "AI APIs"],
+        stack: ["Java", "Spring Boot", "PostgreSQL", "RAG", "OpenAI Embeddings", "OpenRouter", "Stripe"],
       },
       {
-        name: "Akademia",
-        url: "https://akademia.diegobarrioh.dev",
+        name: "TokenMeter",
+        url: TOKENMETER_URL,
         hardware: null,
-        subtitle: "AI-Powered Learning Platform",
+        subtitle: "Tokenization & LLM Cost Exploration",
         description:
-          "Web app to study and prepare for exams, with AI-assisted content generation and an integrated store to purchase study materials.",
+          "An open project exploring tokenization and the real cost of LLMs in code generation, across both agentic loops and more direct single-shot flows.",
         bullets: [
-          "Exam preparation with structured study materials.",
-          "AI question generation via RAG (OpenAI text-embedding-3-small embeddings through OpenRouter).",
-          "Spaced-repetition flashcards.",
-          "Integrated Stripe store to purchase study materials.",
-          "Progress tracking and self-assessment.",
+          "Repository token analysis engine.",
+          "Cost comparison of agentic versus direct code-generation flows.",
+          "Multi-provider pricing comparison with dynamic price synchronization.",
+          "Deployed behind Cloudflare.",
         ],
-        stack: ["Java", "Spring Boot", "PostgreSQL", "Stripe", "RAG", "OpenAI", "OpenRouter"],
+        stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "LLM APIs"],
+      },
+      {
+        name: "Forma",
+        url: FORMA_URL,
+        hardware: null,
+        subtitle: "AI-Generated Health & Training Plans",
+        description:
+          "Generates a nutrition plan and a training routine to improve health and physical fitness from a user's goals and constraints.",
+        bullets: [
+          "Turns loosely structured goals into a plan that is specific enough to follow.",
+          "Prompt and output design so generated plans stay consistent and safe.",
+          "Structured LLM output mapped onto a domain model rather than free text.",
+        ],
+        stack: ["Spring Boot", "LLM APIs", "Prompt design"],
       },
       {
         name: "Backend to the Future",
@@ -425,8 +483,9 @@ const en: Content = {
     ],
     community: [
       "Creator of Backend to the Future, a platform focused on software architecture and backend engineering.",
-      "Creator of TokenMeter, an AI development cost estimation platform.",
-      "Creator of Akademia, an AI-powered learning platform with a Stripe-based study-materials store.",
+      "Creator of Akademia, a learning platform whose core is a RAG pipeline that generates exams from user-supplied material.",
+      "Creator of TokenMeter, an open exploration of tokenization and LLM cost in code generation.",
+      "Creator of Forma, an AI-generated nutrition and training plan builder.",
       "Active experimentation with local LLMs, AI agents, and autonomous development workflows.",
       "Former mentor for Computer Science students through Fundación Banco Sabadell.",
     ],

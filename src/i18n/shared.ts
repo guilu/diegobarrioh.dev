@@ -9,6 +9,9 @@ export const LINKEDIN_URL = "https://www.linkedin.com/in/diegobarrioh";
 export const GITHUB_URL = "https://github.com/guilu";
 export const X_URL = "https://x.com/guilu";
 export const LAB_URL = "https://backendtothefuture.com";
+export const AKADEMIA_URL = "https://akademia.diegobarrioh.dev";
+export const TOKENMETER_URL = "https://tokenmeter.backendtothefuture.com";
+export const FORMA_URL = "https://forma.diegobarrioh.dev";
 
 export const socials = [
   { ico: "in", label: "LinkedIn", handle: "in/diegobarrioh", href: LINKEDIN_URL },
