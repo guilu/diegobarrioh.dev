@@ -199,22 +199,6 @@ p {
   margin: 0;
 }
 
-/* ---------- i18n ---------- */
-.i18n {
-  display: none;
-}
-[data-lang="en"] .i18n[data-lang="en"],
-[data-lang="es"] .i18n[data-lang="es"] {
-  display: block;
-}
-.i18n.inline {
-  display: none;
-}
-[data-lang="en"] .i18n.inline[data-lang="en"],
-[data-lang="es"] .i18n.inline[data-lang="es"] {
-  display: inline;
-}
-
 .container {
   width: min(1120px, calc(100% - 48px));
   margin: 0 auto;

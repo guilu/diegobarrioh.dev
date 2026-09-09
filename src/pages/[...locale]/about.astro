@@ -1,0 +1,57 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Card from "../../components/Card.astro";
+import { getContent, localeStaticPaths, type Locale } from "../../i18n";
+
+export const getStaticPaths = localeStaticPaths;
+
+const { locale } = Astro.props as { locale: Locale };
+const c = getContent(locale);
+const t = c.about;
+const PATH = "/about/";
+---
+
+<BaseLayout
+  noindex
+  locale={locale}
+  path={PATH}
+  title={c.meta.about.title}
+  description={c.meta.about.description}
+>
+  <Nav locale={locale} path={PATH} current="about" />
+  <main class="container">
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
+
+    <section class="section">
+      <h2>{t.focusTitle}</h2>
+      <Card>
+        <ul class="list">
+          {t.focus.map((item) => <li>{item}</li>)}
+        </ul>
+      </Card>
+    </section>
+
+    <section class="section">
+      <h2>{t.howTitle}</h2>
+      <div class="grid">
+        {t.how.map((item) => (
+          <Card>
+            <h3 style="margin:0 0 6px;">{item.title}</h3>
+            <p>{item.text}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>{t.extrasTitle}</h2>
+      <Card>
+        <ul class="list">
+          {t.extras.map((item) => <li>{item}</li>)}
+        </ul>
+      </Card>
+    </section>
+  </main>
+</BaseLayout>

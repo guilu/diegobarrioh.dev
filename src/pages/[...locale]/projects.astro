@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Card from "../../components/Card.astro";
+import { getContent, localeStaticPaths, type Locale } from "../../i18n";
+
+export const getStaticPaths = localeStaticPaths;
+
+const { locale } = Astro.props as { locale: Locale };
+const c = getContent(locale);
+const t = c.projects;
+const PATH = "/projects/";
+---
+
+<BaseLayout
+  noindex
+  locale={locale}
+  path={PATH}
+  title={c.meta.projects.title}
+  description={c.meta.projects.description}
+>
+  <Nav locale={locale} path={PATH} current="projects" />
+  <main class="container">
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
+
+    <section class="section">
+      <div class="grid">
+        {t.entries.map((p) => (
+          <Card>
+            <p class="eyebrow">{p.period}</p>
+            <h3 style="margin:0 0 4px;">{p.title}</h3>
+            <p class="small" style="margin:0 0 8px;">{p.context}</p>
+            <p>{p.impact}</p>
+            <p class="taglist taglist-projects">{p.stack.map((s) => <span class="pill">{s}</span>)}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>

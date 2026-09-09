@@ -1,17 +1,28 @@
 ---
-const {
-  title = "Diego Barrio H. — Senior Backend Engineer",
-  description = "Senior Backend Engineer. Java, Spring Boot, microservicios y observabilidad para banca, fintech y movilidad. 15+ años entregando software en producción.",
-  // Standalone pages duplicate the home sections; keep them reachable but out of
-  // Google's index. Home is the single canonical URL for search.
-  noindex = false,
-} = Astro.props;
+import { alternatesFor, htmlLang, localizePath, type Locale } from "../i18n";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, SITE_URL, X_URL } from "../i18n/shared";
+
+interface Props {
+  locale: Locale;
+  /** Canonical, locale-free path for this page ("/", "/cv/", ...). */
+  path: string;
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+
+const { locale, path, title, description, noindex = false } = Astro.props;
 
 const GTM_ID = "GTM-WVNMFKK3";
-const SITE_URL = "https://diegobarrioh.dev";
 
-// Per-page canonical / OG url — derived from the current path, not hardcoded to home.
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? SITE_URL).href;
+// Canonical points at the current locale's own URL; the hreflang alternates
+// below tell Google the other locale is a translation, not a duplicate.
+const canonicalURL = new URL(localizePath(path, locale), Astro.site ?? SITE_URL).href;
+const alternates = alternatesFor(path).map((alt) => ({
+  hreflang: htmlLang[alt.locale],
+  href: new URL(alt.path, Astro.site ?? SITE_URL).href,
+}));
+const xDefault = new URL(localizePath(path, "en"), Astro.site ?? SITE_URL).href;
 
 // Google Search Console "HTML tag" verification token. Paste the `content`
 // value from Search Console → Settings → Ownership verification → HTML tag.
@@ -25,14 +36,24 @@ const personSchema = {
   url: SITE_URL,
   image: `${SITE_URL}/img/dbh-wall.jpg`,
   jobTitle: "Senior Backend Engineer",
-  email: "diegobarrioh@gmail.com",
-  sameAs: ["https://www.linkedin.com/in/diegobarrioh", "https://github.com/guilu", "https://x.com/guilu"],
-  knowsAbout: ["Java", "Spring Boot", "Microservices", "Event-driven architecture", "AWS", "Kubernetes", "Apache Kafka"],
+  email: EMAIL,
+  sameAs: [LINKEDIN_URL, GITHUB_URL, X_URL],
+  knowsAbout: [
+    "Java",
+    "Spring Boot",
+    "Microservices",
+    "Event-driven architecture",
+    "AWS",
+    "Kubernetes",
+    "Apache Kafka",
+  ],
 };
 ---
 
 <!doctype html>
-<html lang="es" data-lang="es" data-theme="dark">
+<!-- `data-lang` is a styling hook only (active state of the language pill);
+     the language itself is decided by the route, never by the client. -->
+<html lang={htmlLang[locale]} data-lang={locale} data-theme="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -73,6 +94,8 @@ const personSchema = {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={locale === "es" ? "es_ES" : "en_GB"} />
+    <meta property="og:locale:alternate" content={locale === "es" ? "en_GB" : "es_ES"} />
     <meta property="og:image" content={`${SITE_URL}/img/og-cover.png`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -85,13 +108,16 @@ const personSchema = {
 
     <link rel="icon" type="image/svg+xml" href="/img/dbh2-black.svg" />
     <link rel="canonical" href={canonicalURL} />
+    {alternates.map((alt) => <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />)}
+    <link rel="alternate" hreflang="x-default" href={xDefault} />
     <link rel="preload" href="/fonts/Geist-var.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/IBMPlexMono-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
 
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
 
-    <!-- Apply stored theme/lang before first paint (no flash) -->
+    <!-- Apply stored theme before first paint (no flash). Language is a route
+         now, so it is never resolved on the client. -->
     <script is:inline>
       (() => {
         const root = document.documentElement;
@@ -102,12 +128,6 @@ const personSchema = {
           localStorage.getItem("theme") ||
           (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
         root.setAttribute("data-theme", theme);
-        const lang =
-          params.get("lang") ||
-          localStorage.getItem("lang") ||
-          ((navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en");
-        root.setAttribute("data-lang", lang);
-        root.setAttribute("lang", lang);
       })();
     </script>
   </head>
@@ -126,26 +146,14 @@ const personSchema = {
     <script>
       const root = document.documentElement;
       const toggle = document.getElementById("theme-toggle");
-      const langToggle = document.getElementById("lang-toggle");
 
       const applyTheme = (theme: string) => {
         root.setAttribute("data-theme", theme);
         localStorage.setItem("theme", theme);
       };
 
-      const applyLang = (lang: string) => {
-        root.setAttribute("data-lang", lang);
-        root.setAttribute("lang", lang);
-        localStorage.setItem("lang", lang);
-        langToggle?.setAttribute("aria-label", lang === "es" ? "Switch to English" : "Cambiar a español");
-      };
-
       toggle?.addEventListener("click", () => {
         applyTheme(root.getAttribute("data-theme") === "light" ? "dark" : "light");
-      });
-
-      langToggle?.addEventListener("click", () => {
-        applyLang(root.getAttribute("data-lang") === "es" ? "en" : "es");
       });
 
       // Scroll reveal — show elements as they enter the viewport

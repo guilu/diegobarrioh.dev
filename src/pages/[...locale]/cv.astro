@@ -1,0 +1,144 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import { getContent, localeStaticPaths, localizePath, type Locale } from "../../i18n";
+import { CV_PDF } from "../../i18n/shared";
+
+export const getStaticPaths = localeStaticPaths;
+
+const { locale } = Astro.props as { locale: Locale };
+const c = getContent(locale);
+const t = c.cv;
+const h = t.headings;
+const PATH = "/cv/";
+---
+
+<BaseLayout noindex locale={locale} path={PATH} title={c.meta.cv.title} description={c.meta.cv.description}>
+  <Nav locale={locale} path={PATH} current="cv" />
+  <main class="container">
+    <article class="cv-doc">
+      <header class="cv-head">
+        <h1>Diego Barrio Hortigüela</h1>
+        <p class="cv-role">{t.role}</p>
+        <p class="cv-tagline">{t.tagline}</p>
+        <p class="cv-contact">
+          {t.contact.map((item, i) => (
+            <>
+              {i > 0 && <span class="cv-sep" aria-hidden="true">·</span>}
+              {item.href ? (
+                <a
+                  href={item.href}
+                  target={item.href.startsWith("http") ? "_blank" : undefined}
+                  rel={item.href.startsWith("http") ? "noreferrer" : undefined}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                item.label
+              )}
+            </>
+          ))}
+        </p>
+        <div class="btns cv-actions">
+          <a class="btn primary" href={CV_PDF} target="_blank" rel="noreferrer">{t.openPdf}</a>
+          <a class="btn" href={localizePath("/", locale)}>{t.back}</a>
+        </div>
+      </header>
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">🧑‍💻</span>{h.profile}</h2>
+      <p>{t.summary}</p>
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">🛠️</span>{h.competencies}</h2>
+      {t.competencies.map((group) => (
+        <>
+          <h3>{group.title}</h3>
+          <ul>{group.items.map((s) => <li>{s}</li>)}</ul>
+        </>
+      ))}
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">🚀</span>{h.projects}</h2>
+      {t.projects.map((p) => (
+        <>
+          <h3>{p.url ? <a href={p.url} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</h3>
+          <p class="cv-sub">{p.subtitle}</p>
+          <p>{p.description}</p>
+          <ul>{p.bullets.map((b) => <li>{b}</li>)}</ul>
+          {p.hardware && (
+            <p class="cv-tech">
+              <strong>{h.hardware}</strong>
+              <span> {p.hardware}</span>
+            </p>
+          )}
+          {p.stack.length > 0 && (
+            <p class="cv-tech">
+              <strong>{h.technologies}</strong>
+              <span> {p.stack.join(", ")}</span>
+            </p>
+          )}
+        </>
+      ))}
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">💼</span>{h.experience}</h2>
+      {t.experience.map((e) => (
+        <>
+          <h3>{e.role}</h3>
+          <p class="cv-meta">
+            <span class="cv-company">{e.company}</span>
+            <span class="cv-sep" aria-hidden="true">·</span>
+            <span>{e.period}</span>
+          </p>
+          <ul>{e.bullets.map((b) => <li>{b}</li>)}</ul>
+          <p class="cv-tech">
+            <strong>{h.technologies}</strong>
+            <span> {e.stack.join(", ")}</span>
+          </p>
+        </>
+      ))}
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">🎓</span>{h.education}</h2>
+      {t.education.map((e) => (
+        <>
+          <h3>{e.title}</h3>
+          <p class="cv-meta">
+            <span class="cv-company">{e.org}</span>
+            <span class="cv-sep" aria-hidden="true">·</span>
+            <span>{e.period}</span>
+          </p>
+          {e.note && <p>{e.note}</p>}
+        </>
+      ))}
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">🤝</span>{h.community}</h2>
+      <ul>{t.community.map((item) => <li>{item}</li>)}</ul>
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">📚</span>{h.learning}</h2>
+      <ul>{t.learning.map((s) => <li>{s}</li>)}</ul>
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">🗣️</span>{h.languages}</h2>
+      <table class="cv-table">
+        <thead>
+          <tr>
+            <th>{h.languageCol}</th>
+            <th>{h.levelCol}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {t.languages.map((l) => (
+            <tr>
+              <td>{l.name}</td>
+              <td>{l.level}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </article>
+  </main>
+</BaseLayout>
