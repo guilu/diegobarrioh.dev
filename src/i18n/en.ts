@@ -26,12 +26,12 @@ const en: Content = {
     cv: {
       title: "CV — Diego Barrio H.",
       description:
-        "CV of Diego Barrio H., Senior Backend & Platform Engineer. Java, Spring Boot, microservices, AWS, Kubernetes and AI-powered development workflows. 15+ years in production.",
+        "Full CV of Diego Barrio H.: 15+ years of Java and Spring Boot across banking, fintech and mobility, from Caja Mediterráneo in 2007 to Europcar today. Education, competencies and languages included.",
     },
     projects: {
       title: "Projects — Diego Barrio H.",
       description:
-        "Projects by Diego Barrio H.: Akademia (AI learning platform with RAG), Backend to the Future and other cloud-native backend systems.",
+        "How I build with LLMs: a RAG pipeline that generates exams from your own material, a token-cost analyser for agentic code generation, and a plan generator fenced by a validated food catalog. Java, Spring Boot and Kubernetes underneath.",
     },
   },
 
@@ -222,7 +222,51 @@ const en: Content = {
   projects: {
     title: "Projects",
     intro:
-      "Selected projects and workstreams in backend, architecture, and critical systems. If you want specific details or public demos, reach out.",
+      "Two kinds of work. The products I build and run myself, where I get to choose every constraint, and the client systems where the constraints choose me.",
+    buildsTitle: "What I build and run myself",
+    builds: [
+      {
+        name: "Akademia",
+        url: AKADEMIA_URL,
+        subtitle: "Exams generated from your own material",
+        problem:
+          "Studying from your own notes means writing your own exam questions first, which is the slowest part of preparing for anything.",
+        decision:
+          "The system is a retrieval problem, not a prompting problem. Uploaded material is chunked and embedded through the OpenAI embeddings API via OpenRouter, and questions are generated only from retrieved passages, so every question stays answerable from the source the user supplied. Gemini Embedding 2 is being added as a second provider to keep the pipeline from being tied to one vendor.",
+        stack: ["Java", "Spring Boot", "PostgreSQL", "RAG", "OpenAI Embeddings", "OpenRouter", "Stripe"],
+      },
+      {
+        name: "TokenMeter",
+        url: TOKENMETER_URL,
+        subtitle: "What a feature costs when a model writes it",
+        problem:
+          "Provider pricing is quoted per million tokens. Nobody measures their repository in tokens, so the number on the pricing page answers a question nobody asked.",
+        decision:
+          "TokenMeter analyses a repository, turns it into token counts, and prices the same work across providers against a pricing table that synchronizes itself. It separates agentic loops, which re-read context on every step, from single-shot flows, because the two cost curves are nothing alike.",
+        stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "LLM APIs"],
+      },
+      {
+        name: "Forma",
+        url: FORMA_URL,
+        subtitle: "A model that is not allowed to invent facts",
+        problem:
+          "A weekly training and nutrition plan living in a spreadsheet cannot react to last week's body composition, a run that finished at eleven at night, or a change in shopping prices.",
+        decision:
+          "A language model generates the plan, but it never states a fact. The API publishes a food catalog with measured macros, and an imported plan may only reference identifiers from that catalog; anything else is rejected on import. The domain stays framework-free behind a hexagonal boundary, on JDBC and Flyway rather than an ORM, with the reasoning recorded in an ADR.",
+        stack: ["Java 21", "Spring Boot 3", "Hexagonal", "PostgreSQL", "Flyway", "React 19", "Playwright"],
+      },
+      {
+        name: "Local AI Lab",
+        url: null,
+        subtitle: "Claims about local models, checked against my own VRAM",
+        problem:
+          "Every claim about what a local model can do is worth exactly as much as the hardware budget of the person making it.",
+        decision:
+          "12 GB on an RTX 3060, Ollama and LM Studio, and a fixed set of agentic tasks to run Qwen, Gemma, Llama, DeepSeek R1 and Mistral Nemo against. It is where I find out which development workflows survive without a frontier model and which quietly fall apart.",
+        stack: ["Ollama", "LM Studio", "MCP", "Claude Code"],
+      },
+    ],
+    workTitle: "Client and employer systems",
     entries: [
       {
         title: "Billing & Payments APIs",

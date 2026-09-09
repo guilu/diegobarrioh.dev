@@ -15,10 +15,10 @@ export default defineConfig({
         defaultLocale: 'en',
         locales: { en: 'en', es: 'es' },
       },
-      // /about /cv /projects duplicate the home sections and are noindex'd, so
-      // keep them out of the sitemap too. `endsWith` matches both locales.
-      filter: (page) =>
-        !['/about/', '/cv/', '/projects/', '/contact/'].some((p) => page.endsWith(p)),
+      // /cv and /projects carry their own content and are indexed. /about is
+      // still a thin restatement of the home, so it stays noindex and out of
+      // the sitemap. `endsWith` matches both locales.
+      filter: (page) => !['/about/', '/contact/'].some((p) => page.endsWith(p)),
     }),
   ],
 });

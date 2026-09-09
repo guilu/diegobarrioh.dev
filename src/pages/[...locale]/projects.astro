@@ -12,19 +12,39 @@ const t = c.projects;
 const PATH = "/projects/";
 ---
 
-<BaseLayout
-  noindex
-  locale={locale}
-  path={PATH}
-  title={c.meta.projects.title}
-  description={c.meta.projects.description}
->
+<BaseLayout locale={locale} path={PATH} title={c.meta.projects.title} description={c.meta.projects.description}>
   <Nav locale={locale} path={PATH} current="projects" />
   <main class="container">
     <h1>{t.title}</h1>
     <p>{t.intro}</p>
 
     <section class="section">
+      <h2>{t.buildsTitle}</h2>
+      <div class="proj-list">
+        {t.builds.map((b, i) => (
+          <article class="proj">
+            <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
+            <div class="proj-body">
+              <h3>
+                {b.url ? (
+                  <a href={b.url} target="_blank" rel="noopener noreferrer">{b.name}</a>
+                ) : (
+                  b.name
+                )}
+                <span class="proj-sub"> — {b.subtitle}</span>
+              </h3>
+              <p>{b.problem}</p>
+              <p class="proj-decision">{b.decision}</p>
+              <div class="taglist">{b.stack.map((s) => <span class="pill">{s}</span>)}</div>
+            </div>
+            <span class="proj-arrow" aria-hidden="true">→</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>{t.workTitle}</h2>
       <div class="grid">
         {t.entries.map((p) => (
           <Card>

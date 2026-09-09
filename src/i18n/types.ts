@@ -123,9 +123,26 @@ export interface ProjectEntry {
   stack: string[];
 }
 
+/**
+ * A build gets a different treatment on /projects than on the home page or the
+ * CV: problem first, then the engineering decision worth showing. Same subject,
+ * different angle, so the two indexed pages do not read as boilerplate.
+ */
+export interface ProjectDetail {
+  name: string;
+  url: string | null;
+  subtitle: string;
+  problem: string;
+  decision: string;
+  stack: string[];
+}
+
 export interface Projects {
   title: string;
   intro: string;
+  buildsTitle: string;
+  builds: ProjectDetail[];
+  workTitle: string;
   entries: ProjectEntry[];
 }
 

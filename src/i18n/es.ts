@@ -26,12 +26,12 @@ const es: Content = {
     cv: {
       title: "CV — Diego Barrio H.",
       description:
-        "CV de Diego Barrio H., Senior Backend & Platform Engineer. Java, Spring Boot, microservicios, AWS, Kubernetes y flujos de desarrollo asistidos por IA. 15+ años en producción.",
+        "CV completo de Diego Barrio H.: 15+ años de Java y Spring Boot en banca, fintech y movilidad, desde Caja Mediterráneo en 2007 hasta Europcar hoy. Incluye formación, competencias e idiomas.",
     },
     projects: {
       title: "Proyectos — Diego Barrio H.",
       description:
-        "Proyectos de Diego Barrio H.: Akademia (plataforma de aprendizaje con IA y RAG), Backend to the Future y otros sistemas backend cloud-native.",
+        "Cómo construyo con LLMs: un pipeline RAG que genera exámenes desde tu propio material, un analizador de coste en tokens para generación agéntica de código y un generador de planes acotado por un catálogo validado. Java, Spring Boot y Kubernetes debajo.",
     },
   },
 
@@ -222,7 +222,51 @@ const es: Content = {
   projects: {
     title: "Proyectos",
     intro:
-      "Selección de proyectos y líneas de trabajo relevantes en backend, arquitectura y sistemas críticos. Si quieres detalles específicos o demos públicas, escríbeme.",
+      "Dos tipos de trabajo. Los productos que construyo y opero yo mismo, donde elijo cada restricción, y los sistemas de cliente donde las restricciones me eligen a mí.",
+    buildsTitle: "Lo que construyo y opero yo mismo",
+    builds: [
+      {
+        name: "Akademia",
+        url: AKADEMIA_URL,
+        subtitle: "Exámenes generados a partir de tu propio material",
+        problem:
+          "Estudiar con tus propios apuntes obliga a escribirte antes las preguntas del examen, que es la parte más lenta de preparar cualquier cosa.",
+        decision:
+          "El sistema es un problema de recuperación, no de prompting. El material subido se trocea y se convierte en embeddings mediante la API de OpenAI a través de OpenRouter, y las preguntas se generan solo a partir de los pasajes recuperados, de modo que toda pregunta sigue siendo respondible desde la fuente que aportó el usuario. Se está añadiendo Gemini Embedding 2 como segundo proveedor para que el pipeline no quede atado a uno solo.",
+        stack: ["Java", "Spring Boot", "PostgreSQL", "RAG", "OpenAI Embeddings", "OpenRouter", "Stripe"],
+      },
+      {
+        name: "TokenMeter",
+        url: TOKENMETER_URL,
+        subtitle: "Lo que cuesta una funcionalidad cuando la escribe un modelo",
+        problem:
+          "Los proveedores cotizan por millón de tokens. Nadie mide su repositorio en tokens, así que el número de la página de precios responde a una pregunta que nadie ha hecho.",
+        decision:
+          "TokenMeter analiza un repositorio, lo convierte en recuento de tokens y pone precio al mismo trabajo en varios proveedores contra una tabla de precios que se sincroniza sola. Separa los bucles agénticos, que releen el contexto en cada paso, de los flujos de una sola pasada, porque las dos curvas de coste no se parecen en nada.",
+        stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "APIs de LLM"],
+      },
+      {
+        name: "Forma",
+        url: FORMA_URL,
+        subtitle: "Un modelo al que no se le permite inventar datos",
+        problem:
+          "Un plan semanal de entrenamiento y alimentación que vive en una hoja de cálculo no puede reaccionar a la composición corporal de la semana pasada, a una carrera que terminó a las once de la noche ni a un cambio en los precios de la compra.",
+        decision:
+          "Un modelo de lenguaje genera el plan, pero nunca afirma un dato. La API publica un catálogo de alimentos con macros medidos, y un plan importado solo puede referenciar identificadores de ese catálogo; cualquier otra cosa se rechaza al importar. El dominio se mantiene libre de framework detrás de una frontera hexagonal, sobre JDBC y Flyway en lugar de un ORM, con el razonamiento registrado en un ADR.",
+        stack: ["Java 21", "Spring Boot 3", "Hexagonal", "PostgreSQL", "Flyway", "React 19", "Playwright"],
+      },
+      {
+        name: "Local AI Lab",
+        url: null,
+        subtitle: "Afirmaciones sobre modelos locales, contrastadas con mi propia VRAM",
+        problem:
+          "Toda afirmación sobre lo que puede hacer un modelo local vale exactamente lo que el presupuesto de hardware de quien la hace.",
+        decision:
+          "12 GB en una RTX 3060, Ollama y LM Studio, y un conjunto fijo de tareas agénticas contra el que ejecutar Qwen, Gemma, Llama, DeepSeek R1 y Mistral Nemo. Es donde averiguo qué flujos de desarrollo sobreviven sin un modelo frontera y cuáles se caen en silencio.",
+        stack: ["Ollama", "LM Studio", "MCP", "Claude Code"],
+      },
+    ],
+    workTitle: "Sistemas de cliente y de empresa",
     entries: [
       {
         title: "APIs de facturación y pagos",
