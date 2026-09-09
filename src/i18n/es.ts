@@ -153,6 +153,7 @@ const es: Content = {
       builds: [
         {
           name: "Akademia",
+          slug: "akademia",
           url: AKADEMIA_URL,
           subtitle: "Exámenes generados por RAG desde tu propio material",
           text: "La parte difícil es la generación del RAG: convertir los recursos que sube el usuario en tests y preguntas de forma automática. Construido sobre la API de embeddings de OpenAI a través de OpenRouter, con soporte de Gemini Embedding 2 en curso.",
@@ -160,6 +161,7 @@ const es: Content = {
         },
         {
           name: "TokenMeter",
+          slug: "tokenmeter",
           url: TOKENMETER_URL,
           subtitle: "Lo que cuesta de verdad generar código",
           text: "Exploración abierta de la tokenización y el coste de los LLMs en la generación de código, tanto en bucles agénticos como en flujos directos de una sola pasada. Comparación de precios multiproveedor con sincronización dinámica.",
@@ -167,6 +169,7 @@ const es: Content = {
         },
         {
           name: "Forma",
+          slug: "forma",
           url: FORMA_URL,
           subtitle: "Un contrato validado para planes generados por un LLM",
           text: "Un sistema operativo personal de forma física: composición corporal, entrenamiento, nutrición y coste de la compra en un mismo ciclo semanal. Lo interesante es el límite que le puse al modelo. Un LLM puede generar un plan de alimentación, pero solo con el catálogo que publica la API, y cualquier alimento que se invente se rechaza al importar. Los macros son un dato que alguien mide, no algo que estime un modelo.",
@@ -174,6 +177,7 @@ const es: Content = {
         },
         {
           name: "Local AI Lab",
+          slug: "local-ai-lab",
           url: null,
           subtitle: "Modelos autoalojados sobre una RTX 3060",
           text: "Despliegue de LLMs en local sobre 12 GB de VRAM con Ollama y LM Studio. Donde evalúo Qwen, Gemma, Llama, DeepSeek R1 y Mistral Nemo contra flujos de desarrollo agénticos e integraciones MCP.",
@@ -224,46 +228,186 @@ const es: Content = {
     intro:
       "Dos tipos de trabajo. Los productos que construyo y opero yo mismo, donde elijo cada restricción, y los sistemas de cliente donde las restricciones me eligen a mí.",
     buildsTitle: "Lo que construyo y opero yo mismo",
-    builds: [
+    readMore: "Ver el detalle",
+    visitSite: "Visitar el sitio",
+    backToProjects: "Todos los proyectos",
+    statusLabel: "Estado",
+    stackLabel: "Stack",
+    pages: [
       {
+        slug: "akademia",
         name: "Akademia",
         url: AKADEMIA_URL,
-        subtitle: "Exámenes generados a partir de tu propio material",
-        problem:
-          "Estudiar con tus propios apuntes obliga a escribirte antes las preguntas del examen, que es la parte más lenta de preparar cualquier cosa.",
-        decision:
-          "El sistema es un problema de recuperación, no de prompting. El material subido se trocea y se convierte en embeddings mediante la API de OpenAI a través de OpenRouter, y las preguntas se generan solo a partir de los pasajes recuperados, de modo que toda pregunta sigue siendo respondible desde la fuente que aportó el usuario. Se está añadiendo Gemini Embedding 2 como segundo proveedor para que el pipeline no quede atado a uno solo.",
-        stack: ["Java", "Spring Boot", "PostgreSQL", "RAG", "OpenAI Embeddings", "OpenRouter", "Stripe"],
+        tagline: "Exámenes generados a partir de tu propio material",
+        summary:
+          "Un pipeline de recuperación que convierte los PDF que subes en preguntas de examen, y que no deja que ninguna llegue a un alumno sin revisar.",
+        metaTitle: "Akademia — un pipeline RAG que genera exámenes desde tus propios PDF",
+        metaDescription:
+          "Cómo Akademia genera preguntas de examen con RAG: troceado, embeddings a través de OpenRouter, generación en Groq y una puerta de borrador y revisión para que ninguna pregunta generada llegue sin comprobar. Java 21 y Spring Boot 3.4.",
+        status: "Preproducción. Soy su primer usuario.",
+        sections: [
+          {
+            title: "El problema",
+            body: [
+              "Estudiar con tu propio material obliga a escribirte antes las preguntas del examen. Es la parte más lenta de preparar cualquier cosa, y es justo la que todo el mundo se salta.",
+              "Akademia coge los documentos que ya tienes y produce preguntas a partir de ellos. Lo interesante en ingeniería no es el prompt. Es todo lo que rodea al prompt.",
+            ],
+          },
+          {
+            title: "Un problema de recuperación, no de prompting",
+            body: [
+              "Un documento subido se almacena, se trocea en fragmentos de mil caracteres con doscientos de solapamiento, y cada fragmento se convierte en embedding y se guarda junto a su origen. La generación recupera los ocho fragmentos más cercanos a un tema y escribe preguntas solo desde esos pasajes, de modo que una pregunta sigue siendo respondible con el material que aportó el usuario.",
+              "Los embeddings corren sobre text-embedding-3-small a través de OpenRouter, mientras que el modelo de chat es Llama 3.3 70B en Groq. Dos proveedores no es indecisión: Groq no sirve modelos de embedding, así que el pipeline tiene que abarcar los dos. Se está añadiendo Gemini Embedding 2 como segundo proveedor de embeddings para que ningún proveedor pueda dejar el pipeline tirado.",
+            ],
+          },
+          {
+            title: "Las preguntas generadas son borradores, no respuestas",
+            body: [
+              "Nada de lo que escribe un modelo se convierte en pregunta real por su cuenta. Cada elemento generado cae en una tabla de borradores con estado generado, validado o rechazado, y lleva una referencia al documento de origen del que salió.",
+              "Esa puerta es todo el argumento. Un modelo que alucina una pregunta verosímil sobre el temario del que te examinan es peor que no tener pregunta, así que el sistema se construye asumiendo que lo hará y pone a una persona como último paso.",
+            ],
+          },
+          {
+            title: "Una costura donde irá el vector store",
+            body: [
+              "La primera versión guarda cada embedding como un array de floats en JSON dentro de una columna de texto. No es el estado final y la migración lo dice en voz alta: el camino de subida a una columna pgvector de dimensión 1536 está escrito en el esquema como comentario, y la recuperación vive detrás de un puerto.",
+              "Pasar de un escaneo completo a un índice vectorial de verdad es escribir un adaptador. El dominio no se entera. Publicar primero la versión simple fue una decisión, no un descuido, y dejar la costura a la vista es lo que la convierte en decisión.",
+            ],
+          },
+          {
+            title: "El resto del producto",
+            body: [
+              "Alrededor del pipeline hay una aplicación de verdad: exámenes cronometrados y simulacros, flashcards de repetición espaciada con el algoritmo SM-2, una jerarquía de asignaturas, unidades y preguntas, autenticación JWT con Google OAuth2 y una tienda Stripe para los temarios.",
+              "Java 21 y Spring Boot 3.4 en el backend, React 18 con Vite 5 y Tailwind en el front, y todo el stack en Docker.",
+            ],
+          },
+        ],
+        stack: ["Java 21", "Spring Boot 3.4", "PostgreSQL", "React 18", "Vite 5", "Tailwind", "RAG", "OpenRouter", "Groq", "Stripe", "Docker"],
       },
       {
+        slug: "tokenmeter",
         name: "TokenMeter",
         url: TOKENMETER_URL,
-        subtitle: "Lo que cuesta una funcionalidad cuando la escribe un modelo",
-        problem:
-          "Los proveedores cotizan por millón de tokens. Nadie mide su repositorio en tokens, así que el número de la página de precios responde a una pregunta que nadie ha hecho.",
-        decision:
-          "TokenMeter analiza un repositorio, lo convierte en recuento de tokens y pone precio al mismo trabajo en varios proveedores contra una tabla de precios que se sincroniza sola. Separa los bucles agénticos, que releen el contexto en cada paso, de los flujos de una sola pasada, porque las dos curvas de coste no se parecen en nada.",
-        stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "APIs de LLM"],
+        tagline: "Lo que cuesta una funcionalidad cuando la escribe un modelo",
+        summary:
+          "Cuenta un repositorio con un tokenizador real y después pone precio al mismo trabajo en varios modelos y tres modos de uso.",
+        metaTitle: "TokenMeter — cuánto cuesta generar un repositorio con un LLM",
+        metaDescription:
+          "TokenMeter cuenta un repositorio de GitHub con el encoder jtokkit o200k_base y pone precio a la generación en varios modelos bajo los modos raw, assisted y agentic. Open source, Java 21 y Spring Boot.",
+        status: "Open source, MIT, autoalojado.",
+        sections: [
+          {
+            title: "El problema",
+            body: [
+              "Los proveedores cotizan sus precios por millón de tokens. Nadie mide su repositorio en tokens, así que el número de la página de precios responde a una pregunta que nadie ha hecho.",
+              "TokenMeter responde a la que la gente sí se hace: cuánto habría costado generar este código, y cuánto cambia eso según cómo trabajes.",
+            ],
+          },
+          {
+            title: "Un encoder real, no una regla de tres",
+            body: [
+              "El recuento de tokens sale de jtokkit ejecutando la codificación o200k_base, la misma tokenización que usan los modelos. Dividir los caracteres entre cuatro se acerca lo bastante como para sonar razonable y se equivoca lo bastante como para dejar sin sentido la comparación entre modelos, que es justo lo único que produce la herramienta.",
+            ],
+          },
+          {
+            title: "Tres modos, y honestidad sobre lo que son",
+            body: [
+              "El mismo repositorio se valora de tres maneras. Raw cuenta solo los tokens del código final, uno por input y nada de output: un suelo absoluto. Assisted multiplica el input por cinco y suma una vez el output, por las iteraciones humanas y un razonamiento moderado. Agentic multiplica el input por veinte y el output por cuatro, porque un agente autónomo relee su contexto en cada paso y llama a herramientas por el camino.",
+              "Esos multiplicadores son aproximaciones fijas y la herramienta lo dice en su propio README. Es una estimación con suelo, no contabilidad. Publicar los multiplicadores es el argumento: un modelo de coste que no puedes inspeccionar es un número que no puedes discutir.",
+            ],
+          },
+          {
+            title: "Cómo funciona un análisis",
+            body: [
+              "Enviar la URL de un repositorio al endpoint de análisis devuelve un 202 y encola un trabajo asíncrono. El repositorio se clona temporalmente, se cuenta y se tira.",
+              "El resultado se desglosa por lenguaje, extensión, carpeta y fichero, se puede compartir como URL pública o incrustar como badge, y se guarda para poder comparar análisis en el tiempo. Los precios de los modelos son configuración, no constantes en el código.",
+            ],
+          },
+        ],
+        stack: ["Java 21", "Spring Boot 3", "jtokkit", "o200k_base", "Docker", "Cloudflare", "SonarCloud"],
       },
       {
+        slug: "forma",
         name: "Forma",
         url: FORMA_URL,
-        subtitle: "Un modelo al que no se le permite inventar datos",
-        problem:
-          "Un plan semanal de entrenamiento y alimentación que vive en una hoja de cálculo no puede reaccionar a la composición corporal de la semana pasada, a una carrera que terminó a las once de la noche ni a un cambio en los precios de la compra.",
-        decision:
-          "Un modelo de lenguaje genera el plan, pero nunca afirma un dato. La API publica un catálogo de alimentos con macros medidos, y un plan importado solo puede referenciar identificadores de ese catálogo; cualquier otra cosa se rechaza al importar. El dominio se mantiene libre de framework detrás de una frontera hexagonal, sobre JDBC y Flyway en lugar de un ORM, con el razonamiento registrado en un ADR.",
-        stack: ["Java 21", "Spring Boot 3", "Hexagonal", "PostgreSQL", "Flyway", "React 19", "Playwright"],
+        tagline: "Un modelo al que no se le permite inventar datos",
+        summary:
+          "Un sistema operativo personal de forma física donde un LLM escribe el plan pero solo puede nombrar alimentos que la API ha medido.",
+        metaTitle: "Forma — acotar un LLM detrás de un contrato de dominio validado",
+        metaDescription:
+          "En Forma un modelo de lenguaje genera el plan de alimentación, pero solo puede referenciar identificadores de alimento que publica la API; lo que se invente se rechaza al importar. Java 21 hexagonal, Spring Boot 3, PostgreSQL y Flyway.",
+        status: "Preproducción, y una banda en la app lo avisa.",
+        sections: [
+          {
+            title: "El problema",
+            body: [
+              "Un plan semanal de entrenamiento y alimentación que vive en una hoja de cálculo no puede reaccionar a la composición corporal de la semana pasada, a una carrera que terminó a las once de la noche en un verano de Alicante, ni a un cambio en los precios de la compra.",
+              "Forma conecta composición corporal, entrenamiento, nutrición y coste de la compra semanal en un mismo ciclo, e intenta responder a una sola pregunta: qué debería hacer esta semana, visto lo que pasó la semana pasada.",
+            ],
+          },
+          {
+            title: "El límite alrededor del modelo",
+            body: [
+              "Un modelo de lenguaje genera el plan. Nunca afirma un dato. La API publica un catálogo de alimentos, cada uno con macros que alguien midió, y un plan importado solo puede referenciar identificadores de ese catálogo. Cualquier otra cosa se rechaza al importar.",
+              "El razonamiento está escrito en el documento del formato en una frase: los macros de un alimento son un dato que alguien mide, no que un modelo estime. El modelo puede componer. No puede afirmar.",
+            ],
+          },
+          {
+            title: "Un dominio que no sabe de frameworks",
+            body: [
+              "El backend es hexagonal, con el dominio libre de tipos de framework y la infraestructura contenida en la frontera de los adaptadores. La persistencia es JDBC sobre PostgreSQL con migraciones Flyway y deliberadamente sin ORM, una decisión registrada en un architecture decision record en lugar de dejarla para que alguien la redescubra más tarde.",
+              "Sesenta y pico migraciones después, esa decisión sigue aguantando, que es la única evidencia que importa sobre una decisión de arquitectura.",
+            ],
+          },
+          {
+            title: "Medido, no tecleado",
+            body: [
+              "Las mediciones corporales entran por una integración OAuth con Withings en lugar de a mano, porque un número que tienes que reteclear es un número que dejas de registrar. Un servicio de insights semanales convierte esas métricas en bruto en ajustes pequeños, del orden de cien calorías, en vez de reescrituras dramáticas del plan.",
+            ],
+          },
+          {
+            title: "Cómo está construido",
+            body: [
+              "Trece architecture decision records, una especificación por historia guardada en el repositorio, y un frontend React 19 cubierto por tests unitarios en Vitest y ejecuciones end-to-end con Playwright, todo verificado en integración continua.",
+            ],
+          },
+        ],
+        stack: ["Java 21", "Spring Boot 3", "Hexagonal", "PostgreSQL 17", "Flyway", "React 19", "TypeScript", "Vite", "Vitest", "Playwright", "Docker Compose"],
       },
       {
+        slug: "local-ai-lab",
         name: "Local AI Lab",
         url: null,
-        subtitle: "Afirmaciones sobre modelos locales, contrastadas con mi propia VRAM",
-        problem:
-          "Toda afirmación sobre lo que puede hacer un modelo local vale exactamente lo que el presupuesto de hardware de quien la hace.",
-        decision:
-          "12 GB en una RTX 3060, Ollama y LM Studio, y un conjunto fijo de tareas agénticas contra el que ejecutar Qwen, Gemma, Llama, DeepSeek R1 y Mistral Nemo. Es donde averiguo qué flujos de desarrollo sobreviven sin un modelo frontera y cuáles se caen en silencio.",
-        stack: ["Ollama", "LM Studio", "MCP", "Claude Code"],
+        tagline: "Afirmaciones sobre modelos locales, contrastadas con mi propia VRAM",
+        summary:
+          "Un conjunto fijo de tareas agénticas ejecutado contra modelos locales sobre doce gigas de hardware de consumo.",
+        metaTitle: "Local AI Lab — flujos agénticos sobre 12 GB de VRAM",
+        metaDescription:
+          "Evaluar Qwen, Gemma, Llama, DeepSeek R1 y Mistral Nemo en local sobre una RTX 3060 con Ollama y LM Studio, contra flujos de desarrollo agénticos e integraciones MCP reales.",
+        status: "Hardware personal. En curso.",
+        sections: [
+          {
+            title: "Por qué molestarse",
+            body: [
+              "Toda afirmación sobre lo que puede hacer un modelo local vale exactamente lo que el presupuesto de hardware de quien la hace. Los benchmarks se ejecutan en tarjetas que nadie tiene en casa, y la pregunta interesante no es si un modelo es bueno, sino si es lo bastante bueno con doce gigas.",
+            ],
+          },
+          {
+            title: "El montaje",
+            body: [
+              "Una RTX 3060 con 12 GB de VRAM, Ollama y LM Studio, y un conjunto fijo de tareas de desarrollo agénticas contra el que ejecutarlo todo para que la comparación signifique algo.",
+              "Entre los modelos en evaluación están Qwen, Gemma, Llama 3.1, DeepSeek R1 y Mistral Nemo.",
+            ],
+          },
+          {
+            title: "Lo que de verdad me dice",
+            body: [
+              "Qué flujos de desarrollo sobreviven sin un modelo frontera y cuáles se caen en silencio. El tool calling y las integraciones MCP son donde primero se ve la diferencia: un modelo que escribe código aceptable perderá igualmente el hilo en un bucle agéntico de varios pasos mucho antes de quedarse sin contexto.",
+              "Es también donde averiguo lo que cuesta un flujo cuando el token marginal es gratis, que es la otra mitad de la pregunta que hace TokenMeter.",
+            ],
+          },
+        ],
+        stack: ["Ollama", "LM Studio", "MCP", "Claude Code", "RTX 3060"],
       },
     ],
     workTitle: "Sistemas de cliente y de empresa",
@@ -388,7 +532,7 @@ const es: Content = {
         bullets: [
           "Motor de análisis de tokens de repositorios.",
           "Comparación de coste entre flujos de generación agénticos y directos.",
-          "Comparación de precios multiproveedor con sincronización dinámica.",
+          "Recuento de tokens con el encoder jtokkit o200k_base en lugar de una aproximación por caracteres.",
           "Desplegado detrás de Cloudflare.",
         ],
         stack: ["Java", "Spring Boot", "Docker", "Cloudflare", "APIs de LLM"],

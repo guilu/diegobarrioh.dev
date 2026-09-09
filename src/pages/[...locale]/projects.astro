@@ -2,7 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Card from "../../components/Card.astro";
-import { getContent, localeStaticPaths, type Locale } from "../../i18n";
+import { getContent, localeStaticPaths, localizePath, type Locale } from "../../i18n";
 
 export const getStaticPaths = localeStaticPaths;
 
@@ -21,21 +21,19 @@ const PATH = "/projects/";
     <section class="section">
       <h2>{t.buildsTitle}</h2>
       <div class="proj-list">
-        {t.builds.map((b, i) => (
+        {t.pages.map((p, i) => (
           <article class="proj">
             <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
             <div class="proj-body">
               <h3>
-                {b.url ? (
-                  <a href={b.url} target="_blank" rel="noopener noreferrer">{b.name}</a>
-                ) : (
-                  b.name
-                )}
-                <span class="proj-sub"> — {b.subtitle}</span>
+                <a href={localizePath(`/projects/${p.slug}/`, locale)}>{p.name}</a>
+                <span class="proj-sub"> — {p.tagline}</span>
               </h3>
-              <p>{b.problem}</p>
-              <p class="proj-decision">{b.decision}</p>
-              <div class="taglist">{b.stack.map((s) => <span class="pill">{s}</span>)}</div>
+              <p>{p.summary}</p>
+              <div class="taglist">{p.stack.map((s) => <span class="pill">{s}</span>)}</div>
+              <p class="proj-more">
+                <a href={localizePath(`/projects/${p.slug}/`, locale)}>{t.readMore} →</a>
+              </p>
             </div>
             <span class="proj-arrow" aria-hidden="true">→</span>
           </article>

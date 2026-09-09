@@ -900,12 +900,21 @@ main {
   color: var(--text-faint);
 }
 
-/* Second paragraph of a /projects entry: the engineering decision, set apart
-   from the problem statement above it. */
+/* Body paragraph of a project detail page, set apart from the section heading. */
 .proj-decision {
   border-left: 2px solid color-mix(in oklab, var(--brand) 42%, transparent);
   padding-left: 14px;
   color: var(--text-soft);
+}
+
+.proj-more a {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--brand-soft);
+}
+
+.proj-more a:hover {
+  color: var(--brand);
 }
 
 .proj-arrow {

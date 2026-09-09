@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
-import { getContent, localeStaticPaths, type Locale } from "../../i18n";
+import { getContent, localeStaticPaths, localizePath, type Locale } from "../../i18n";
 import { CALENDLY_URL, CV_PDF, EMAIL, GITHUB_URL, LAB_URL, LINKEDIN_URL } from "../../i18n/shared";
 
 export const getStaticPaths = localeStaticPaths;
@@ -186,11 +186,7 @@ const PATH = "/";
               <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
               <div class="proj-body">
                 <h3>
-                  {b.url ? (
-                    <a href={b.url} target="_blank" rel="noopener noreferrer">{b.name}</a>
-                  ) : (
-                    b.name
-                  )}
+                  <a href={localizePath(`/projects/${b.slug}/`, locale)}>{b.name}</a>
                   <span class="proj-sub"> — {b.subtitle}</span>
                 </h3>
                 <p>{b.text}</p>

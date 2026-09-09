@@ -61,6 +61,8 @@ export interface SkillGroup {
 
 export interface LabBuild {
   name: string;
+  /** Slug of the matching ProjectPage, so the home links inward, not away. */
+  slug: string;
   url: string | null;
   subtitle: string;
   text: string;
@@ -123,17 +125,28 @@ export interface ProjectEntry {
   stack: string[];
 }
 
+export interface ProjectSection {
+  title: string;
+  body: string[];
+}
+
 /**
- * A build gets a different treatment on /projects than on the home page or the
- * CV: problem first, then the engineering decision worth showing. Same subject,
- * different angle, so the two indexed pages do not read as boilerplate.
+ * One build, with its own URL. The depth lives here and nowhere else: the
+ * index and the home page carry only `tagline` and `summary`, so no two
+ * indexed pages restate the same paragraphs.
  */
-export interface ProjectDetail {
+export interface ProjectPage {
+  slug: string;
   name: string;
+  /** Live deployment, when there is one to link to. */
   url: string | null;
-  subtitle: string;
-  problem: string;
-  decision: string;
+  tagline: string;
+  summary: string;
+  metaTitle: string;
+  metaDescription: string;
+  /** Honest one-liner about how finished this is. */
+  status: string;
+  sections: ProjectSection[];
   stack: string[];
 }
 
@@ -141,8 +154,13 @@ export interface Projects {
   title: string;
   intro: string;
   buildsTitle: string;
-  builds: ProjectDetail[];
+  readMore: string;
+  visitSite: string;
+  backToProjects: string;
+  statusLabel: string;
+  stackLabel: string;
   workTitle: string;
+  pages: ProjectPage[];
   entries: ProjectEntry[];
 }
 
