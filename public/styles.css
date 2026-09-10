@@ -1731,3 +1731,143 @@ main {
   color: var(--text);
   font-weight: 600;
 }
+
+.cv-doc .taglist {
+  margin: 0 0 var(--space-3);
+}
+
+/* ============================================================
+   PRINT — the CV PDF is generated from /cv/, not maintained by hand
+   ============================================================
+   `npm run cv:pdf` prints this page with headless Chrome, so the PDF can
+   never drift from the site again. Everything here exists to turn a dark,
+   interactive page into a document somebody can read on paper. */
+@media print {
+  @page {
+    size: A4;
+    margin: 15mm 14mm 16mm;
+  }
+
+  /* The palette is dark by default and the theme lives in localStorage, which
+     a print job has no reason to agree with. Pin light values instead. */
+  :root,
+  [data-theme="dark"],
+  [data-theme="light"] {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --surface-soft: #ffffff;
+    --surface-strong: #ffffff;
+    --text: #101418;
+    --text-soft: #2b3238;
+    --text-faint: #5b656e;
+    --line: #c8ced4;
+    --line-soft: #e2e6ea;
+    --line-strong: #a8b0b8;
+    --brand: #4b1fa8;
+    --brand-soft: #4b1fa8;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #101418 !important;
+  }
+
+  /* Screen furniture that means nothing on paper. */
+  .nav,
+  .consent-banner,
+  .cv-actions,
+  .footer,
+  .proj-arrow,
+  .proj-more,
+  .cv-emoji {
+    display: none !important;
+  }
+
+  /* Reveal animations never run in a print job; make sure nothing is invisible. */
+  html.js .reveal,
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .cv-doc {
+    max-width: none;
+    padding: 0;
+    font-size: 10pt;
+    line-height: 1.4;
+  }
+
+  .cv-doc h1 {
+    font-size: 22pt;
+    margin-bottom: 2mm;
+  }
+
+  .cv-doc h2 {
+    font-size: 12.5pt;
+    margin: 4.5mm 0 1.5mm;
+    padding-bottom: 0.8mm;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .cv-doc h3 {
+    font-size: 10.5pt;
+    margin: 2.5mm 0 0.8mm;
+  }
+
+  .cv-doc p,
+  .cv-doc li {
+    margin-bottom: 1mm;
+  }
+
+  .cv-doc ul {
+    margin: 1mm 0 2mm;
+    padding-left: 5mm;
+  }
+
+  /* The section rules double up with the h2 border once it is printed. */
+  .cv-doc hr {
+    display: none;
+  }
+
+  .cv-doc a {
+    color: inherit !important;
+    border-bottom: 0;
+  }
+
+  /* Tags read as plain text on paper; the pill outline just adds noise. */
+  .pill {
+    border: 0;
+    padding: 0;
+    font-size: 9.5pt;
+  }
+
+  .taglist {
+    gap: 0;
+  }
+
+  /* Whitespace inside `content` collapses, so space the separator with margin. */
+  .pill:not(:last-child)::after {
+    content: "·";
+    margin: 0 0.45em;
+    color: var(--text-faint);
+  }
+
+  /* Keep a heading with the block it introduces, and never split an entry. */
+  h1,
+  h2,
+  h3 {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  .cv-doc li,
+  .cv-table {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

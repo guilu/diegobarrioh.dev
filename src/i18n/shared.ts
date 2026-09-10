@@ -4,7 +4,13 @@
 export const SITE_URL = "https://diegobarrioh.dev";
 export const EMAIL = "diegobarrioh@gmail.com";
 export const CALENDLY_URL = "https://calendly.com/diegobarrioh/30min";
+/**
+ * Both PDFs are printed from the CV page by `npm run cv:pdf`. English keeps the
+ * original path because that link is already out in the world; Spanish is a
+ * suffixed sibling.
+ */
 export const CV_PDF = "/cv/diego-barrio-hortiguela-cv.pdf";
+export const CV_PDF_ES = "/cv/diego-barrio-hortiguela-cv-es.pdf";
 export const LINKEDIN_URL = "https://www.linkedin.com/in/diegobarrioh";
 export const GITHUB_URL = "https://github.com/guilu";
 export const X_URL = "https://x.com/guilu";

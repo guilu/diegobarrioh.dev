@@ -1,8 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
-import { getContent, localeStaticPaths, localizePath, type Locale } from "../../i18n";
-import { CV_PDF } from "../../i18n/shared";
+import { cvPdfPath, getContent, localeStaticPaths, localizePath, type Locale } from "../../i18n";
 
 export const getStaticPaths = localeStaticPaths;
 
@@ -11,6 +10,7 @@ const c = getContent(locale);
 const t = c.cv;
 const h = t.headings;
 const PATH = "/cv/";
+const cvPdf = cvPdfPath(locale);
 ---
 
 <BaseLayout locale={locale} path={PATH} title={c.meta.cv.title} description={c.meta.cv.description}>
@@ -40,7 +40,7 @@ const PATH = "/cv/";
           ))}
         </p>
         <div class="btns cv-actions">
-          <a class="btn primary" href={CV_PDF} target="_blank" rel="noreferrer">{t.openPdf}</a>
+          <a class="btn primary" href={cvPdf} target="_blank" rel="noreferrer">{t.openPdf}</a>
           <a class="btn" href={localizePath("/", locale)}>{t.back}</a>
         </div>
       </header>
@@ -54,7 +54,7 @@ const PATH = "/cv/";
       {t.competencies.map((group) => (
         <>
           <h3>{group.title}</h3>
-          <ul>{group.items.map((s) => <li>{s}</li>)}</ul>
+          <div class="taglist">{group.items.map((s) => <span class="pill">{s}</span>)}</div>
         </>
       ))}
 
@@ -119,7 +119,7 @@ const PATH = "/cv/";
 
       <hr />
       <h2><span class="cv-emoji" aria-hidden="true">📚</span>{h.learning}</h2>
-      <ul>{t.learning.map((s) => <li>{s}</li>)}</ul>
+      <div class="taglist">{t.learning.map((s) => <span class="pill">{s}</span>)}</div>
 
       <hr />
       <h2><span class="cv-emoji" aria-hidden="true">🗣️</span>{h.languages}</h2>
