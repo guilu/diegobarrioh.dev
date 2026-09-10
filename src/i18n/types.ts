@@ -135,6 +135,14 @@ export interface ProjectSection {
  * index and the home page carry only `tagline` and `summary`, so no two
  * indexed pages restate the same paragraphs.
  */
+/** An article on the lab site that covers this build in depth. */
+export interface ProjectWriting {
+  /** Slug on backendtothefuture.com; the locale decides the URL prefix. */
+  slug: string;
+  title: string;
+  date: string;
+}
+
 export interface ProjectPage {
   slug: string;
   name: string;
@@ -148,6 +156,8 @@ export interface ProjectPage {
   status: string;
   sections: ProjectSection[];
   stack: string[];
+  /** Empty when nothing has been written about this one yet. */
+  writing: ProjectWriting[];
 }
 
 export interface Projects {
@@ -160,6 +170,7 @@ export interface Projects {
   statusLabel: string;
   stackLabel: string;
   workTitle: string;
+  writingTitle: string;
   pages: ProjectPage[];
   entries: ProjectEntry[];
 }

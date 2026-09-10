@@ -33,3 +33,11 @@ export const companies = [
   "SABIS",
   "Caja Mediterráneo",
 ];
+
+/**
+ * The lab site serves Spanish unprefixed and English under `/en/`, the mirror
+ * image of this site. Build the URL from the locale rather than storing both.
+ */
+export function labArticleUrl(slug: string, locale: "en" | "es"): string {
+  return locale === "en" ? `${LAB_URL}/en/blog/${slug}/` : `${LAB_URL}/blog/${slug}/`;
+}

@@ -1871,3 +1871,40 @@ main {
     page-break-inside: avoid;
   }
 }
+
+/* Articles on the lab site that cover a build in depth. The two properties
+   used to link only to each other's home page, which helped neither. */
+.writing-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.writing-list li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.writing-list a {
+  color: var(--text);
+  border-bottom: 1px solid color-mix(in oklab, var(--brand) 40%, transparent);
+}
+
+.writing-list a:hover {
+  color: var(--brand);
+  border-bottom-color: currentColor;
+}
+
+.writing-list time {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  font-variant-numeric: tabular-nums;
+}

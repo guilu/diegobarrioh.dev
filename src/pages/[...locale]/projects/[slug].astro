@@ -2,6 +2,7 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Nav from "../../../components/Nav.astro";
 import { getContent, localizePath, locales, type Locale } from "../../../i18n";
+import { labArticleUrl } from "../../../i18n/shared";
 
 export function getStaticPaths() {
   return locales.flatMap((locale) =>
@@ -54,6 +55,21 @@ const PATH = `/projects/${slug}/`;
       <hr />
       <h2>{t.stackLabel}</h2>
       <div class="taglist">{project.stack.map((s) => <span class="pill">{s}</span>)}</div>
+
+      {project.writing.length > 0 && (
+        <>
+          <hr />
+          <h2>{t.writingTitle}</h2>
+          <ul class="writing-list">
+            {project.writing.map((w) => (
+              <li>
+                <a href={labArticleUrl(w.slug, locale)} target="_blank" rel="noopener noreferrer">{w.title}</a>
+                <time datetime={w.date}>{w.date}</time>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </article>
   </main>
 </BaseLayout>
