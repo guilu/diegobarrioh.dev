@@ -229,7 +229,17 @@ export interface Cv {
   languages: CvLanguage[];
 }
 
+export interface Consent {
+  title: string;
+  description: string;
+  accept: string;
+  reject: string;
+  /** Footer button that reopens the banner after a choice was made. */
+  privacy: string;
+}
+
 export interface Content {
+  consent: Consent;
   meta: {
     home: PageMeta;
     about: PageMeta;

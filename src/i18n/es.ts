@@ -12,6 +12,15 @@ import {
 } from "./shared";
 
 const es: Content = {
+  consent: {
+    title: "Analítica opcional",
+    description:
+      "¿Permites analítica anónima para mejorar esta web? No se carga Google Tag Manager hasta que aceptes.",
+    accept: "Aceptar",
+    reject: "Rechazar",
+    privacy: "Privacidad",
+  },
+
   meta: {
     home: {
       title: "Diego Barrio H. — Senior Backend Engineer · Java, Spring e IA aplicada",

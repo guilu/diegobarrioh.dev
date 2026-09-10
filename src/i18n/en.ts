@@ -12,6 +12,15 @@ import {
 } from "./shared";
 
 const en: Content = {
+  consent: {
+    title: "Optional analytics",
+    description:
+      "Allow anonymous analytics to improve this site? Google Tag Manager is not loaded until you accept.",
+    accept: "Accept",
+    reject: "Reject",
+    privacy: "Privacy",
+  },
+
   meta: {
     home: {
       title: "Diego Barrio H. — Senior Backend Engineer · Java, Spring & Applied AI",
