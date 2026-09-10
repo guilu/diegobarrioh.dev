@@ -292,6 +292,10 @@ const en: Content = {
           },
         ],
         stack: ["Java 21", "Spring Boot 3.4", "PostgreSQL", "React 18", "Vite 5", "Tailwind", "RAG", "OpenRouter", "Groq", "Stripe", "Docker"],
+        writing: [
+          { slug: "three-agents-software-factory", title: "Multi-agent workflow: ChatGPT, Claude and Hermes Agent", date: "2026-07-05" },
+          { slug: "standardizing-the-software-factory-with-ai-agents", title: "Forma matures: the week I standardized the software factory", date: "2026-07-12" },
+        ],
       },
       {
         slug: "tokenmeter",
@@ -334,6 +338,11 @@ const en: Content = {
           },
         ],
         stack: ["Java 21", "Spring Boot 3", "jtokkit", "o200k_base", "Docker", "Cloudflare", "SonarCloud"],
+        writing: [
+          { slug: "spec-driven-ai-agents-with-gentle-ai-and-the-token-bill", title: "Spec-Driven Development with Gentle AI: flawless process, brutal token bill", date: "2026-07-26" },
+          { slug: "three-agents-software-factory", title: "Multi-agent workflow: ChatGPT, Claude and Hermes Agent", date: "2026-07-05" },
+          { slug: "my-test-measured-the-box-not-the-letters", title: "My test measured the box, not the letters", date: "2026-09-06" },
+        ],
       },
       {
         slug: "forma",
@@ -382,6 +391,13 @@ const en: Content = {
           },
         ],
         stack: ["Java 21", "Spring Boot 3", "Hexagonal", "PostgreSQL 17", "Flyway", "React 19", "TypeScript", "Vite", "Vitest", "Playwright", "Docker Compose"],
+        writing: [
+          { slug: "my-app-stopped-inventing-numbers", title: "My app stopped inventing numbers", date: "2026-08-09" },
+          { slug: "building-the-catalogs-an-ai-nutrition-plan-needs", title: "The catalogs an AI nutrition plan needs", date: "2026-08-02" },
+          { slug: "the-day-of-the-week-was-my-primary-key", title: "The day of the week was my primary key", date: "2026-08-23" },
+          { slug: "shipping-62-prs-in-a-week-with-spec-driven-ai-agents", title: "62 pull requests in one week: spec-driven development with AI agents", date: "2026-07-19" },
+          { slug: "hexagonal-architecture-in-practice", title: "Hexagonal Architecture in Spring Boot: ports & adapters", date: "2024-03-14" },
+        ],
       },
       {
         slug: "local-ai-lab",
@@ -417,9 +433,15 @@ const en: Content = {
           },
         ],
         stack: ["Ollama", "LM Studio", "MCP", "Claude Code", "RTX 3060"],
+        writing: [
+          { slug: "probando-local-llms", title: "Local LLMs on an RTX 3060: what fits in 12 GB of VRAM", date: "2026-06-08" },
+          { slug: "ai-agent-as-home-lab-operator", title: "An AI agent running my homelab with Home Assistant", date: "2026-06-28" },
+          { slug: "three-agents-software-factory", title: "Multi-agent workflow: ChatGPT, Claude and Hermes Agent", date: "2026-07-05" },
+        ],
       },
     ],
     workTitle: "Client and employer systems",
+    writingTitle: "Written up on the lab",
     entries: [
       {
         title: "Billing & Payments APIs",

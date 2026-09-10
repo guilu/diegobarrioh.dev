@@ -292,6 +292,10 @@ const es: Content = {
           },
         ],
         stack: ["Java 21", "Spring Boot 3.4", "PostgreSQL", "React 18", "Vite 5", "Tailwind", "RAG", "OpenRouter", "Groq", "Stripe", "Docker"],
+        writing: [
+          { slug: "three-agents-software-factory", title: "Flujo multi-agente: ChatGPT, Claude y Hermes Agent", date: "2026-07-05" },
+          { slug: "standardizing-the-software-factory-with-ai-agents", title: "Forma madura: la semana en que estandaricé la fábrica de software", date: "2026-07-12" },
+        ],
       },
       {
         slug: "tokenmeter",
@@ -334,6 +338,11 @@ const es: Content = {
           },
         ],
         stack: ["Java 21", "Spring Boot 3", "jtokkit", "o200k_base", "Docker", "Cloudflare", "SonarCloud"],
+        writing: [
+          { slug: "spec-driven-ai-agents-with-gentle-ai-and-the-token-bill", title: "Desarrollo dirigido por specs con Gentle AI: proceso impecable, factura en tokens brutal", date: "2026-07-26" },
+          { slug: "three-agents-software-factory", title: "Flujo multi-agente: ChatGPT, Claude y Hermes Agent", date: "2026-07-05" },
+          { slug: "my-test-measured-the-box-not-the-letters", title: "Mi test medía la caja, no las letras", date: "2026-09-06" },
+        ],
       },
       {
         slug: "forma",
@@ -382,6 +391,13 @@ const es: Content = {
           },
         ],
         stack: ["Java 21", "Spring Boot 3", "Hexagonal", "PostgreSQL 17", "Flyway", "React 19", "TypeScript", "Vite", "Vitest", "Playwright", "Docker Compose"],
+        writing: [
+          { slug: "my-app-stopped-inventing-numbers", title: "Mi app dejó de inventarse los números", date: "2026-08-09" },
+          { slug: "building-the-catalogs-an-ai-nutrition-plan-needs", title: "Los catálogos que necesita un plan de nutrición con IA", date: "2026-08-02" },
+          { slug: "the-day-of-the-week-was-my-primary-key", title: "El día de la semana era mi clave primaria", date: "2026-08-23" },
+          { slug: "shipping-62-prs-in-a-week-with-spec-driven-ai-agents", title: "62 pull requests en una semana: desarrollo dirigido por especificaciones con agentes IA", date: "2026-07-19" },
+          { slug: "hexagonal-architecture-in-practice", title: "Arquitectura Hexagonal en Spring Boot: puertos y adaptadores", date: "2024-03-14" },
+        ],
       },
       {
         slug: "local-ai-lab",
@@ -417,9 +433,15 @@ const es: Content = {
           },
         ],
         stack: ["Ollama", "LM Studio", "MCP", "Claude Code", "RTX 3060"],
+        writing: [
+          { slug: "probando-local-llms", title: "LLMs locales en una RTX 3060: qué cabe en 12 GB de VRAM", date: "2026-06-08" },
+          { slug: "ai-agent-as-home-lab-operator", title: "Un agente de IA operando mi homelab con Home Assistant", date: "2026-06-28" },
+          { slug: "three-agents-software-factory", title: "Flujo multi-agente: ChatGPT, Claude y Hermes Agent", date: "2026-07-05" },
+        ],
       },
     ],
     workTitle: "Sistemas de cliente y de empresa",
+    writingTitle: "Escrito en el laboratorio",
     entries: [
       {
         title: "APIs de facturación y pagos",
