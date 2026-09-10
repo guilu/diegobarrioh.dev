@@ -855,6 +855,7 @@ main {
 }
 
 .proj {
+  position: relative;
   display: grid;
   grid-template-columns: 56px 1fr auto;
   gap: 8px 24px;
@@ -890,6 +891,24 @@ main {
 }
 
 .proj h3 a:hover {
+  color: var(--brand);
+  border-bottom-color: currentColor;
+}
+
+/* Stretch the title link across the whole entry: one link, one destination,
+   and the hover arrow finally means something. Entries without a linked
+   title (the professional highlights) are unaffected. */
+.proj h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.proj:has(h3 a):hover {
+  cursor: pointer;
+}
+
+.proj:has(h3 a):hover h3 a {
   color: var(--brand);
   border-bottom-color: currentColor;
 }
@@ -1002,6 +1021,7 @@ main {
   justify-content: space-between;
   gap: 24px;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .lab p {
