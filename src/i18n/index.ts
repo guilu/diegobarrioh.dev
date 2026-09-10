@@ -1,6 +1,7 @@
 import type { Content, Locale } from "./types";
 import en from "./en";
 import es from "./es";
+import { CV_PDF, CV_PDF_ES } from "./shared";
 
 export type { Content, Locale };
 
@@ -37,6 +38,11 @@ export function localizePath(path: string, locale: Locale): string {
 /** Every locale variant of `path`, for hreflang alternates. */
 export function alternatesFor(path: string) {
   return locales.map((locale) => ({ locale, path: localizePath(path, locale) }));
+}
+
+/** The CV PDF matching a locale. */
+export function cvPdfPath(locale: Locale): string {
+  return locale === "es" ? CV_PDF_ES : CV_PDF;
 }
 
 /** BCP 47 tag used in `hreflang` and the `<html lang>` attribute. */
