@@ -199,22 +199,6 @@ p {
   margin: 0;
 }
 
-/* ---------- i18n ---------- */
-.i18n {
-  display: none;
-}
-[data-lang="en"] .i18n[data-lang="en"],
-[data-lang="es"] .i18n[data-lang="es"] {
-  display: block;
-}
-.i18n.inline {
-  display: none;
-}
-[data-lang="en"] .i18n.inline[data-lang="en"],
-[data-lang="es"] .i18n.inline[data-lang="es"] {
-  display: inline;
-}
-
 .container {
   width: min(1120px, calc(100% - 48px));
   margin: 0 auto;
@@ -884,8 +868,9 @@ main {
   padding-left: 10px;
 }
 
+/* The number and the arrow flank one content column, so an entry can hold any
+   number of paragraphs without pushing the tag list into the 56px gutter. */
 .proj-num {
-  grid-row: span 3;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   color: var(--text-faint);
@@ -898,8 +883,41 @@ main {
   letter-spacing: -0.01em;
 }
 
+.proj h3 a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in oklab, var(--brand) 40%, transparent);
+}
+
+.proj h3 a:hover {
+  color: var(--brand);
+  border-bottom-color: currentColor;
+}
+
+/* Secondary half of a Lab entry title: what the build actually does. */
+.proj-sub {
+  font-weight: 400;
+  color: var(--text-faint);
+}
+
+/* Body paragraph of a project detail page, set apart from the section heading. */
+.proj-decision {
+  border-left: 2px solid color-mix(in oklab, var(--brand) 42%, transparent);
+  padding-left: 14px;
+  color: var(--text-soft);
+}
+
+.proj-more a {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--brand-soft);
+}
+
+.proj-more a:hover {
+  color: var(--brand);
+}
+
 .proj-arrow {
-  grid-row: span 3;
   align-self: center;
   font-size: 1.2rem;
   color: var(--text-faint);
@@ -915,6 +933,12 @@ main {
   color: var(--text-soft);
   max-width: 60ch;
   font-size: 0.95rem;
+}
+
+.proj-body {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
 }
 
 .proj .taglist {
@@ -1406,11 +1430,6 @@ main {
 
   .proj {
     grid-template-columns: 1fr;
-  }
-
-  .proj-num,
-  .proj-arrow {
-    grid-row: auto;
   }
 
   .proj-arrow {

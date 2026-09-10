@@ -1,56 +1,78 @@
 ---
-const { current } = Astro.props;
+import { defaultLocale, getContent, localizePath, locales, type Locale } from "../i18n";
 
+interface Props {
+  locale: Locale;
+  /** Canonical, locale-free path of the page rendering this nav. */
+  path: string;
+  current?: string;
+}
+
+const { locale, path, current } = Astro.props;
+const t = getContent(locale).nav;
+
+const home = localizePath("/", locale);
 const links = [
-  { href: "/#home", labelEs: "Inicio", labelEn: "Home", key: "home" },
-  { href: "/#experience", labelEs: "Experiencia", labelEn: "Experience", key: "experience" },
-  { href: "/#projects", labelEs: "Proyectos", labelEn: "Projects", key: "projects" },
-  { href: "/#skills", labelEs: "Stack", labelEn: "Stack", key: "skills" },
-  { href: "/#lab", labelEs: "Lab", labelEn: "Lab", key: "lab" },
-  { href: "/#contact", labelEs: "Contacto", labelEn: "Contact", key: "contact" },
+  { hash: "#home", label: t.home, key: "home" },
+  { hash: "#experience", label: t.experience, key: "experience" },
+  { hash: "#projects", label: t.projects, key: "projects" },
+  { hash: "#skills", label: t.skills, key: "skills" },
+  { hash: "#lab", label: t.lab, key: "lab" },
+  { hash: "#contact", label: t.contact, key: "contact" },
 ];
+
+// The pill switches to the same page in the other locale, so the reader never
+// gets dumped back on the home page just for changing language.
+const otherLocale = locales.find((l) => l !== locale) ?? defaultLocale;
+const otherHref = localizePath(path, otherLocale);
 ---
 
 <nav class="nav" data-nav-root>
   <div class="container nav-inner">
-    <a href="/#home" class="brand">
-      <img src="/img/dbh2-white.svg" alt="Diego Barrio H. logo" class="brand-logo logo-dark" />
-      <img src="/img/dbh2-black.svg" alt="Diego Barrio H. logo" class="brand-logo logo-light" />
+    <a href={`${home}${links[0].hash}`} class="brand">
+      <img src="/img/dbh2-white.svg" alt={t.brandAlt} class="brand-logo logo-dark" />
+      <img src="/img/dbh2-black.svg" alt={t.brandAlt} class="brand-logo logo-light" />
       <span class="brand-name">Diego Barrio H.</span>
     </a>
 
     <div class="nav-panel" id="primary-menu">
       <div class="nav-links">
         {links.map((l) => (
-          <a href={l.href} class={current === l.key ? "active" : ""}>
-            <span class="i18n inline" data-lang="es">{l.labelEs}</span>
-            <span class="i18n inline" data-lang="en">{l.labelEn}</span>
-          </a>
+          <a href={`${home}${l.hash}`} class={current === l.key ? "active" : ""}>{l.label}</a>
         ))}
       </div>
     </div>
 
     <div class="nav-actions">
-      <a class="btn primary nav-cv" href="/cv/" aria-label="Ver CV">
+      <a class="btn primary nav-cv" href={localizePath("/cv/", locale)} aria-label={t.cv}>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
           <polyline points="14 2 14 8 20 8" />
           <line x1="16" y1="13" x2="8" y2="13" />
           <line x1="16" y1="17" x2="8" y2="17" />
         </svg>
-        CV
+        {t.cv}
       </a>
-      <button class="toggle lang-toggle" type="button" id="lang-toggle" aria-label="Cambiar idioma">
+      <a class="toggle lang-toggle" href={otherHref} hreflang={otherLocale} aria-label={t.langToggle}>
         <span class="opt" data-value="es">ES</span>
         <span class="opt" data-value="en">EN</span>
-      </button>
-      <button class="toggle theme-toggle" type="button" id="theme-toggle" aria-label="Cambiar tema">
+      </a>
+      <button class="toggle theme-toggle" type="button" id="theme-toggle" aria-label={t.themeToggle}>
         <span class="opt" data-value="light">☀</span>
         <span class="opt" data-value="dark">☾</span>
       </button>
     </div>
 
-    <button class="menu-toggle" type="button" data-menu-toggle aria-expanded="false" aria-controls="primary-menu" aria-label="Abrir menu de navegacion">
+    <button
+      class="menu-toggle"
+      type="button"
+      data-menu-toggle
+      aria-expanded="false"
+      aria-controls="primary-menu"
+      aria-label={t.menuOpen}
+      data-label-open={t.menuOpen}
+      data-label-close={t.menuClose}
+    >
       <span class="menu-toggle-line"></span>
       <span class="menu-toggle-line"></span>
       <span class="menu-toggle-line"></span>
@@ -69,7 +91,10 @@ const links = [
       nav.classList.toggle("is-open", expanded);
       if (toggleButton) {
         toggleButton.setAttribute("aria-expanded", expanded ? "true" : "false");
-        toggleButton.setAttribute("aria-label", expanded ? "Cerrar menu de navegacion" : "Abrir menu de navegacion");
+        toggleButton.setAttribute(
+          "aria-label",
+          expanded ? toggleButton.dataset.labelClose : toggleButton.dataset.labelOpen
+        );
       }
     };
 

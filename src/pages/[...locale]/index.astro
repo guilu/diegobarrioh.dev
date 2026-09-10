@@ -1,0 +1,249 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import { getContent, localeStaticPaths, localizePath, type Locale } from "../../i18n";
+import { CALENDLY_URL, CV_PDF, EMAIL, GITHUB_URL, LAB_URL, LINKEDIN_URL } from "../../i18n/shared";
+
+export const getStaticPaths = localeStaticPaths;
+
+const { locale } = Astro.props as { locale: Locale };
+const c = getContent(locale);
+const t = c.home;
+const PATH = "/";
+---
+
+<BaseLayout locale={locale} path={PATH} title={c.meta.home.title} description={c.meta.home.description}>
+  <Nav locale={locale} path={PATH} current="home" />
+  <main>
+    <header class="hero" id="home">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="hero-status">
+              <span class="status-dot" aria-hidden="true"></span>
+              {t.hero.status}
+            </p>
+            <h1>
+              <span class="hero-name">Diego Barrio H.</span>
+              <span class="hero-role">
+                <span class="role-part">{t.hero.roleParts[0]}</span>
+                <span class="role-sep" aria-hidden="true"> · </span>
+                <span class="role-part">{t.hero.roleParts[1]}</span>
+              </span>
+            </h1>
+            <p class="hero-lead">{t.hero.lead}</p>
+
+            <div class="hero-actions">
+              <a class="btn primary" href={CV_PDF} target="_blank" rel="noopener noreferrer" data-analytics-cta="hero_cv" data-analytics-file="cv">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                  <polyline points="14 2 14 8 20 8" />
+                  <line x1="16" y1="13" x2="8" y2="13" />
+                  <line x1="16" y1="17" x2="8" y2="17" />
+                </svg>
+                {t.hero.cvAction}
+              </a>
+              <a class="btn" href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0z" />
+                </svg>
+                LinkedIn
+              </a>
+              <a class="btn" href={GITHUB_URL} target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+                  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+                </svg>
+                GitHub
+              </a>
+              <a class="btn ghost" href="#contact">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                </svg>
+                {t.hero.contactAction}
+              </a>
+            </div>
+
+          </div>
+
+          <figure class="hero-figure">
+            <img
+              class="hero-portrait"
+              src="/img/dbh-wall.jpg"
+              alt={t.hero.portraitAlt}
+              width="340"
+              height="425"
+              fetchpriority="high"
+            />
+          </figure>
+        </div>
+
+        <div class="hero-metrics">
+          {t.metrics.map((m) => (
+            <div class="metric">
+              <p class="metric-value">{m.value}</p>
+              <p class="metric-label">{m.label}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="hero-companies">
+          <span class="companies-label">{t.companiesLabel}</span>
+          {t.companies.map((company) => <span class="company">{company}</span>)}
+        </div>
+      </div>
+    </header>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="sec-num">01</span>
+          <h2>{t.experienceHead.title}</h2>
+          <span class="section-kicker">{t.experienceHead.kicker}</span>
+        </div>
+        <div class="timeline">
+          {t.experience.map((item) => (
+            <div class="tl-item reveal">
+              <div class="tl-period">
+                {item.period}
+                {item.current && <span class="tl-current">{t.currentBadge}</span>}
+              </div>
+              <div>
+                <div class="tl-role">{item.role}</div>
+                <div class="tl-company">{item.company}</div>
+                <div class="tl-impact">{item.impact}</div>
+                <div class="taglist">{item.stack.map((s) => <span class="pill">{s}</span>)}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="sec-num">02</span>
+          <h2>{t.projectsHead.title}</h2>
+          <span class="section-kicker">{t.projectsHead.kicker}</span>
+        </div>
+        <div class="proj-list">
+          {t.highlights.map((h, i) => (
+            <article class="proj reveal">
+              <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
+              <div class="proj-body">
+                <h3>{h.title}</h3>
+                <p>{h.text}</p>
+                <div class="taglist">{h.stack.map((s) => <span class="pill">{s}</span>)}</div>
+              </div>
+              <span class="proj-arrow" aria-hidden="true">→</span>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="sec-num">03</span>
+          <h2>{t.skillsHead.title}</h2>
+          <span class="section-kicker">{t.skillsHead.kicker}</span>
+        </div>
+        <div class="stack-grid">
+          {t.skills.map((group) => (
+            <div class="stack-group reveal">
+              <h3>{group.title}</h3>
+              <div class="taglist">{group.items.map((item) => <span class="pill">{item}</span>)}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lab">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="sec-num">04</span>
+          <h2>{t.labHead.title}</h2>
+          <span class="section-kicker">{t.labHead.kicker}</span>
+        </div>
+        <div class="lab reveal">
+          <div>
+            <p>{t.lab.text}</p>
+          </div>
+          <a class="lab-cta" href={LAB_URL} target="_blank" rel="noopener noreferrer" aria-label={t.lab.ctaAria}>
+            <img class="lab-cta-logo" src="/img/bttf-logo.svg" alt="" width="44" height="44" loading="lazy" />
+            <span class="lab-cta-text">
+              <b>BACKEND</b>
+              <span>To the future</span>
+            </span>
+          </a>
+        </div>
+
+        <div class="proj-list">
+          {t.lab.builds.map((b, i) => (
+            <article class="proj reveal">
+              <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
+              <div class="proj-body">
+                <h3>
+                  <a href={localizePath(`/projects/${b.slug}/`, locale)}>{b.name}</a>
+                  <span class="proj-sub"> — {b.subtitle}</span>
+                </h3>
+                <p>{b.text}</p>
+                <div class="taglist">{b.stack.map((s) => <span class="pill">{s}</span>)}</div>
+              </div>
+              <span class="proj-arrow" aria-hidden="true">→</span>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="sec-num">05</span>
+          <h2>{t.contactHead.title}</h2>
+          <span class="section-kicker">{t.contactHead.kicker}</span>
+        </div>
+
+        <p class="contact-lead reveal">{t.contact.lead}</p>
+
+        <div class="contact-line">
+          <a class="contact-mail reveal" href={`mailto:${EMAIL}`}>{EMAIL}</a>
+
+          <div class="contact-cta reveal">
+            <a class="btn primary" href={CALENDLY_URL} target="_blank" rel="noreferrer" data-analytics-cta="contact_calendar" data-analytics-contact="calendar">
+              {t.contact.calendly}
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-rows">
+          {t.contact.socials.map((s) => (
+            <a class="crow reveal" href={s.href} target="_blank" rel="noreferrer">
+              <span class="crow-ico">{s.ico}</span>
+              <span class="crow-info">
+                <b>{s.label}</b>
+                <span>{s.handle}</span>
+              </span>
+              <span class="crow-cta">{t.contact.open} →</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>© {new Date().getFullYear()} Diego Barrio H. · {t.footer}</span>
+        <span class="footer-links">
+          <button class="footer-consent" type="button" data-consent-settings>{c.consent.privacy}</button>
+          <a href={LINKEDIN_URL} target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href={GITHUB_URL} target="_blank" rel="noreferrer">GitHub</a>
+          <a href={CV_PDF} target="_blank" rel="noreferrer">CV</a>
+        </span>
+      </div>
+    </footer>
+  </main>
+</BaseLayout>

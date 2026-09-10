@@ -1,0 +1,59 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Card from "../../components/Card.astro";
+import { getContent, localeStaticPaths, localizePath, type Locale } from "../../i18n";
+
+export const getStaticPaths = localeStaticPaths;
+
+const { locale } = Astro.props as { locale: Locale };
+const c = getContent(locale);
+const t = c.projects;
+const PATH = "/projects/";
+---
+
+<BaseLayout locale={locale} path={PATH} title={c.meta.projects.title} description={c.meta.projects.description}>
+  <Nav locale={locale} path={PATH} current="projects" />
+  <main class="container">
+    <h1>{t.title}</h1>
+    <p>{t.intro}</p>
+
+    <section class="section">
+      <h2>{t.buildsTitle}</h2>
+      <div class="proj-list">
+        {t.pages.map((p, i) => (
+          <article class="proj">
+            <span class="proj-num">{String(i + 1).padStart(2, "0")}</span>
+            <div class="proj-body">
+              <h3>
+                <a href={localizePath(`/projects/${p.slug}/`, locale)}>{p.name}</a>
+                <span class="proj-sub"> — {p.tagline}</span>
+              </h3>
+              <p>{p.summary}</p>
+              <div class="taglist">{p.stack.map((s) => <span class="pill">{s}</span>)}</div>
+              <p class="proj-more">
+                <a href={localizePath(`/projects/${p.slug}/`, locale)}>{t.readMore} →</a>
+              </p>
+            </div>
+            <span class="proj-arrow" aria-hidden="true">→</span>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>{t.workTitle}</h2>
+      <div class="grid">
+        {t.entries.map((p) => (
+          <Card>
+            <p class="eyebrow">{p.period}</p>
+            <h3 style="margin:0 0 4px;">{p.title}</h3>
+            <p class="small" style="margin:0 0 8px;">{p.context}</p>
+            <p>{p.impact}</p>
+            <p class="taglist taglist-projects">{p.stack.map((s) => <span class="pill">{s}</span>)}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
