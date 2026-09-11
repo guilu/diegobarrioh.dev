@@ -19,8 +19,8 @@ const PATH = "/about/";
   title={c.meta.about.title}
   description={c.meta.about.description}
 >
-  <Nav locale={locale} path={PATH} current="about" />
-  <main class="container">
+  <Nav locale={locale} path={PATH} />
+  <main id="main" tabindex="-1" class="container">
     <h1>{t.title}</h1>
     <p>{t.intro}</p>
 

@@ -21,8 +21,8 @@ const PATH = `/projects/${slug}/`;
 ---
 
 <BaseLayout locale={locale} path={PATH} title={project.metaTitle} description={project.metaDescription}>
-  <Nav locale={locale} path={PATH} current="projects" />
-  <main class="container">
+  <Nav locale={locale} path={PATH} />
+  <main id="main" tabindex="-1" class="container">
     <article class="cv-doc">
       <header class="cv-head">
         <p class="eyebrow">

@@ -218,20 +218,31 @@ const personSchema = {
         revealEls.forEach((el) => el.classList.add("in"));
       }
 
-      // Scrollspy — highlight the nav link of the section in view
+      // Scrollspy — highlight the nav link of the section in view. Only the home
+      // page holds those sections; everywhere else the list comes out empty and
+      // the menu stays unmarked, which is the truth there.
       const navLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>(".nav-links a[href*='#']"));
       const sections = navLinks
         .map((link) => document.getElementById(link.hash.slice(1)))
         .filter((s): s is HTMLElement => Boolean(s));
 
       if ("IntersectionObserver" in window && sections.length) {
+        // The mark is also announced, not just painted, so the highlight and
+        // what a screen reader reports never drift apart.
+        const markCurrent = (id: string) => {
+          navLinks.forEach((link) => {
+            const isCurrent = link.hash === `#${id}`;
+            link.classList.toggle("active", isCurrent);
+            if (isCurrent) link.setAttribute("aria-current", "true");
+            else link.removeAttribute("aria-current");
+          });
+        };
+
         const spy = new IntersectionObserver(
           (entries) => {
             for (const entry of entries) {
               if (!entry.isIntersecting) continue;
-              navLinks.forEach((link) => {
-                link.classList.toggle("active", link.hash === `#${entry.target.id}`);
-              });
+              markCurrent(entry.target.id);
             }
           },
           { rootMargin: "-40% 0px -55% 0px" }

@@ -5,13 +5,19 @@ interface Props {
   locale: Locale;
   /** Canonical, locale-free path of the page rendering this nav. */
   path: string;
-  current?: string;
 }
 
-const { locale, path, current } = Astro.props;
+const { locale, path } = Astro.props;
 const t = getContent(locale).nav;
 
 const home = localizePath("/", locale);
+
+// Every menu entry is an anchor into the home page, so an entry can only be
+// the current one while the reader is on that page: there the scrollspy takes
+// over from this initial mark. Elsewhere the menu marks nothing, and the CV
+// pill speaks for itself because it does link to the page being read.
+const onHome = path === "/";
+const onCv = path === "/cv/";
 const links = [
   { hash: "#home", label: t.home, key: "home" },
   { hash: "#experience", label: t.experience, key: "experience" },
@@ -29,6 +35,8 @@ const langOptions: { code: Locale; label: string }[] = [
 ];
 ---
 
+<a class="skip-link" href="#main">{t.skip}</a>
+
 <nav class="nav" data-nav-root>
   <div class="container nav-inner">
     <a href={`${home}${links[0].hash}`} class="brand">
@@ -39,14 +47,25 @@ const langOptions: { code: Locale; label: string }[] = [
 
     <div class="nav-panel" id="primary-menu">
       <div class="nav-links">
-        {links.map((l) => (
-          <a href={`${home}${l.hash}`} class={current === l.key ? "active" : ""}>{l.label}</a>
+        {links.map((l, i) => (
+          <a
+            href={`${home}${l.hash}`}
+            class={onHome && i === 0 ? "active" : undefined}
+            aria-current={onHome && i === 0 ? "true" : undefined}
+          >
+            {l.label}
+          </a>
         ))}
       </div>
     </div>
 
     <div class="nav-actions">
-      <a class="btn primary nav-cv" href={localizePath("/cv/", locale)} aria-label={t.cv}>
+      <a
+        class="btn primary nav-cv"
+        href={localizePath("/cv/", locale)}
+        aria-label={t.cv}
+        aria-current={onCv ? "page" : undefined}
+      >
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
           <polyline points="14 2 14 8 20 8" />
@@ -128,5 +147,6 @@ const langOptions: { code: Locale; label: string }[] = [
         setExpanded(false);
       }
     });
+
   }
 </script>
