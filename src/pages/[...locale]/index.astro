@@ -103,7 +103,7 @@ const cvPdf = cvPdfPath(locale);
         </div>
         <div class="timeline">
           {t.experience.map((item) => (
-            <div class="tl-item reveal">
+            <div class:list={["tl-item", "reveal", { "is-current": item.current }]}>
               <div class="tl-period">
                 {item.period}
                 {item.current && <span class="tl-current">{t.currentBadge}</span>}

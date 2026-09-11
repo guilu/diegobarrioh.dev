@@ -817,8 +817,9 @@ main {
   transition: background-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
 }
 
-.tl-item:hover::after,
-.tl-item:first-child::after {
+/* The lit node says "this is where I am now". It comes from the data, not
+   from the position in the list and not from where the pointer happens to be. */
+.tl-item.is-current::after {
   background: var(--brand-soft);
   box-shadow: 0 0 14px var(--brand-glow);
 }
@@ -911,16 +912,11 @@ main {
   border-bottom-color: currentColor;
 }
 
-/* Stretch the title link across the whole entry: one link, one destination,
-   and the hover arrow finally means something. Entries without a linked
-   title (the professional highlights) are unaffected. */
-.proj h3 a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-}
-
-.proj:has(h3 a):hover {
+/* The whole entry navigates, but through a click handler instead of a
+   stretched overlay: an overlay on top of the card also swallows every text
+   selection. Without JS the title link still works, so the pointer only turns
+   into a hand once the handler is actually there to answer it. */
+html.js .proj:has(h3 a):hover {
   cursor: pointer;
 }
 
