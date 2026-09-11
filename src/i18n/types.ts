@@ -17,6 +17,9 @@ export interface Nav {
   menuOpen: string;
   menuClose: string;
   themeToggle: string;
+  themeLight: string;
+  themeDark: string;
+  langGroup: string;
   langToggle: string;
 }
 

@@ -1,5 +1,5 @@
 ---
-import { defaultLocale, getContent, localizePath, locales, type Locale } from "../i18n";
+import { getContent, localizePath, type Locale } from "../i18n";
 
 interface Props {
   locale: Locale;
@@ -21,10 +21,12 @@ const links = [
   { hash: "#contact", label: t.contact, key: "contact" },
 ];
 
-// The pill switches to the same page in the other locale, so the reader never
-// gets dumped back on the home page just for changing language.
-const otherLocale = locales.find((l) => l !== locale) ?? defaultLocale;
-const otherHref = localizePath(path, otherLocale);
+// Each half of the pill is its own destination, and every one of them keeps
+// the reader on the same page instead of dumping them back on the home page.
+const langOptions: { code: Locale; label: string }[] = [
+  { code: "es", label: "ES" },
+  { code: "en", label: "EN" },
+];
 ---
 
 <nav class="nav" data-nav-root>
@@ -53,14 +55,27 @@ const otherHref = localizePath(path, otherLocale);
         </svg>
         {t.cv}
       </a>
-      <a class="toggle lang-toggle" href={otherHref} hreflang={otherLocale} aria-label={t.langToggle}>
-        <span class="opt" data-value="es">ES</span>
-        <span class="opt" data-value="en">EN</span>
-      </a>
-      <button class="toggle theme-toggle" type="button" id="theme-toggle" aria-label={t.themeToggle}>
-        <span class="opt" data-value="light">☀</span>
-        <span class="opt" data-value="dark">☾</span>
-      </button>
+      <div class="toggle lang-toggle" role="group" aria-label={t.langGroup}>
+        {langOptions.map((option) =>
+          option.code === locale ? (
+            <span class="opt" data-value={option.code} aria-current="true">{option.label}</span>
+          ) : (
+            <a
+              class="opt"
+              data-value={option.code}
+              href={localizePath(path, option.code)}
+              hreflang={option.code}
+              aria-label={t.langToggle}
+            >
+              {option.label}
+            </a>
+          )
+        )}
+      </div>
+      <div class="toggle theme-toggle" role="group" aria-label={t.themeToggle}>
+        <button class="opt" type="button" data-theme-option data-value="light" aria-pressed="false" aria-label={t.themeLight}>☀</button>
+        <button class="opt" type="button" data-theme-option data-value="dark" aria-pressed="true" aria-label={t.themeDark}>☾</button>
+      </div>
     </div>
 
     <button

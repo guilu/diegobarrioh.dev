@@ -333,11 +333,11 @@ html.js .reveal.in {
   border: 1px solid var(--line);
   background: color-mix(in oklab, var(--surface-strong) 92%, transparent);
   color: var(--text);
-  cursor: pointer;
   transition: border-color var(--dur) var(--ease);
 }
 
-.toggle:hover {
+.toggle:hover,
+.toggle:focus-within {
   border-color: color-mix(in oklab, var(--brand) 44%, var(--line));
 }
 
@@ -352,6 +352,22 @@ html.js .reveal.in {
   font-weight: 600;
   color: var(--text-faint);
   transition: all var(--dur) var(--ease);
+}
+
+/* Each half is its own control, so only the half that changes something is
+   clickable. Landing on the side you are already on does nothing. */
+a.opt,
+button.opt {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.opt[aria-current="true"],
+.opt[aria-pressed="true"] {
+  cursor: default;
 }
 
 .lang-toggle .opt {
@@ -943,7 +959,7 @@ main {
   transition: color var(--dur) var(--ease), transform var(--dur) var(--ease);
 }
 
-.proj:hover .proj-arrow {
+.proj:has(h3 a):hover .proj-arrow {
   color: var(--brand-soft);
   transform: translateX(6px);
 }
@@ -1008,7 +1024,9 @@ main {
   transition: border-color var(--dur) var(--ease);
 }
 
-.pill:hover {
+/* A pill is a label, never a control. It brightens only as part of a card
+   that does navigate, so the highlight follows a real destination. */
+.proj:has(h3 a):hover .pill {
   border-color: color-mix(in oklab, var(--brand) 56%, var(--line));
 }
 

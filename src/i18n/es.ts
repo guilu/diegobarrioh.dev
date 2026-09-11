@@ -55,7 +55,10 @@ const es: Content = {
     brandAlt: "Logo de Diego Barrio H.",
     menuOpen: "Abrir menú de navegación",
     menuClose: "Cerrar menú de navegación",
-    themeToggle: "Cambiar tema",
+    themeToggle: "Tema",
+    themeLight: "Tema claro",
+    themeDark: "Tema oscuro",
+    langGroup: "Idioma",
     langToggle: "View in English",
   },
 
