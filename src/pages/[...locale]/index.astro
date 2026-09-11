@@ -14,8 +14,8 @@ const cvPdf = cvPdfPath(locale);
 ---
 
 <BaseLayout locale={locale} path={PATH} title={c.meta.home.title} description={c.meta.home.description}>
-  <Nav locale={locale} path={PATH} current="home" />
-  <main>
+  <Nav locale={locale} path={PATH} />
+  <main id="main" tabindex="-1">
     <header class="hero" id="home">
       <div class="container">
         <div class="hero-grid">

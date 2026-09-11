@@ -227,6 +227,28 @@ html.js .reveal.in {
   transform: none;
 }
 
+/* Skip link — the first focusable thing on the page, so a keyboard does not
+   have to walk the whole menu before reaching the content. Off screen until
+   it takes focus, above the nav and the consent banner when it shows. */
+.skip-link {
+  position: fixed;
+  top: -100px;
+  left: 12px;
+  z-index: 1100;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+  transition: top var(--dur) var(--ease);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
 /* ============================================================
    3. NAV — sticky, blurred, hairline
    ============================================================ */
@@ -1789,6 +1811,7 @@ html.js .proj:has(h3 a):hover {
 
   /* Screen furniture that means nothing on paper. */
   .nav,
+  .skip-link,
   .consent-banner,
   .cv-actions,
   .footer,

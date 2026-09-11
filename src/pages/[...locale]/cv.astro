@@ -14,8 +14,8 @@ const cvPdf = cvPdfPath(locale);
 ---
 
 <BaseLayout locale={locale} path={PATH} title={c.meta.cv.title} description={c.meta.cv.description}>
-  <Nav locale={locale} path={PATH} current="cv" />
-  <main class="container">
+  <Nav locale={locale} path={PATH} />
+  <main id="main" tabindex="-1" class="container">
     <article class="cv-doc">
       <header class="cv-head">
         <h1>Diego Barrio Hortigüela</h1>

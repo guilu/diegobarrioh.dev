@@ -6,6 +6,7 @@ export interface PageMeta {
 }
 
 export interface Nav {
+  skip: string;
   home: string;
   experience: string;
   projects: string;

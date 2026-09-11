@@ -45,6 +45,7 @@ const es: Content = {
   },
 
   nav: {
+    skip: "Saltar al contenido",
     home: "Inicio",
     experience: "Experiencia",
     projects: "Proyectos",
