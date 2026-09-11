@@ -155,16 +155,33 @@ const personSchema = {
     </script>
     <script>
       const root = document.documentElement;
-      const toggle = document.getElementById("theme-toggle");
+      const themeOptions = document.querySelectorAll<HTMLButtonElement>("[data-theme-option]");
+
+      // The markup ships the default theme; the pre-paint script may already have
+      // switched it from storage or the OS, so the pressed half is synced here.
+      const syncThemeOptions = () => {
+        const current = root.getAttribute("data-theme");
+        themeOptions.forEach((option) => {
+          option.setAttribute("aria-pressed", option.dataset.value === current ? "true" : "false");
+        });
+      };
 
       const applyTheme = (theme: string) => {
         root.setAttribute("data-theme", theme);
         localStorage.setItem("theme", theme);
+        syncThemeOptions();
       };
 
-      toggle?.addEventListener("click", () => {
-        applyTheme(root.getAttribute("data-theme") === "light" ? "dark" : "light");
+      // Each half sets its own theme. Clicking the one already active changes
+      // nothing on screen, it just pins the choice against the OS preference.
+      themeOptions.forEach((option) => {
+        option.addEventListener("click", () => {
+          const theme = option.dataset.value;
+          if (theme) applyTheme(theme);
+        });
       });
+
+      syncThemeOptions();
 
       // Scroll reveal — show elements as they enter the viewport
       const revealEls = document.querySelectorAll(".reveal");
