@@ -865,7 +865,7 @@ main {
   transition: padding-left var(--dur) var(--ease);
 }
 
-.proj:hover {
+.proj:has(h3 a):hover {
   padding-left: 10px;
 }
 
