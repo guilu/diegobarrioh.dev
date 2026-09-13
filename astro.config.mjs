@@ -15,6 +15,10 @@ import sitemap from '@astrojs/sitemap';
  * Must be listed after `sitemap()`: build hooks run in integration order and
  * the file has to exist before it can be copied.
  *
+ * A failed copy breaks the build instead of warning: `public/robots.txt`
+ * announces `/sitemap.xml`, so shipping without the alias would point crawlers
+ * at a 404 while every page still returned 200.
+ *
  * @returns {import('astro').AstroIntegration}
  */
 function sitemapAlias() {
@@ -27,7 +31,7 @@ function sitemapAlias() {
           logger.info('`sitemap.xml` alias written');
         } catch (error) {
           const reason = error instanceof Error ? error.message : String(error);
-          logger.warn(`could not write the \`sitemap.xml\` alias: ${reason}`);
+          throw new Error(`could not write the \`sitemap.xml\` alias announced in robots.txt: ${reason}`);
         }
       },
     },
