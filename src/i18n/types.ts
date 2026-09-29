@@ -231,8 +231,6 @@ export interface Cv {
     languages: string;
     technologies: string;
     hardware: string;
-    languageCol: string;
-    levelCol: string;
   };
   summary: string;
   competencies: SkillGroup[];

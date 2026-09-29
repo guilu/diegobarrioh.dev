@@ -1753,25 +1753,6 @@ html.js .proj:has(h3 a):hover {
   color: var(--brand-soft);
 }
 
-.cv-doc .cv-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 0 0 var(--space-3);
-  font-size: 0.95rem;
-}
-
-.cv-doc .cv-table th,
-.cv-doc .cv-table td {
-  text-align: left;
-  padding: var(--space-2) var(--space-3);
-  border-bottom: 1px solid var(--line-soft);
-}
-
-.cv-doc .cv-table th {
-  color: var(--text);
-  font-weight: 600;
-}
-
 .cv-doc .taglist {
   margin: 0 0 var(--space-3);
 }
@@ -1907,7 +1888,7 @@ html.js .proj:has(h3 a):hover {
   }
 
   .cv-doc li,
-  .cv-table {
+  .cv-doc .cv-project {
     break-inside: avoid;
     page-break-inside: avoid;
   }

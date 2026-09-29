@@ -79,7 +79,7 @@ const cvPdf = cvPdfPath(locale);
       <hr />
       <h2><span class="cv-emoji" aria-hidden="true">🚀</span>{h.projects}</h2>
       {t.projects.map((p) => (
-        <>
+        <div class="cv-project">
           <h3>{p.url ? <a href={p.url} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</h3>
           <p class="cv-sub">
             {p.subtitle}
@@ -104,7 +104,7 @@ const cvPdf = cvPdfPath(locale);
               <span> {p.stack.join(", ")}</span>
             </p>
           )}
-        </>
+        </div>
       ))}
 
       <hr />
@@ -131,22 +131,7 @@ const cvPdf = cvPdfPath(locale);
 
       <hr />
       <h2><span class="cv-emoji" aria-hidden="true">🗣️</span>{h.languages}</h2>
-      <table class="cv-table">
-        <thead>
-          <tr>
-            <th>{h.languageCol}</th>
-            <th>{h.levelCol}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {t.languages.map((l) => (
-            <tr>
-              <td>{l.name}</td>
-              <td>{l.level}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <p>{t.languages.map((l) => `${l.name}: ${l.level}`).join(" · ")}</p>
     </article>
   </main>
 </BaseLayout>
