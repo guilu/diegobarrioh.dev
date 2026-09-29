@@ -492,7 +492,7 @@ const en: Content = {
     contact: [
       { label: "Alicante, Spain", href: null },
       { label: EMAIL, href: `mailto:${EMAIL}` },
-      { label: "LinkedIn", href: LINKEDIN_URL },
+      { label: "LinkedIn", href: LINKEDIN_URL, screenOnly: true },
       { label: "diegobarrioh.dev", href: SITE_URL },
       { label: "backendtothefuture.com", href: LAB_URL },
     ],

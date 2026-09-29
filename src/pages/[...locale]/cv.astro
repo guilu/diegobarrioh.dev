@@ -23,7 +23,7 @@ const cvPdf = cvPdfPath(locale);
         <p class="cv-tagline">{t.tagline}</p>
         <p class="cv-contact">
           {t.contact.map((item, i) => (
-            <>
+            <span class:list={[{ "cv-screen-only": item.screenOnly }]}>
               {i > 0 && <span class="cv-sep" aria-hidden="true">·</span>}
               {item.href ? (
                 <a
@@ -36,7 +36,7 @@ const cvPdf = cvPdfPath(locale);
               ) : (
                 item.label
               )}
-            </>
+            </span>
           ))}
         </p>
         <div class="btns cv-actions">
