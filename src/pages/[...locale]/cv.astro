@@ -52,16 +52,16 @@ const cvPdf = cvPdfPath(locale);
       <hr />
       <h2><span class="cv-emoji" aria-hidden="true">🛠️</span>{h.competencies}</h2>
       {t.competencies.map((group) => (
-        <div class="cv-skill">
+        <>
           <h3>{group.title}</h3>
           <div class="taglist">{group.items.map((s) => <span class="pill">{s}</span>)}</div>
-        </div>
+        </>
       ))}
 
       <hr />
       <h2><span class="cv-emoji" aria-hidden="true">💼</span>{h.experience}</h2>
       {t.experience.map((e) => (
-        <div class="cv-job">
+        <>
           <h3>{e.role}</h3>
           <p class="cv-meta">
             <span class="cv-company">{e.company}</span>
@@ -73,11 +73,11 @@ const cvPdf = cvPdfPath(locale);
             <strong>{h.technologies}</strong>
             <span> {e.stack.join(", ")}</span>
           </p>
-        </div>
+        </>
       ))}
 
       <hr />
-      <h2 class="cv-page-start"><span class="cv-emoji" aria-hidden="true">🚀</span>{h.projects}</h2>
+      <h2><span class="cv-emoji" aria-hidden="true">🚀</span>{h.projects}</h2>
       {t.projects.map((p) => (
         <div class="cv-project">
           <h3>{p.url ? <a href={p.url} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</h3>

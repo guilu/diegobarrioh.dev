@@ -1879,32 +1879,6 @@ html.js .proj:has(h3 a):hover {
     color: var(--text-faint);
   }
 
-  /* Competencies as a two-column table: the group title beside its items
-     saves a line per group, which is what lets page 1 hold the current job. */
-  .cv-doc .cv-skill {
-    display: grid;
-    grid-template-columns: 40mm 1fr;
-    column-gap: 3mm;
-    align-items: baseline;
-    margin-bottom: 1.2mm;
-  }
-
-  .cv-doc .cv-skill h3 {
-    margin: 0;
-    font-size: 10pt;
-  }
-
-  .cv-doc .cv-skill .taglist {
-    margin: 0;
-  }
-
-  /* Side projects always open page 3, after the full work history. */
-  .cv-doc .cv-page-start {
-    break-before: page;
-    page-break-before: always;
-    margin-top: 0;
-  }
-
   /* Keep a heading with the block it introduces, and never split an entry. */
   h1,
   h2,
@@ -1914,7 +1888,6 @@ html.js .proj:has(h3 a):hover {
   }
 
   .cv-doc li,
-  .cv-doc .cv-job,
   .cv-doc .cv-project {
     break-inside: avoid;
     page-break-inside: avoid;
