@@ -513,7 +513,7 @@ const en: Content = {
       levelCol: "Level",
     },
     summary:
-      "Senior Backend Engineer with over 15 years in Java, most of them in banking and payments. I currently work on the payment and billing APIs of Europcar Mobility Group, which handle around 15,000 transactions and millions of euros a day, on Java 21, Spring Boot, Kafka and Kubernetes. Before that I spent eight years on Banco Sabadell systems: mortgage simulation and amortization in core banking, ATM services, and later the security of the document platform behind its online banking. I work with DDD, hexagonal architecture and TDD. In my own projects I build LLM features where the model's output is validated against a domain contract before the system accepts it.",
+      "Senior Backend Engineer with over 15 years in Java, most of them in banking and payments. I currently work on the payment and billing APIs of Europcar Mobility Group, which handle around 10,000 transactions and millions of euros a day, on Java 21, Spring Boot, Kafka and Kubernetes. Before that I spent eight years on Banco Sabadell systems: mortgage simulation and amortization in core banking, ATM services, and later the security of the document platform behind its online banking. I work with DDD, hexagonal architecture and TDD. In my own projects I build LLM features where the model's output is validated against a domain contract before the system accepts it.",
     competencies: [
       {
         title: "Backend Engineering",
@@ -586,8 +586,8 @@ const en: Content = {
         company: "Mindden, embedded in Europcar Mobility Group's payments team",
         period: "Mar 2024 – Present",
         bullets: [
-          "Build and maintain the payment and billing APIs: around 15,000 payment transactions and millions of euros processed per day, averaging 1,000 transactions an hour with higher peaks.",
-          "Daily billing runs issue tens of thousands of invoices at 0.36 s average generation time, monitored through Splunk dashboards.",
+          "Build and maintain the payment and billing APIs, with ~10,000 payment transactions and millions of euros processed per day, averaging ~1,000 transactions an hour with higher peaks in high season.",
+          "Daily billing runs issue tens of thousands of invoices with sub-second generation time, monitored through Splunk dashboards.",
           "Event-driven integration with Apache Kafka for asynchronous processing between services.",
           "OAuth 2.0 authentication for the payment API's clients, with Spring Cloud OpenFeign clients wired through Spring Boot auto-configuration.",
           "Services on Java 21, with the first microservices already migrated to Java 25.",

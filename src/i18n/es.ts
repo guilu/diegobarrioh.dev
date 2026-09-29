@@ -513,7 +513,7 @@ const es: Content = {
       levelCol: "Nivel",
     },
     summary:
-      "Senior Backend Engineer con más de 15 años en Java, la mayoría en banca y pagos. Ahora trabajo en las APIs de pagos y facturación de Europcar Mobility Group, que mueven unas 15.000 transacciones y millones de euros al día, con Java 21, Spring Boot, Kafka y Kubernetes. Antes pasé ocho años en sistemas de Banco Sabadell: simulación de hipotecas y cuadros de amortización en core banking, servicios de cajeros y, después, la seguridad de la plataforma documental de su banca online. Trabajo con DDD, arquitectura hexagonal y TDD. En mis proyectos personales construyo funcionalidades con LLMs donde la salida del modelo se valida contra un contrato de dominio antes de que el sistema la acepte.",
+      "Senior Backend Engineer con más de 15 años en Java, la mayoría en banca y pagos. Ahora trabajo en las APIs de pagos y facturación de Europcar Mobility Group, que mueven unas 10.000 transacciones y millones de euros al día, con Java 21, Spring Boot, Kafka y Kubernetes. Antes pasé ocho años en sistemas de Banco Sabadell: simulación de hipotecas y cuadros de amortización en core banking, servicios de cajeros y, después, la seguridad de la plataforma documental de su banca online. Trabajo con DDD, arquitectura hexagonal y TDD. En mis proyectos personales construyo funcionalidades con LLMs donde la salida del modelo se valida contra un contrato de dominio antes de que el sistema la acepte.",
     competencies: [
       {
         title: "Ingeniería Backend",
@@ -586,8 +586,8 @@ const es: Content = {
         company: "Mindden, integrado en el equipo de pagos de Europcar Mobility Group",
         period: "Mar 2024 – Actualidad",
         bullets: [
-          "Desarrollo y mantenimiento de las APIs de pagos y facturación: unas 15.000 transacciones de pago y millones de euros procesados al día, con una media de 1.000 transacciones por hora y picos superiores.",
-          "Los procesos diarios de facturación emiten decenas de miles de facturas con un tiempo medio de generación de 0,36 s, monitorizados con paneles de Splunk.",
+          "Desarrollo y mantenimiento de las APIs de pagos y facturación, con ~10.000 transacciones de pago y millones de euros procesados al día, una media de ~1.000 transacciones por hora y picos mayores en temporada alta.",
+          "Los procesos diarios de facturación emiten decenas de miles de facturas con tiempos de generación por debajo del segundo, monitorizados con paneles de Splunk.",
           "Integración event-driven con Apache Kafka para el procesamiento asíncrono entre servicios.",
           "Autenticación OAuth 2.0 de los clientes de la API de pagos, con clientes Spring Cloud OpenFeign configurados mediante la autoconfiguración de Spring Boot.",
           "Servicios en Java 21, con los primeros microservicios ya migrados a Java 25.",
