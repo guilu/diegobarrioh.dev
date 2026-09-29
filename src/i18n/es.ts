@@ -509,8 +509,6 @@ const es: Content = {
       languages: "Idiomas",
       technologies: "Tecnologías:",
       hardware: "Hardware:",
-      languageCol: "Idioma",
-      levelCol: "Nivel",
     },
     summary:
       "Senior Backend Engineer con más de 15 años en Java, la mayoría en banca y pagos. Ahora trabajo en las APIs de pagos y facturación de Europcar Mobility Group, que mueven unas 10.000 transacciones y millones de euros al día, con Java 21, Spring Boot, Kafka y Kubernetes. Antes pasé ocho años en sistemas de Banco Sabadell: simulación de hipotecas y cuadros de amortización en core banking, servicios de cajeros y, después, la seguridad de la plataforma documental de su banca online. Trabajo con DDD, arquitectura hexagonal y TDD. En mis proyectos personales construyo funcionalidades con LLMs donde la salida del modelo se valida contra un contrato de dominio antes de que el sistema la acepte.",
