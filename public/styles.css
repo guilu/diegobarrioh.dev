@@ -1802,6 +1802,7 @@ html.js .proj:has(h3 a):hover {
   .footer,
   .proj-arrow,
   .proj-more,
+  .cv-screen-only,
   .cv-emoji {
     display: none !important;
   }

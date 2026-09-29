@@ -182,6 +182,8 @@ export interface Projects {
 export interface CvContact {
   label: string;
   href: string | null;
+  /** Hidden in the printed CV, where a link label with no visible URL is useless. */
+  screenOnly?: boolean;
 }
 
 export interface CvProject {
