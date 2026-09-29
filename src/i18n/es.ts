@@ -591,7 +591,7 @@ const es: Content = {
           "Integración event-driven con Apache Kafka para el procesamiento asíncrono entre servicios.",
           "Autenticación OAuth 2.0 de los clientes de la API de pagos, con clientes Spring Cloud OpenFeign configurados mediante la autoconfiguración de Spring Boot.",
           "Servicios en Java 21, con los primeros microservicios ya migrados a Java 25.",
-          "Impulso de DDD, arquitectura hexagonal y TDD en los servicios del equipo; pipelines de GitLab CI/CD hacia Kubernetes en AWS.",
+          "Impulso de DDD, arquitectura hexagonal y TDD en el equipo; GitLab CI/CD hacia Kubernetes en AWS.",
         ],
         stack: ["Java 21", "Java 25", "Spring Boot", "OpenFeign", "OAuth 2.0", "Kafka", "Kubernetes", "AWS", "Oracle", "Splunk", "GitLab CI/CD"],
       },
@@ -602,7 +602,7 @@ const es: Content = {
         bullets: [
           "Responsable del Document Management System (DMS) de la banca online de Banco Sabadell, la plataforma que comparte documentación sensible con los clientes.",
           "Trabajo centrado en seguridad: autenticación y control de acceso con Spring Security, SAML y JWT.",
-          "Optimización de queries complejas en Oracle y SQL Server y de flujos batch planificados con IBM Tivoli Workload Scheduler.",
+          "Optimización de queries complejas en Oracle y SQL Server y de flujos batch con IBM Tivoli.",
         ],
         stack: ["Java", "Spring Boot", "Spring Security", "SAML", "JWT", "Oracle", "SQL Server", "IBM Tivoli"],
       },
