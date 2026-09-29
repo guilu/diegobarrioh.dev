@@ -81,7 +81,15 @@ const cvPdf = cvPdfPath(locale);
       {t.projects.map((p) => (
         <>
           <h3>{p.url ? <a href={p.url} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</h3>
-          <p class="cv-sub">{p.subtitle}</p>
+          <p class="cv-sub">
+            {p.subtitle}
+            {p.url && (
+              <>
+                <span class="cv-sep" aria-hidden="true">·</span>
+                <a class="cv-url" href={p.url} target="_blank" rel="noreferrer">{p.url.replace(/^https?:\/\//, "")}</a>
+              </>
+            )}
+          </p>
           <p>{p.description}</p>
           {p.bullets.length > 0 && <ul>{p.bullets.map((b) => <li>{b}</li>)}</ul>}
           {p.hardware && (
