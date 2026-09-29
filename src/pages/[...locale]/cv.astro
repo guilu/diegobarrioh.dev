@@ -59,29 +59,6 @@ const cvPdf = cvPdfPath(locale);
       ))}
 
       <hr />
-      <h2><span class="cv-emoji" aria-hidden="true">🚀</span>{h.projects}</h2>
-      {t.projects.map((p) => (
-        <>
-          <h3>{p.url ? <a href={p.url} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</h3>
-          <p class="cv-sub">{p.subtitle}</p>
-          <p>{p.description}</p>
-          <ul>{p.bullets.map((b) => <li>{b}</li>)}</ul>
-          {p.hardware && (
-            <p class="cv-tech">
-              <strong>{h.hardware}</strong>
-              <span> {p.hardware}</span>
-            </p>
-          )}
-          {p.stack.length > 0 && (
-            <p class="cv-tech">
-              <strong>{h.technologies}</strong>
-              <span> {p.stack.join(", ")}</span>
-            </p>
-          )}
-        </>
-      ))}
-
-      <hr />
       <h2><span class="cv-emoji" aria-hidden="true">💼</span>{h.experience}</h2>
       {t.experience.map((e) => (
         <>
@@ -96,6 +73,29 @@ const cvPdf = cvPdfPath(locale);
             <strong>{h.technologies}</strong>
             <span> {e.stack.join(", ")}</span>
           </p>
+        </>
+      ))}
+
+      <hr />
+      <h2><span class="cv-emoji" aria-hidden="true">🚀</span>{h.projects}</h2>
+      {t.projects.map((p) => (
+        <>
+          <h3>{p.url ? <a href={p.url} target="_blank" rel="noreferrer">{p.name}</a> : p.name}</h3>
+          <p class="cv-sub">{p.subtitle}</p>
+          <p>{p.description}</p>
+          {p.bullets.length > 0 && <ul>{p.bullets.map((b) => <li>{b}</li>)}</ul>}
+          {p.hardware && (
+            <p class="cv-tech">
+              <strong>{h.hardware}</strong>
+              <span> {p.hardware}</span>
+            </p>
+          )}
+          {p.stack.length > 0 && (
+            <p class="cv-tech">
+              <strong>{h.technologies}</strong>
+              <span> {p.stack.join(", ")}</span>
+            </p>
+          )}
         </>
       ))}
 
